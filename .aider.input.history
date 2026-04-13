@@ -1,0 +1,42 @@
+
+# 2026-03-27 18:01:42.557924
++y
+
+# 2026-03-27 18:01:50.745264
++n
+
+# 2026-03-27 18:03:00.113199
++we are about to make an application for my wife to be able to get recipes for cooking for the day. we are starting the project from scratch, so ill need you to plan extensively first, before we go into coding. we are a family of 9 (7 kids) so all the meals should have enough quantities for the whole family. the objective is to cover the whole day with enough ballanced nutrients, both macro and micro. we need to build her a telegram bot in which she enters the ingredients she has available and then we need to give her recipes for ballanced meals. in the planning phase, please ask as many questions as you need so we can set it up for coding part 
+
+# 2026-03-27 18:07:08.075884
++1 - it should provide both, if she writes "what to make for breakfast" suggest just one meal, if lunch or dinner, ask what she cooked before. but usually she will give the list of ingredients and ask what do i cook out of these for example. we need to cover all scenarios
+
+# 2026-03-27 18:10:08.210528
++b
+
+# 2026-03-27 18:14:23.133411
++/exit
+
+# 2026-03-27 18:25:40.402061
++lets continue, where we left off
+
+# 2026-03-27 18:26:37.699685
++we started developing app called Recepti, you hve no history?
+
+# 2026-03-27 18:27:34.498648
++we are about to make an application for my wife to be able to get recipes for cooking for the day. we are starting the project from scratch, so ill need you to plan extensively first, before we go into coding. we are a family of 9 (7 kids) so all the meals should have enough quantities for the whole family. the objective is to cover the whole day with enough ballanced nutrients, both macro and micro. we need to build her a telegram bot in which she enters the ingredients she has available and then we need to give her recipes for ballanced meals. in the planning phase, please ask as many questions as you need so we can set it up for coding part 
+
+# 2026-03-27 18:37:18.049117
++1- kids are from 10 months to 11 years old, we dont eat meat/fish, 2- use it for planning the meals, during the day or day before, 3 meals per day, shops at Kaufland Đakovo, 3- adequate protein per person, varied whole foods, 4- find online, yes, warn if we are missing something (the whole day needs to be balanced, if something is missing critically, we add it day after (consider vitamins etc.) 5- text input, 6- full recipes, 3 per query, remember past inputs. bot can use local llm brain and rag for db, 7- find new recipes daily, add them to the database of recipes, later as we use it, what gets unused can be deleted or we find alternatives, 9- store all in local db, . we can add option for her to start a weekly plan or daily plan
+
+# 2026-03-27 18:41:32.144668
++we eliminate tofu, seitan also. 1- create all the files, whole project structure and architecture, with detailed guides for future conversation. we are starting from 0
+
+# 2026-03-27 20:10:15.733165
++y
+
+# 2026-03-27 20:12:15.410835
++/clear
+
+# 2026-03-27 20:12:20.352526
++continue with work

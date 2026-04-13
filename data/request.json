@@ -1,0 +1,11 @@
+{
+  "model": "minimax-m2.7",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Generate exactly 40 Indian lacto-ovo vegetarian recipes in valid JSON format for a family of 9. Output ONLY raw JSON (no markdown, no code fences).\n\nSTRICT RULES:\n- Lacto-ovo vegetarian (eggs OK, no meat/fish)\n- NO soy products (tofu, soy sauce, edamame, tempeh)\n- NO wheat flour (maida forbidden). Besan (chickpea flour) OK, Atta (whole wheat flour) OK.\n- Indian cuisine only\n- meal_type distribution: about 13 breakfast, 13 lunch, 14 dinner recipes\n- All servings: 9 (for a family of 9)\n- Difficulty mix: easy, medium, hard\n- Common ingredients allowed: toor dal, masoor dal, chana dal, rajma, chole (chickpeas), palak, paneer, eggs, rice, atta, vegetables, yogurt, milk, peanuts, cashews, ghee, oil, spices\n\nEach recipe JSON object must have these exact fields:\n- id: integer 1-40\n- name: authentic Indian dish name\n- description: 1-2 sentence description\n- ingredients: array of {name: string, amount: number, unit: string} - realistic amounts for 9 servings\n- instructions: step-by-step cooking instructions as a single string\n- tags: {cuisine: \"indian\", meal_type: \"breakfast\" or \"lunch\" or \"dinner\", dietary_tags: [\"vegetarian\", \"lacto-ovo\"]}\n- servings: 9\n- prep_time_min: number\n- cook_time_min: number\n- difficulty: \"easy\" or \"medium\" or \"hard\"\n- source_url: \"\"\n\nOutput ONLY this JSON structure (no markdown): {\"recipes\": [...]}"
+    }
+  ],
+  "max_tokens": 30000,
+  "temperature": 0.8
+}

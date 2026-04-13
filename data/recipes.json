@@ -1,0 +1,196 @@
+{
+  "recipes": [
+    {
+      "name": "Toor dal (arhar/tuvar dal)",
+      "amount": "1",
+      "unit": "cup",
+      "id": 1
+    },
+    {
+      "name": "Tomatoes",
+      "amount": "2",
+      "unit": "medium, chopped",
+      "id": 2
+    },
+    {
+      "name": "Onion",
+      "amount": "1",
+      "unit": "medium, finely chopped",
+      "id": 3
+    },
+    {
+      "name": "Garlic cloves",
+      "amount": "4",
+      "unit": "cloves, minced",
+      "id": 4
+    },
+    {
+      "name": "Green chilli",
+      "amount": "2",
+      "unit": "slit",
+      "id": 5
+    },
+    {
+      "name": "Cumin seeds",
+      "amount": "1",
+      "unit": "tsp",
+      "id": 6
+    },
+    {
+      "name": "Turmeric powder",
+      "amount": "0.5",
+      "unit": "tsp",
+      "id": 7
+    },
+    {
+      "name": "Red chilli powder",
+      "amount": "0.5",
+      "unit": "tsp",
+      "id": 8
+    },
+    {
+      "name": "Ghee",
+      "amount": "2",
+      "unit": "tbsp",
+      "id": 9
+    },
+    {
+      "name": "Salt",
+      "amount": "to taste",
+      "unit": "",
+      "id": 10
+    },
+    {
+      "name": "Fresh coriander leaves",
+      "amount": "2",
+      "unit": "tbsp, chopped",
+      "id": 11
+    },
+    {
+      "name": "toor dal (arhar dal)",
+      "amount": "1",
+      "unit": "cup",
+      "id": 12
+    },
+    {
+      "name": "water",
+      "amount": "3",
+      "unit": "cups",
+      "id": 13
+    },
+    {
+      "name": "salt",
+      "amount": "1",
+      "unit": "tsp",
+      "id": 14
+    },
+    {
+      "name": "turmeric powder",
+      "amount": "0.5",
+      "unit": "tsp",
+      "id": 15
+    },
+    {
+      "name": "ghee or oil",
+      "amount": "2",
+      "unit": "tbsp",
+      "id": 16
+    },
+    {
+      "name": "cumin seeds",
+      "amount": "1",
+      "unit": "tsp",
+      "id": 17
+    },
+    {
+      "name": "dried red chili",
+      "amount": "2",
+      "unit": "pieces",
+      "id": 18
+    },
+    {
+      "name": "garlic cloves, minced",
+      "amount": "4",
+      "unit": "cloves",
+      "id": 19
+    },
+    {
+      "name": "green chili, slit",
+      "amount": "1",
+      "unit": "piece",
+      "id": 20
+    },
+    {
+      "name": "coriander leaves, chopped",
+      "amount": "2",
+      "unit": "tbsp",
+      "id": 21
+    },
+    {
+      "name": "paneer",
+      "amount": "300",
+      "unit": "g",
+      "id": 22
+    },
+    {
+      "name": "yogurt",
+      "amount": "1",
+      "unit": "cup",
+      "id": 23
+    },
+    {
+      "name": "heavy cream",
+      "amount": "0.5",
+      "unit": "cup",
+      "id": 24
+    },
+    {
+      "name": "cashews",
+      "amount": "15",
+      "unit": "pcs",
+      "id": 25
+    },
+    {
+      "name": "onion",
+      "amount": "1",
+      "unit": "large",
+      "id": 26
+    },
+    {
+      "name": "ginger-garlic paste",
+      "amount": "1.5",
+      "unit": "tsp",
+      "id": 27
+    },
+    {
+      "name": "red chili powder",
+      "amount": "1",
+      "unit": "tsp",
+      "id": 28
+    },
+    {
+      "name": "garam masala",
+      "amount": "0.5",
+      "unit": "tsp",
+      "id": 30
+    },
+    {
+      "name": "turmeric",
+      "amount": "0.25",
+      "unit": "tsp",
+      "id": 31
+    },
+    {
+      "name": "coriander powder",
+      "amount": "1",
+      "unit": "tsp",
+      "id": 32
+    },
+    {
+      "name": "oil",
+      "amount": "2",
+      "unit": "tbsp",
+      "id": 34
+    }
+  ]
+}
