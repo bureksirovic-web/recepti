@@ -42,12 +42,18 @@ def generate_weekly_plan(days: int = 7, preferences: dict[str, Any] | None = Non
         breakfast_id = _pick_recipe_for_slot(
             BREAKFAST, recipe_collection, excluded_ids, preferred_slots.get(BREAKFAST)
         ) if recipe_collection else None
+        if breakfast_id:
+            excluded_ids.add(breakfast_id)
         lunch_id = _pick_recipe_for_slot(
             LUNCH, recipe_collection, excluded_ids, preferred_slots.get(LUNCH)
         ) if recipe_collection else None
+        if lunch_id:
+            excluded_ids.add(lunch_id)
         dinner_id = _pick_recipe_for_slot(
             DINNER, recipe_collection, excluded_ids, preferred_slots.get(DINNER)
         ) if recipe_collection else None
+        if dinner_id:
+            excluded_ids.add(dinner_id)
         
         result[date_str] = MealPlan(
             date=plan_date,
@@ -55,11 +61,6 @@ def generate_weekly_plan(days: int = 7, preferences: dict[str, Any] | None = Non
             lunch_id=lunch_id,
             dinner_id=dinner_id,
         )
-        
-        # Track used recipes
-        for rid in [breakfast_id, lunch_id, dinner_id]:
-            if rid:
-                excluded_ids.add(rid)
     
     return result
 
@@ -96,9 +97,13 @@ def _pick_recipe_for_slot(
         candidates.append((recipe, score))
     
     if not candidates:
-        # Fallback: any recipe not in excluded
+        # Fallback: any recipe not in excluded AND compatible with slot
         for recipe in collection.recipes:
-            if recipe.id not in excluded_ids:
+            if recipe.id in excluded_ids:
+                continue
+            # Allow if meal_type is empty (universal) or contains this slot
+            mt = recipe.tags.meal_type
+            if mt == "" or slot in mt.split(","):
                 candidates.append((recipe, 0))
     
     if not candidates:
