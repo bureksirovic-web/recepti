@@ -22,7 +22,9 @@ class KidMealHistory:
         path = Path(self._storage_path)
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
-                self._data = json.load(f)
+                raw = json.load(f)
+            # JSON deserializes dict keys as strings; convert back to int child_ids
+            self._data = {int(k): v for k, v in raw.items()}
         else:
             self._data = {}
 
