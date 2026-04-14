@@ -1,3 +1,2592 @@
 {
-  "recipes": []
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Dal Makhani",
+      "description": "Rich and creamy black lentils simmered with kidney beans in a buttery tomato gravy, a quintessential Punjabi delicacy",
+      "ingredients": [
+        {
+          "name": "Black lentils (whole urad dal)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Kidney beans (rajma)",
+          "amount": "1/4",
+          "unit": "cup"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "3",
+          "unit": "medium"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Ginger-garlic paste",
+          "amount": "1.5",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Fresh cream",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "Butter",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Garam masala",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to",
+          "unit": "taste"
+        }
+      ],
+      "instructions": [
+        "Soak black lentils and kidney beans in water for 8 hours or overnight",
+        "Pressure cook soaked lentils and beans with salt and 4 cups water for 20 minutes until soft",
+        "In a pan, heat butter and saut\u00e9 cumin seeds until they splutter",
+        "Add finely chopped onions and cook until golden brown",
+        "Add ginger-garlic paste and cook for 2-3 minutes until fragrant",
+        "Add pureed tomatoes, red chili powder and cook until oil separates from the gravy",
+        "Add the cooked lentils mixture to the gravy and simmer for 30 minutes on low heat",
+        "Stir in cream and garam masala, simmer for another 10 minutes",
+        "Garnish with a swirl of cream and serve hot with naan or rice"
+      ],
+      "tags": {
+        "cuisine": "Punjabi",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 60,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 2,
+      "name": "Paneer Tikka Masala",
+      "description": "Grilled cottage cheese cubes in a spiced tomato-based gravy, a popular Punjabi restaurant-style dish",
+      "ingredients": [
+        {
+          "name": "Paneer",
+          "amount": "250",
+          "unit": "g"
+        },
+        {
+          "name": "Yogurt",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "4",
+          "unit": "large"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Ginger-garlic paste",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Kashmiri red chili powder",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Garam masala",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Heavy cream",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Kasuri methi",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to",
+          "unit": "taste"
+        }
+      ],
+      "instructions": [
+        "Cut paneer into 1-inch cubes and marinate with yogurt, half the ginger-garlic paste, turmeric, and salt for 30 minutes",
+        "Make tomato puree from fresh tomatoes",
+        "Grill or pan-fry marinated paneer cubes until golden and slightly charred",
+        "In a pan, heat mustard oil and saut\u00e9 cumin seeds",
+        "Add finely chopped onions and cook until translucent",
+        "Add remaining ginger-garlic paste and cook for 2 minutes",
+        "Add tomato puree and Kashmiri red chili powder, cook until oil separates",
+        "Add 1/2 cup water and simmer for 10 minutes",
+        "Add cream, garam masala, and kasuri methi, stir well",
+        "Add grilled paneer cubes and simmer for 5 minutes",
+        "Garnish with fresh cream and serve with rotis or rice"
+      ],
+      "tags": {
+        "cuisine": "Punjabi",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "cook_time_min": 35,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 3,
+      "name": "Chole Masala",
+      "description": "Spiced chickpeas cooked in a tangy tomato and onion gravy with traditional Punjabi spices",
+      "ingredients": [
+        {
+          "name": "Chickpeas (chole)",
+          "amount": "1.5",
+          "unit": "cups"
+        },
+        {
+          "name": "Black tea bag",
+          "amount": "1",
+          "unit": "piece"
+        },
+        {
+          "name": "Onions",
+          "amount": "2",
+          "unit": "large"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "3",
+          "unit": "medium"
+        },
+        {
+          "name": "Ginger-garlic paste",
+          "amount": "1.5",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Chole masala powder",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Amchur powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Green chilies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to",
+          "unit": "taste"
+        }
+      ],
+      "instructions": [
+        "Soak chickpeas in water for 8 hours or overnight",
+        "Pressure cook soaked chickpeas with the black tea bag and salt for 25 minutes until tender",
+        "Discard the tea bag and keep the cooked chickpeas aside",
+        "Make a paste from one onion and ginger-garlic paste",
+        "Make tomato puree from tomatoes",
+        "In a pan, heat mustard oil and temper with cumin seeds",
+        "Add the onion paste and cook until golden",
+        "Add ginger-garlic paste and cook for 2 minutes",
+        "Add tomato puree and cook for 8 minutes until oil separates",
+        "Add chole masala powder, turmeric, and amchur powder, mix well",
+        "Add cooked chickpeas with their water and simmer for 20 minutes",
+        "Garnish with sliced onions and green chilies, serve hot with bhatura or puri"
+      ],
+      "tags": {
+        "cuisine": "Punjabi",
+        "meal_type": "breakfast",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 40,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 4,
+      "name": "Aloo Gobi",
+      "description": "Dry curry of potatoes and cauliflower cooked with traditional spices, a classic Punjabi home-style dish",
+      "ingredients": [
+        {
+          "name": "Potatoes",
+          "amount": "3",
+          "unit": "medium"
+        },
+        {
+          "name": "Cauliflower",
+          "amount": "1",
+          "unit": "medium head"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "2",
+          "unit": "medium"
+        },
+        {
+          "name": "Ginger-garlic paste",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Garam masala",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Fresh coriander leaves",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to",
+          "unit": "taste"
+        }
+      ],
+      "instructions": [
+        "Cut potatoes into 1-inch cubes and cauliflower into small florets",
+        "Blanch cauliflower in salted boiling water for 3 minutes, drain and set aside",
+        "Make a paste from tomatoes and ginger-garlic paste",
+        "In a wide pan, heat mustard oil and splutter cumin seeds",
+        "Add chopped onions and cook until light golden",
+        "Add tomato-ginger-garlic paste and all spices except garam masala",
+        "Cook for 5 minutes until oil separates",
+        "Add potato cubes and toss to coat with the masala",
+        "Cover and cook on medium heat for 10 minutes, stirring occasionally",
+        "Add cauliflower florets and mix gently",
+        "Cover and cook for another 10 minutes until potatoes are tender",
+        "Sprinkle garam masala and fresh coriander leaves",
+        "Serve hot with rotis or as a side dish"
+      ],
+      "tags": {
+        "cuisine": "Punjabi",
+        "meal_type": "lunch",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 5,
+      "name": "Punjabi Kadhi Pakora",
+      "description": "Fried fritters in a tangy yogurt gravy tempered with spices, a traditional Punjabi comfort food",
+      "ingredients": [
+        {
+          "name": "Yogurt",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "Chickpea flour (besan)",
+          "amount": "1.5",
+          "unit": "cups"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "small"
+        },
+        {
+          "name": "Potatoes",
+          "amount": "1",
+          "unit": "medium"
+        },
+        {
+          "name": "Ginger-garlic paste",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Fenugreek seeds",
+          "amount": "1/4",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Baking soda",
+          "amount": "1/4",
+          "unit": "tsp"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "Fresh coriander leaves",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to",
+          "unit": "taste"
+        }
+      ],
+      "instructions": [
+        "For pakoras: Mix 1 cup besan, baking soda, 1/2 tsp salt, and water to make a thick batter",
+        "Add finely chopped onion and potato to the batter",
+        "Heat oil and drop spoonfuls of batter, fry until golden and crispy",
+        "Drain on paper towels and set aside",
+        "For kadhi: Whisk yogurt with remaining besan, turmeric, and salt until smooth",
+        "Add 3 cups water and mix well",
+        "In a pan, heat 2 tbsp mustard oil and temper cumin and fenugreek seeds",
+        "Add ginger-garlic paste and red chili powder, cook for 1 minute",
+        "Add yogurt mixture and bring to a boil on medium heat, stirring continuously",
+        "Reduce heat and simmer for 20 minutes until kadhi thickens",
+        "Add prepared pakoras to the kadhi and simmer for 5 minutes",
+        "Garnish with fresh coriander leaves",
+        "Serve hot with rice or rotis"
+      ],
+      "tags": {
+        "cuisine": "Punjabi",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 35,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 6,
+      "name": "Gujarati Dal",
+      "description": "A sweet and tangy lentil dish made with toor dal, jaggery, and tamarind, tempered with spices",
+      "ingredients": [
+        {
+          "name": "toor dal (pigeon peas)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "tamarind paste",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "jaggery",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "asafoetida",
+          "amount": "1/4",
+          "unit": "tsp"
+        },
+        {
+          "name": "oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Wash and soak toor dal for 30 minutes",
+        "Pressure cook dal with turmeric and salt for 3 whistles",
+        "In a pan, heat oil and add cumin and mustard seeds",
+        "Add asafoetida and let it splutter",
+        "Add tamarind paste, jaggery, red chili powder and cook for 5 minutes",
+        "Add the cooked dal and simmer for 15 minutes",
+        "Garnish with coriander and serve hot with rice or roti"
+      ],
+      "tags": {
+        "cuisine": "Gujarati",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian",
+          "vegan",
+          "gluten-free"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 7,
+      "name": "Patra",
+      "description": "Steamed colocasia leaves rolled with spiced gram flour batter, tempered with coconut and sesame",
+      "ingredients": [
+        {
+          "name": "colocasia leaves (arbi ke patte)",
+          "amount": "8",
+          "unit": "large"
+        },
+        {
+          "name": "gram flour (besan)",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "tamarind paste",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "jaggery",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "red chili powder",
+          "amount": "2",
+          "unit": "tsp"
+        },
+        {
+          "name": "turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "garam masala",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "sesame seeds",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "grated coconut",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "oil",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Wash colocasia leaves and dry completely",
+        "Mix gram flour with tamarind, jaggery, red chili, turmeric, garam masala and salt to make a thick batter",
+        "Apply the batter on each leaf and roll tightly",
+        "Steam the rolls for 20-25 minutes",
+        "Let cool and cut into thin rounds",
+        "For tempering, heat oil and add mustard, cumin seeds and sesame seeds",
+        "Add the cut patra pieces and toss gently",
+        "Garnish with grated coconut and serve"
+      ],
+      "tags": {
+        "cuisine": "Gujarati",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian",
+          "vegan"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "cook_time_min": 40,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 8,
+      "name": "Methi Thepla",
+      "description": "Traditional Gujarati flatbread made with fenugreek leaves, gram flour and wheat flour",
+      "ingredients": [
+        {
+          "name": "wheat flour",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "gram flour (besan)",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "fresh methi leaves",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "yogurt",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "oil",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "water",
+          "amount": "as required",
+          "unit": "cup"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Wash and finely chop methi leaves",
+        "Mix wheat flour, gram flour, methi leaves, turmeric, red chili powder, cumin seeds",
+        "Add yogurt, 2 tbsp oil and salt",
+        "Knead into a smooth soft dough using water",
+        "Cover and rest for 15 minutes",
+        "Make small lemon-sized balls",
+        "Roll each ball into thin circles",
+        "Cook on hot tawa applying oil on both sides",
+        "Cook until golden brown spots appear",
+        "Serve hot with pickle and yogurt"
+      ],
+      "tags": {
+        "cuisine": "Gujarati",
+        "meal_type": "breakfast",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 25,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 9,
+      "name": "Khandvi",
+      "description": "Soft and tangy gram flour rolls tempered with mustard seeds, curry leaves and grated coconut",
+      "ingredients": [
+        {
+          "name": "gram flour (besan)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "yogurt",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "turmeric powder",
+          "amount": "1/4",
+          "unit": "tsp"
+        },
+        {
+          "name": "green chili paste",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "ginger paste",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "salt",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "curry leaves",
+          "amount": "10",
+          "unit": ""
+        },
+        {
+          "name": "grated coconut",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "coriander leaves",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "asafoetida",
+          "amount": "1/4",
+          "unit": "tsp"
+        }
+      ],
+      "instructions": [
+        "Mix gram flour, yogurt, turmeric, green chili paste, ginger paste and salt without lumps",
+        "Transfer to a heavy-bottomed pan and cook on medium heat",
+        "Stir continuously until the mixture becomes thick and leaves the sides of pan",
+        "Spread immediately on a greased plate to cool",
+        "Once cooled, cut into thin strips and roll carefully",
+        "Arrange rolls on a serving plate",
+        "For tempering, heat oil and add mustard seeds, curry leaves and asafoetida",
+        "Pour tempering over the rolls",
+        "Garnish with grated coconut and coriander leaves",
+        "Serve immediately"
+      ],
+      "tags": {
+        "cuisine": "Gujarati",
+        "meal_type": "snack",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 20,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 10,
+      "name": "Undhiyu",
+      "description": "Traditional Gujarati mixed vegetable casserole with sweet potatoes, brinjal, green beans and muthiya dumplings",
+      "ingredients": [
+        {
+          "name": "sweet potatoes",
+          "amount": "2",
+          "unit": "medium"
+        },
+        {
+          "name": "brinjal (eggplant)",
+          "amount": "2",
+          "unit": "medium"
+        },
+        {
+          "name": "green beans",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "green peas",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "yam",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "wheat flour",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "gram flour",
+          "amount": "1/4",
+          "unit": "cup"
+        },
+        {
+          "name": "fenugreek leaves",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "fennel powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "sugar",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "oil",
+          "amount": "4",
+          "unit": "tbsp"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "For muthiya: Mix wheat flour, gram flour, fenugreek leaves, cumin seeds, turmeric and salt",
+        "Add water to make a thick batter",
+        "Shape into small dumplings and deep fry until golden",
+        "Cut all vegetables into large pieces",
+        "In a large pot, layer sweet potatoes and yam at the bottom",
+        "Add brinjal and green beans on top",
+        "Add fried muthiya and green peas",
+        "Mix spices with sugar and sprinkle over vegetables",
+        "Drizzle oil and add half cup water",
+        "Cover and cook on low heat for 30-40 minutes",
+        "Stir gently halfway through",
+        "Serve hot with roti or puri"
+      ],
+      "tags": {
+        "cuisine": "Gujarati",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian",
+          "vegan"
+        ]
+      },
+      "servings": 6,
+      "prep_time_min": 40,
+      "cook_time_min": 60,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 11,
+      "name": "Avial",
+      "description": "A traditional Kerala mixed vegetable curry cooked in coconut oil and yogurt, featuring an array of vegetables cut into batons and finished with fresh coconut and curry leaves",
+      "ingredients": [
+        {
+          "name": "Carrot",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Yam",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Green beans",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Raw banana",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Drumstick",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Coconut oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Coconut grated",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Green chilies",
+          "amount": "3",
+          "unit": "pieces"
+        },
+        {
+          "name": "Curry leaves",
+          "amount": "1",
+          "unit": "sprig"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Yogurt",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Salt",
+          "amount": "1",
+          "unit": "tsp"
+        }
+      ],
+      "instructions": [
+        "Cut all vegetables into 2-inch batons of uniform size",
+        "Heat coconut oil in a large clay pot or heavy-bottomed vessel",
+        "Add cumin seeds and curry leaves, let them splutter",
+        "Add turmeric powder and green chilies",
+        "Add all vegetables and salt, toss to coat with oil",
+        "Add just enough water to cook vegetables partially",
+        "Cover and cook on medium heat for 10 minutes",
+        "Grind grated coconut with cumin seeds coarsely",
+        "Add the coconut mixture and yogurt to the vegetables",
+        "Mix gently without breaking the vegetable batons",
+        "Cover and cook until vegetables are tender but firm",
+        "Finish with a tempering of coconut oil, curry leaves and cumin"
+      ],
+      "tags": {
+        "cuisine": "South Indian",
+        "meal_type": "lunch",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free",
+          "dairy-free"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 25,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 12,
+      "name": "Vazhapoo Thoran",
+      "description": "A delicate South Indian stir-fry made with banana blossoms, cooked with grated coconut, lentils and aromatic spices, traditionally served with rice",
+      "ingredients": [
+        {
+          "name": "Banana flower",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Coconut grated",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Chana dal",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Urad dal",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Mustard seeds",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Dried red chilies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "Curry leaves",
+          "amount": "1",
+          "unit": "sprig"
+        },
+        {
+          "name": "Coconut oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.25",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Lemon juice",
+          "amount": "1",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Remove the outer purple layers of banana flower until pale portions appear",
+        "Chop the inner florets finely and separate the tender center",
+        "Soak chopped flowers in water with lemon juice to prevent discoloration",
+        "Drain and rinse the flowers thoroughly",
+        "Heat coconut oil in a pan, add mustard seeds and urad dal",
+        "When mustard splutters, add broken red chilies and curry leaves",
+        "Add the banana flower, turmeric powder and salt",
+        "Sprinkle a little water and cook covered for 5 minutes",
+        "Add the chana dal and mix gently",
+        "Cover and cook until flowers are tender, about 8 minutes",
+        "Add grated coconut and toss until well combined",
+        "Cook uncovered for 2-3 minutes to evaporate excess moisture"
+      ],
+      "tags": {
+        "cuisine": "South Indian",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free"
+        ]
+      },
+      "servings": 3,
+      "prep_time_min": 25,
+      "cook_time_min": 20,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 13,
+      "name": "Bisibelebath",
+      "description": "A hearty one-pot Karnataka specialty combining rice, lentils and vegetables in a spiced masala, topped with fresh ghee tempering and served with boondi or raita",
+      "ingredients": [
+        {
+          "name": "Rice",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Toor dal",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Mixed vegetables",
+          "amount": "1.5",
+          "unit": "cups"
+        },
+        {
+          "name": "Tamarind paste",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Jaggery",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Ghee",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Coconut grated",
+          "amount": "0.25",
+          "unit": "cup"
+        },
+        {
+          "name": "Dried red chilies",
+          "amount": "3",
+          "unit": "pieces"
+        },
+        {
+          "name": "Corriander seeds",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Fenugreek seeds",
+          "amount": "0.25",
+          "unit": "tsp"
+        },
+        {
+          "name": "Cinnamon stick",
+          "amount": "1",
+          "unit": "inch"
+        },
+        {
+          "name": "Cloves",
+          "amount": "3",
+          "unit": "pieces"
+        },
+        {
+          "name": "Byadagi red chilies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "Curry leaves",
+          "amount": "1",
+          "unit": "sprig"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "1.5",
+          "unit": "tsp"
+        }
+      ],
+      "instructions": [
+        "Wash rice and toor dal together and soak for 15 minutes",
+        "Dry roast coriander seeds, cumin, fenugreek, cloves and cinnamon",
+        "Add byadagi chilies and dried red chilies, roast until fragrant",
+        "Cool and grind with coconut and tamarind paste into a smooth paste",
+        "Heat ghee in a pressure cooker, add curry leaves",
+        "Add chopped vegetables and saut\u00e9 for 3 minutes",
+        "Add the ground masala paste and cook for 5 minutes",
+        "Add soaked rice and dal, turmeric powder and salt",
+        "Add water (2.5 cups) and jaggery",
+        "Pressure cook for 4 whistles on medium heat",
+        "Let pressure release naturally and open the cooker",
+        "Mix gently from bottom to incorporate all ingredients",
+        "Prepare tadka with ghee, curry leaves and dried red chilies",
+        "Pour hot ghee tadka over the bisibelebath and serve"
+      ],
+      "tags": {
+        "cuisine": "South Indian",
+        "meal_type": "lunch",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free"
+        ]
+      },
+      "servings": 5,
+      "prep_time_min": 30,
+      "cook_time_min": 25,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 14,
+      "name": "Gongura Pachadi",
+      "description": "An Andhra specialty tangy and spicy chutney made with gongura (sorrel) leaves, served as a condiment with steamed rice and dal or as an accompaniment to rice dishes",
+      "ingredients": [
+        {
+          "name": "Gongura leaves",
+          "amount": "4",
+          "unit": "cups"
+        },
+        {
+          "name": "Coconut grated",
+          "amount": "0.25",
+          "unit": "cup"
+        },
+        {
+          "name": "Urad dal",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Chana dal",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Dried red chilies",
+          "amount": "4",
+          "unit": "pieces"
+        },
+        {
+          "name": "Garlic cloves",
+          "amount": "4",
+          "unit": "pieces"
+        },
+        {
+          "name": "Tamarind paste",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coconut oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard seeds",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.25",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "0.5",
+          "unit": "tsp"
+        }
+      ],
+      "instructions": [
+        "Wash gongura leaves thoroughly and drain",
+        "Heat a heavy pan and dry roast urad dal and chana dal until golden",
+        "Add dried red chilies and roast for 30 seconds",
+        "Add gongura leaves and turmeric powder",
+        "Stir continuously until leaves wilt and become dry, about 5 minutes",
+        "Add tamarind paste and cook for 2 minutes",
+        "Remove from heat and let cool completely",
+        "Add coconut and garlic cloves to the cooled mixture",
+        "Grind everything into a coarse paste with minimal water",
+        "Heat coconut oil in the same pan",
+        "Add mustard seeds and let them splutter",
+        "Add the ground chutney paste and salt",
+        "Cook on medium heat, stirring frequently for 5 minutes",
+        "Remove from heat and serve with steamed rice"
+      ],
+      "tags": {
+        "cuisine": "South Indian",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free",
+          "dairy-free"
+        ]
+      },
+      "servings": 6,
+      "prep_time_min": 15,
+      "cook_time_min": 15,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 15,
+      "name": "Keerai Kootu",
+      "description": "A creamy Tamil Nadu lentil and spinach stew tempered with coconut, cumin and pepper, tempered with ghee and served with rice or roti",
+      "ingredients": [
+        {
+          "name": "Spinach",
+          "amount": "4",
+          "unit": "cups"
+        },
+        {
+          "name": "Toor dal",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Coconut grated",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Black peppercorns",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Ghee",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard seeds",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Urad dal",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Dried red chilies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "Curry leaves",
+          "amount": "1",
+          "unit": "sprig"
+        },
+        {
+          "name": "Asafoetida",
+          "amount": "0.25",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.25",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "1",
+          "unit": "tsp"
+        }
+      ],
+      "instructions": [
+        "Wash spinach thoroughly and chop roughly",
+        "Pressure cook toor dal with turmeric and water until soft and mushy",
+        "Grind coconut with cumin seeds and peppercorns into a smooth paste",
+        "Heat ghee in a vessel, add mustard seeds and urad dal",
+        "When mustard splutters, add broken red chilies and curry leaves",
+        "Add asafoetida and immediately add chopped spinach",
+        "Stir spinach until it wilts and reduces in volume, about 3 minutes",
+        "Add the cooked toor dal and salt, mix well",
+        "Add the coconut paste and bring to a gentle simmer",
+        "Cook for 5 minutes until flavors meld together",
+        "Adjust consistency with water if needed",
+        "Finish with a final tadka of ghee, mustard and curry leaves",
+        "Serve hot with steamed rice"
+      ],
+      "tags": {
+        "cuisine": "South Indian",
+        "meal_type": "lunch",
+        "dietary_tags": [
+          "vegetarian",
+          "gluten-free"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 25,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 16,
+      "name": "Shukto",
+      "description": "A bitter-sweet mixed vegetable curry, a traditional Bengali starter.",
+      "ingredients": [
+        {
+          "name": "Bitter gourd (karela)",
+          "amount": "100",
+          "unit": "g"
+        },
+        {
+          "name": "Drumstick",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Brinjal",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Potato",
+          "amount": "1",
+          "unit": "medium"
+        },
+        {
+          "name": "Beans",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Ghee",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Sugar",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Cut all vegetables into bite-sized pieces.",
+        "Heat ghee and mustard oil in a pan.",
+        "Add cumin seeds and let them splutter.",
+        "Add bitter gourd and fry until slightly browned.",
+        "Add other vegetables, turmeric, and salt.",
+        "Add water and sugar, cover and simmer until cooked.",
+        "Serve hot as a starter."
+      ],
+      "tags": {
+        "cuisine": "Bengali",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 17,
+      "name": "Aloo Posto",
+      "description": "Potatoes cooked with poppy seeds, a classic Bengali comfort food.",
+      "ingredients": [
+        {
+          "name": "Potatoes",
+          "amount": "3",
+          "unit": "medium"
+        },
+        {
+          "name": "Poppy seeds (posto)",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Green chillies",
+          "amount": "2",
+          "unit": "whole"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Soak poppy seeds in water for 15 minutes.",
+        "Peel and cut potatoes into cubes.",
+        "Grind poppy seeds to a paste.",
+        "Heat mustard oil, add cumin seeds and green chillies.",
+        "Add potatoes and fry until golden.",
+        "Add poppy seed paste, salt, and water.",
+        "Cover and cook until potatoes are tender.",
+        "Serve hot with rice."
+      ],
+      "tags": {
+        "cuisine": "Bengali",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 25,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 18,
+      "name": "Labra",
+      "description": "A mixed vegetable stew with potatoes, pumpkins, and legumes.",
+      "ingredients": [
+        {
+          "name": "Potato",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Pumpkin",
+          "amount": "100",
+          "unit": "g"
+        },
+        {
+          "name": "Brinjal",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Green peas",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Ghee",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Ginger",
+          "amount": "1",
+          "unit": "inch"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Cut all vegetables into pieces.",
+        "Heat ghee, add cumin seeds.",
+        "Add ginger and fry for a minute.",
+        "Add vegetables, turmeric, and salt.",
+        "Add water and bring to a boil.",
+        "Simmer until vegetables are cooked.",
+        "Serve hot with rice or roti."
+      ],
+      "tags": {
+        "cuisine": "Bengali",
+        "meal_type": "lunch",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 19,
+      "name": "Chaler Dal",
+      "description": "Simple lentil soup with rice, a staple Bengali dish.",
+      "ingredients": [
+        {
+          "name": "Masoor dal (red lentils)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Rice",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Ghee",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "Water",
+          "amount": "4",
+          "unit": "cups"
+        }
+      ],
+      "instructions": [
+        "Wash rice and dal.",
+        "Pressure cook rice and dal with water and turmeric.",
+        "In a small pan, heat ghee and add cumin seeds.",
+        "Pour the tempering over the dal and rice.",
+        "Add salt and mix well.",
+        "Serve hot."
+      ],
+      "tags": {
+        "cuisine": "Bengali",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 5,
+      "cook_time_min": 20,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 20,
+      "name": "Begun Bhaja",
+      "description": "Crispy fried brinjals, a popular Bengali side dish.",
+      "ingredients": [
+        {
+          "name": "Brinjal",
+          "amount": "2",
+          "unit": "medium"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        }
+      ],
+      "instructions": [
+        "Slice brinjals into thin rounds.",
+        "Apply turmeric and salt.",
+        "Heat mustard oil in a pan.",
+        "Fry brinjal slices until golden and crispy.",
+        "Serve hot as a side dish."
+      ],
+      "tags": {
+        "cuisine": "Bengali",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 15,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 21,
+      "name": "Bharli Vangi",
+      "description": "Maharashtrian stuffed brinjals (eggplants) in a sweet, tangy and nutty sauce.",
+      "ingredients": [
+        {
+          "name": "Brinjal (small)",
+          "amount": "10",
+          "unit": "piece"
+        },
+        {
+          "name": "Besan (gram flour)",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Fresh coconut, grated",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Peanuts, roasted, crushed",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Jaggery, grated",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Tamarind pulp",
+          "amount": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Green chilies, finely chopped",
+          "amount": "2",
+          "unit": "piece"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "Oil",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Wash brinjals, make a cross cut at the base, leaving the stems intact.",
+        "Mix besan, coconut, peanuts, jaggery, tamarind pulp, green chilies, cumin, turmeric, red chili powder, and salt in a bowl to make the stuffing.",
+        "Stuff each brinjal with the mixture, ensuring it fills the cuts.",
+        "Heat oil in a deep pan, add cumin seeds, saut\u00e9 until fragrant, then add the stuffed brinjals.",
+        "Cover and cook on low heat for 15-20 minutes, turning occasionally, until brinjals are tender and the sauce thickens.",
+        "Serve hot with chapati or rice."
+      ],
+      "tags": {
+        "cuisine": "Maharashtrian",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 22,
+      "name": "Puran Poli",
+      "description": "Sweet flatbread filled with cooked chana dal and jaggery, a classic Maharashtrian festive dish.",
+      "ingredients": [
+        {
+          "name": "Chana dal (split Bengal gram), washed",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Jaggery, grated",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Whole wheat flour",
+          "amount": "2",
+          "unit": "cup"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Water",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "Ghee",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Pressure cook chana dal with water until soft, then mash well.",
+        "In a pan, combine mashed dal with jaggery and a pinch of turmeric, cook on medium heat until the mixture thickens and becomes a sweet filling, about 10 minutes.",
+        "Prepare the dough by mixing wheat flour, salt, and enough water to form a soft, pliable dough.",
+        "Divide the dough into equal portions, roll each into a small disc, place a spoonful of the dal-jaggery filling in the center, and seal.",
+        "Roll out each stuffed portion gently into a thin flatbread.",
+        "Cook each Poli on a hot tawa with ghee, turning until both sides are golden and cooked through.",
+        "Serve warm with a drizzle of ghee."
+      ],
+      "tags": {
+        "cuisine": "Maharashtrian",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 30,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 23,
+      "name": "Dal Baati Churma",
+      "description": "A traditional Rajasthani feast featuring spiced lentil curry served with crispy baked wheat balls (baati) and sweet churma crumble.",
+      "ingredients": [
+        {
+          "name": "Toor dal (pigeon pea lentils)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Chana dal (bengal gram)",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Wheat flour",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "Ghee",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Asafoetida (hing)",
+          "amount": "1",
+          "unit": "pinch"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "Jaggery",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Sugar",
+          "amount": "1",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Soak toor dal and chana dal for 30 minutes, then pressure cook with turmeric and salt for 3 whistles.",
+        "Mix wheat flour, ghee, cumin seeds, asafoetida, red chili powder, and enough water to make a stiff dough.",
+        "Shape dough into small balls (baatis) and flatten slightly.",
+        "Bake baatis in a preheated oven at 180\u00b0C (350\u00b0F) for 30 minutes, turning halfway, until golden and crisp.",
+        "Heat ghee in a pan, add cumin seeds and asafoetida, then add the cooked dal and simmer for 10 minutes.",
+        "Crumble baked baatis and mix with jaggery and sugar to make churma.",
+        "Serve dal in a bowl, top with hot baatis and sprinkle churma over the top."
+      ],
+      "tags": {
+        "cuisine": "Rajasthani",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 45,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 24,
+      "name": "Gatte ki Sabzi",
+      "description": "Gram flour dumplings cooked in a spiced yogurt gravy, a classic Rajasthani dish with a rich, tangy flavor.",
+      "ingredients": [
+        {
+          "name": "Gram flour (besan)",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Yogurt",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Water",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "Ghee",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Asafoetida",
+          "amount": "1",
+          "unit": "pinch"
+        },
+        {
+          "name": "Turmeric",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "Fresh cilantro",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Mix gram flour with a pinch of turmeric, red chili powder, cumin, and salt; add water to form a thick dough.",
+        "Shape dough into small cylinders and steam or boil for 15 minutes until cooked; let cool and cut into pieces.",
+        "Heat ghee in a pan, add mustard and cumin seeds; let them splutter.",
+        "Add asafoetida, turmeric, red chili powder, coriander powder, and whisked yogurt; stir until smooth.",
+        "Add water, bring to a gentle boil, then add gatta pieces and simmer for 10 minutes until gravy thickens.",
+        "Garnish with fresh cilantro and serve hot with roti or rice."
+      ],
+      "tags": {
+        "cuisine": "Rajasthani",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 25,
+      "name": "Rajasthani Kadhi",
+      "description": "A light, tangy yogurt-based curry with gram flour fritters, flavored with fenugreek and curry leaves.",
+      "ingredients": [
+        {
+          "name": "Yogurt",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Gram flour (besan)",
+          "amount": "3",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Water",
+          "amount": "3",
+          "unit": "cups"
+        },
+        {
+          "name": "Ghee",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Fenugreek seeds (methi)",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Asafoetida",
+          "amount": "1",
+          "unit": "pinch"
+        },
+        {
+          "name": "Turmeric",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "Sugar",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Fresh curry leaves",
+          "amount": "2",
+          "unit": "leaves"
+        }
+      ],
+      "instructions": [
+        "Whisk yogurt with gram flour, turmeric, red chili powder, and salt until smooth.",
+        "Add water and mix to make a thin batter.",
+        "Heat ghee in a deep pan, add cumin seeds, fenugreek seeds, asafoetida, and curry leaves; saut\u00e9 briefly.",
+        "Pour yogurt batter into the pan, stirring continuously to avoid lumps.",
+        "Bring to a boil, then reduce heat and simmer for 15-20 minutes, stirring occasionally, until kadhi thickens.",
+        "Add sugar (optional), adjust salt, and serve hot garnished with fresh cilantro."
+      ],
+      "tags": {
+        "cuisine": "Rajasthani",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 25,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 26,
+      "name": "Chettinad Vegetable Kuzhambu",
+      "description": "A tangy, spiced tamarind and vegetable gravy typical of Chettinad cuisine, packed with roasted spices and fresh curry leaves.",
+      "ingredients": [
+        {
+          "name": "Tamarind paste",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Tomatoes, chopped",
+          "amount": "2",
+          "unit": "medium"
+        },
+        {
+          "name": "Brinjal (eggplant), cubed",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Okra, sliced",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Green peas",
+          "amount": "0.5",
+          "unit": "cup"
+        },
+        {
+          "name": "Onion, sliced",
+          "amount": "1",
+          "unit": "large"
+        },
+        {
+          "name": "Garlic cloves, minced",
+          "amount": "4",
+          "unit": "cloves"
+        },
+        {
+          "name": "Ginger, grated",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Chettinad spice mix (coriander, cumin, pepper, red chilies, fenugreek)",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Curry leaves",
+          "amount": "10",
+          "unit": "leaves"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "0.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Water",
+          "amount": "3",
+          "unit": "cups"
+        }
+      ],
+      "instructions": [
+        "Heat oil in a large pot over medium heat; add mustard seeds and let them splutter.",
+        "Add curry leaves and onions; saut\u00e9 until onions are golden.",
+        "Stir in garlic, ginger, and Chettinad spice mix; cook for 1 minute.",
+        "Add tomatoes, brinjal, okra, and green peas; mix well.",
+        "Dissolve tamarind paste in water, add to the pot, and add turmeric and salt.",
+        "Bring to a boil, then reduce heat and simmer for 20-25 minutes until vegetables are tender.",
+        "Adjust seasoning, garnish with fresh curry leaves, and serve hot with rice or roti."
+      ],
+      "tags": {
+        "cuisine": "Chettinad",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 27,
+      "name": "Ker Sangri",
+      "description": "A traditional Rajasthani side dish made with dried ker beans and sangri berries, cooked with aromatic spices.",
+      "ingredients": [
+        {
+          "name": "Dried ker beans",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "Dried sangri berries",
+          "amount": "1/2",
+          "unit": "cup"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Sugar",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Water",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "Fresh coriander",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Soak ker beans and sangri berries in water overnight; drain and rinse.",
+        "Heat mustard oil in a pan; add cumin seeds and let them splutter.",
+        "Add the soaked ker and sangri to the pan and saut\u00e9 for 5 minutes.",
+        "Stir in turmeric, red chili powder, coriander powder, and salt.",
+        "Add water and bring to a boil; reduce heat and simmer for 30-35 minutes until the beans are tender.",
+        "Add sugar and cook for another 5 minutes.",
+        "Garnish with fresh coriander and serve as a side dish."
+      ],
+      "tags": {
+        "cuisine": "Rajasthani",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 40,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 28,
+      "name": "Kashmiri Dum Aloo",
+      "description": "A classic Kashmiri potato curry cooked in a spiced yogurt gravy, perfect for a comforting dinner.",
+      "ingredients": [
+        {
+          "name": "Potatoes",
+          "amount": "6",
+          "unit": "medium"
+        },
+        {
+          "name": "Yogurt",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "Mustard oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Asafoetida",
+          "amount": "1/4",
+          "unit": "tsp"
+        },
+        {
+          "name": "Turmeric",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Red chili powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Garam masala",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste",
+          "unit": "pinch"
+        },
+        {
+          "name": "Ginger (grated)",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Green chili (slit)",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "Fresh cilantro (chopped)",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Boil the potatoes until just tender, peel and prick them with a fork.",
+        "Heat mustard oil in a pan, add cumin seeds, asafoetida, and let them splutter.",
+        "Add ginger, green chilies, and saut\u00e9 for a minute.",
+        "Add turmeric, red chili powder, coriander powder, and garam masala; stir.",
+        "Add beaten yogurt gradually, stirring continuously to avoid curdling.",
+        "Add the boiled potatoes and salt, simmer for 10-15 minutes until gravy thickens.",
+        "Garnish with fresh cilantro and serve hot with rice or naan."
+      ],
+      "tags": {
+        "cuisine": "Kashmiri",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 29,
+      "name": "Chettinad Vegetable Kootu",
+      "description": "A hearty spiced lentil and vegetable stew typical of the Chettinad region, made with toor dal, mixed vegetables, and a aromatic coconut oil tempering.",
+      "ingredients": [
+        {
+          "name": "toor dal",
+          "amount": "1",
+          "unit": "cup"
+        },
+        {
+          "name": "mixed vegetables (carrot, beans, pumpkin)",
+          "amount": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "coconut oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "dried red chillies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "asafoetida",
+          "amount": "1",
+          "unit": "pinch"
+        },
+        {
+          "name": "turmeric",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "fresh coriander",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Rinse the toor dal and pressure cook with 3 cups water and turmeric for 3 whistles until soft.",
+        "Heat coconut oil in a large pan, add mustard seeds, cumin seeds, dried red chillies, and asafoetida; saut\u00e9 until fragrant.",
+        "Add the chopped mixed vegetables and cook for 5 minutes, stirring occasionally.",
+        "Add the cooked toor dal and salt, mix well, and simmer for 10 minutes until vegetables are tender.",
+        "Garnish with fresh coriander and serve hot with rice or roti."
+      ],
+      "tags": {
+        "cuisine": "Chettinad",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 30,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 30,
+      "name": "Chettinad Tomato Curry",
+      "description": "A tangy and spiced tomato-based curry that showcases the bold flavors of Chettinad cuisine, perfect as a side dish for rice or roti.",
+      "ingredients": [
+        {
+          "name": "tomatoes",
+          "amount": "4",
+          "unit": "large"
+        },
+        {
+          "name": "coconut oil",
+          "amount": "2",
+          "unit": "tbsp"
+        },
+        {
+          "name": "mustard seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin seeds",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "dried red chillies",
+          "amount": "3",
+          "unit": "pieces"
+        },
+        {
+          "name": "green chillies",
+          "amount": "2",
+          "unit": "pieces"
+        },
+        {
+          "name": "onion",
+          "amount": "1",
+          "unit": "medium"
+        },
+        {
+          "name": "garlic",
+          "amount": "4",
+          "unit": "cloves"
+        },
+        {
+          "name": "turmeric",
+          "amount": "1/2",
+          "unit": "tsp"
+        },
+        {
+          "name": "coriander powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "cumin powder",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "salt",
+          "amount": "to taste",
+          "unit": ""
+        },
+        {
+          "name": "fresh coriander",
+          "amount": "2",
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Heat coconut oil in a pan, add mustard seeds and cumin seeds; saut\u00e9 until the mustard seeds splutter.",
+        "Add the dried red chillies and green chillies, then add the sliced onion and garlic; cook until onion is golden.",
+        "Add the chopped tomatoes, turmeric, coriander powder, cumin powder, and salt; mix well.",
+        "Cover and cook on medium heat for 15 minutes, stirring occasionally, until tomatoes are soft and oil separates.",
+        "Garnish with fresh coriander and serve hot."
+      ],
+      "tags": {
+        "cuisine": "Chettinad",
+        "meal_type": "dinner",
+        "dietary_tags": [
+          "vegetarian"
+        ]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 20,
+      "difficulty": "Easy"
+    }
+  ]
 }

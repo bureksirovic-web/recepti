@@ -62,7 +62,10 @@ def _non_streaming_request(req: Request) -> str:
     try:
         with urlopen(req, timeout=600) as resp:
             data = json.loads(resp.read())
-            return data["choices"][0]["message"]["content"] or ""
+            msg = data["choices"][0]["message"]
+            # Some models (e.g., reasoning models) store output in "reasoning" field
+            content = msg.get("content") or msg.get("reasoning") or ""
+            return content
     except URLError as e:
         raise ConnectionError(f"LLM request failed: {e}") from e
     except (KeyError, IndexError, json.JSONDecodeError) as e:

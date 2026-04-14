@@ -3,7 +3,7 @@
 from pathlib import Path
 
 # ── LLM Endpoints ──────────────────────────────────────────────────────────
-BRAIN_BASE_URL = "http://127.0.0.1:8002/v1"
+BRAIN_BASE_URL = "http://172.17.0.1:8002/v1"
 BRAIN_MODEL = "offline-brain"
 
 CODER_BASE_URL = "http://127.0.0.1:8001/v1"
