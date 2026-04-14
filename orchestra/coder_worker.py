@@ -157,4 +157,4 @@ class CoderWorker:
             print(f"  \033[1;31m⏰ Task #{task.id} timed out\033[0m")
         except FileNotFoundError:
             self._queue.fail_task(task.id, f"Aider not found at {AIDER_BIN}")
-            print(f"  \033[1;31m❌ Aider binary not found\033[0m")
+            print("  \033[1;31m❌ Aider binary not found\033[0m")

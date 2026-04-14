@@ -11,9 +11,7 @@ cross-session retrieval via ProjectMemory.
 
 import json
 from datetime import datetime
-import os
 import re
-import sys
 import threading
 import time
 from pathlib import Path

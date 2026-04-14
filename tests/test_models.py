@@ -1,9 +1,7 @@
 """Tests for models."""
-import pytest
 from datetime import date
 from recepti.models import (
-    Ingredient, NutritionPerServing, RecipeTags, Recipe,
-    MealPlan, Child, DailyIntake, RecipeCollection,
+    Ingredient, NutritionPerServing, RecipeTags, MealPlan, Child, DailyIntake, RecipeCollection,
 )
 
 

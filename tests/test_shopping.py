@@ -1,5 +1,4 @@
 """Tests for shopping list generation."""
-import pytest
 from datetime import date
 from recepti.shopping import (
     generate_shopping_list_from_recipes,
@@ -8,7 +7,7 @@ from recepti.shopping import (
     _normalize_unit,
     PRODUCE, DAIRY_EGGS, DRY_GOODS, SPICES,
 )
-from recepti.models import Recipe, MealPlan, RecipeTags, Ingredient, NutritionPerServing
+from recepti.models import MealPlan
 
 
 class TestShopping:

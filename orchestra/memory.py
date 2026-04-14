@@ -10,7 +10,6 @@ a summary into the Brain's system prompt so it has full project context.
 """
 
 import json
-import time
 from datetime import datetime
 from pathlib import Path
 from typing import Optional

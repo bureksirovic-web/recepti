@@ -1,13 +1,10 @@
 """Tests for meal planner."""
-import pytest
 from datetime import date
 from recepti.planner import (
     generate_weekly_plan,
-    _pick_recipe_for_slot,
     format_meal_plan,
-    BREAKFAST, LUNCH, DINNER,
 )
-from recepti.models import Recipe, RecipeCollection
+from recepti.models import RecipeCollection
 
 
 class TestMealPlanner:
@@ -39,8 +36,6 @@ class TestMealPlanner:
             for rid in [mp.breakfast_id, mp.lunch_id, mp.dinner_id]:
                 if rid is not None:
                     all_ids.append(rid)
-        # With 5 recipes across 3 days, expect no same-day repeat (all 3 slots on a day are different)
-        prev_day_ids = set()
         for mp in plans.values():
             day_ids = [rid for rid in [mp.breakfast_id, mp.lunch_id, mp.dinner_id] if rid is not None]
             # All slots on same day should have different recipe IDs

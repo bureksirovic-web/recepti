@@ -5,7 +5,7 @@ Supports both streaming and non-streaming responses.
 """
 
 import json
-from typing import Generator, Optional
+from typing import Generator
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 

@@ -1,13 +1,11 @@
 """Tests for nutrition estimation."""
-import pytest
 from recepti.nutrition import (
     estimate_recipe_nutrition,
     check_daily_balance,
     _parse_ingredient_name,
     _convert_to_grams,
-    NUTRITION_DB,
 )
-from recepti.models import Recipe, MealPlan, Child, Ingredient, RecipeTags, NutritionPerServing
+from recepti.models import Recipe, MealPlan, RecipeTags, NutritionPerServing
 
 
 class TestNutrition:

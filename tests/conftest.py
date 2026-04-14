@@ -6,7 +6,7 @@ from pathlib import Path
 
 from recepti.models import (
     Ingredient, NutritionPerServing, RecipeTags,
-    Recipe, MealPlan, Child, RecipeCollection,
+    Recipe, Child,
 )
 
 

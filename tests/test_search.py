@@ -1,7 +1,5 @@
 """Tests for search module."""
-import pytest
 from recepti.search import KeywordSearcher, highlight_matches
-from recepti.models import Recipe, Ingredient, RecipeTags, NutritionPerServing
 
 
 class TestSearch:

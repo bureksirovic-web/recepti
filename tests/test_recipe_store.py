@@ -1,6 +1,4 @@
 """Tests for RecipeStore."""
-import json
-import pytest
 from recepti.recipe_store import RecipeStore
 from recepti.models import Recipe, Ingredient, RecipeTags, NutritionPerServing
 
