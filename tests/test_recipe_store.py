@@ -1,6 +1,7 @@
 """Tests for RecipeStore."""
+
+from recepti.models import Ingredient, NutritionPerServing, Recipe, RecipeTags
 from recepti.recipe_store import RecipeStore
-from recepti.models import Recipe, Ingredient, RecipeTags, NutritionPerServing
 
 
 class TestRecipeStore:
@@ -67,8 +68,15 @@ class TestRecipeStore:
             prep_time_min=5,
             cook_time_min=10,
             nutrition_per_serving=NutritionPerServing(
-                calories=0, protein_g=0, carbs_g=0, fat_g=0,
-                fiber_g=0, iron_mg=0, calcium_mg=0, folate_mcg=0, b12_mcg=0,
+                calories=0,
+                protein_g=0,
+                carbs_g=0,
+                fat_g=0,
+                fiber_g=0,
+                iron_mg=0,
+                calcium_mg=0,
+                folate_mcg=0,
+                b12_mcg=0,
             ),
             difficulty="easy",
         )

@@ -2,10 +2,11 @@
 Web scraper for recipe sites — collects recipes from public Indian veg recipe pages.
 Only imports what the user explicitly requests. No AI involvement.
 """
+
 import json
 import re
-import urllib.request
 import ssl
+import urllib.request
 from typing import Any
 from urllib.parse import urljoin
 
@@ -13,6 +14,7 @@ from urllib.parse import urljoin
 _ctx = ssl.create_default_context()
 _ctx.check_hostname = False
 _ctx.verify_mode = ssl.CERT_NONE
+
 
 # ── HTTP helpers ─────────────────────────────────────────────────────
 def fetch(url: str, timeout: int = 30) -> str:
@@ -41,7 +43,9 @@ def extract_links(html: str, base: str) -> list[str]:
 def extract_jsonld(html: str) -> list[dict[str, Any]]:
     """Extract JSON-LD structured data (Schema.org Recipe)."""
     results: list[dict[str, Any]] = []
-    for match in re.finditer(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', html, re.DOTALL):
+    for match in re.finditer(
+        r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', html, re.DOTALL
+    ):
         try:
             data = json.loads(match.group(1))
             if isinstance(data, list):
@@ -58,6 +62,7 @@ def extract_jsonld(html: str) -> list[dict[str, Any]]:
 # ── Basic Recipe parser ──────────────────────────────────────────────────
 def parse_jsonld_recipe(ld: dict[str, Any]) -> dict[str, Any]:
     """Convert a JSON-LD Recipe dict to our Recipe schema."""
+
     def _ingredients() -> list[dict[str, str]]:
         items = []
         for ing in ld.get("recipeIngredient", []):

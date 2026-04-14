@@ -1,11 +1,12 @@
 """Tests for nutrition estimation."""
+
+from recepti.models import MealPlan, NutritionPerServing, Recipe, RecipeTags
 from recepti.nutrition import (
-    estimate_recipe_nutrition,
-    check_daily_balance,
-    _parse_ingredient_name,
     _convert_to_grams,
+    _parse_ingredient_name,
+    check_daily_balance,
+    estimate_recipe_nutrition,
 )
-from recepti.models import Recipe, MealPlan, RecipeTags, NutritionPerServing
 
 
 class TestNutrition:
@@ -32,14 +33,25 @@ class TestNutrition:
 
     def test_estimate_empty_recipe(self):
         recipe = Recipe(
-            id=99, name="Empty", description="",
+            id=99,
+            name="Empty",
+            description="",
             ingredients=[],
             instructions=[],
             tags=RecipeTags(cuisine="", meal_type="", dietary_tags=[]),
-            servings=1, prep_time_min=0, cook_time_min=0,
+            servings=1,
+            prep_time_min=0,
+            cook_time_min=0,
             nutrition_per_serving=NutritionPerServing(
-                calories=0, protein_g=0, carbs_g=0, fat_g=0,
-                fiber_g=0, iron_mg=0, calcium_mg=0, folate_mcg=0, b12_mcg=0,
+                calories=0,
+                protein_g=0,
+                carbs_g=0,
+                fat_g=0,
+                fiber_g=0,
+                iron_mg=0,
+                calcium_mg=0,
+                folate_mcg=0,
+                b12_mcg=0,
             ),
             difficulty="easy",
         )

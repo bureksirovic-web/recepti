@@ -10,14 +10,12 @@ import signal
 import sys
 from pathlib import Path
 
-from orchestra.config import get_db_path
-from orchestra.llm_client import is_endpoint_live
-from orchestra.task_queue import TaskQueue
-from orchestra.coder_worker import CoderWorker
 from orchestra.brain_chat import BrainChat
+from orchestra.coder_worker import CoderWorker
+from orchestra.config import BRAIN_BASE_URL, CODER_BASE_URL, get_db_path
+from orchestra.llm_client import is_endpoint_live
 from orchestra.memory import ProjectMemory
-from orchestra.config import BRAIN_BASE_URL, CODER_BASE_URL
-
+from orchestra.task_queue import TaskQueue
 
 BANNER = """\
 \033[1;36m
@@ -37,11 +35,10 @@ BANNER = """\
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Orchestra — Dual-GPU Coding Pipeline"
-    )
+    parser = argparse.ArgumentParser(description="Orchestra — Dual-GPU Coding Pipeline")
     parser.add_argument(
-        "--project", "-p",
+        "--project",
+        "-p",
         type=Path,
         default=Path.cwd(),
         help="Project root directory (default: current directory)",
@@ -66,7 +63,9 @@ def main() -> None:
         print("\n❌ Brain endpoint not responding. Start vllm-brain first.", file=sys.stderr)
         sys.exit(1)
     if not coder_ok:
-        print("\n⚠️  Coder endpoint not responding. Tasks will queue but not execute.", file=sys.stderr)
+        print(
+            "\n⚠️  Coder endpoint not responding. Tasks will queue but not execute.", file=sys.stderr
+        )
 
     # Initialize components
     queue = TaskQueue(get_db_path(project_root))
@@ -80,8 +79,12 @@ def main() -> None:
         brain.stop()
         coder.stop()
         counts = queue.get_counts()
-        memory.log_event("session_end", f"Final: ⏳{counts['pending']} ✅{counts['done']} ❌{counts['failed']}")
-        print(f"📊 Final: ⏳{counts['pending']} 🔧{counts['in_progress']} ✅{counts['done']} ❌{counts['failed']}")
+        memory.log_event(
+            "session_end", f"Final: ⏳{counts['pending']} ✅{counts['done']} ❌{counts['failed']}"
+        )
+        print(
+            f"📊 Final: ⏳{counts['pending']} 🔧{counts['in_progress']} ✅{counts['done']} ❌{counts['failed']}"
+        )
         sys.exit(0)
 
     signal.signal(signal.SIGINT, shutdown)

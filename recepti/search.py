@@ -2,6 +2,7 @@
 Search utilities for Recepti — text/semantic search over recipe collections.
 Built-in keyword matching; swap in an embedding model if needed.
 """
+
 import re
 from typing import Protocol, Sequence
 
@@ -10,14 +11,18 @@ from recepti.models import Recipe
 
 class Searcher(Protocol):
     """Protocol for recipe search backends."""
-    def search(self, query: str, recipes: Sequence[Recipe], top_k: int = 10) -> list[tuple[Recipe, float]]:
-        ...
+
+    def search(
+        self, query: str, recipes: Sequence[Recipe], top_k: int = 10
+    ) -> list[tuple[Recipe, float]]: ...
 
 
 class KeywordSearcher:
     """Simple keyword + tag search over recipes."""
 
-    def search(self, query: str, recipes: Sequence[Recipe], top_k: int = 10) -> list[tuple[Recipe, float]]:
+    def search(
+        self, query: str, recipes: Sequence[Recipe], top_k: int = 10
+    ) -> list[tuple[Recipe, float]]:
         """
         Score recipes by keyword match count and tag match.
         Returns list of (Recipe, score) sorted by score descending.

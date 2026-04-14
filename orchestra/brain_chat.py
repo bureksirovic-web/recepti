@@ -10,24 +10,23 @@ cross-session retrieval via ProjectMemory.
 """
 
 import json
-from datetime import datetime
 import re
 import threading
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
 from orchestra.config import (
-    BRAIN_BASE_URL,
-    BRAIN_MODEL,
     API_KEY,
+    BRAIN_BASE_URL,
     BRAIN_IDLE_THRESHOLD_S,
+    BRAIN_MODEL,
     BRAIN_REVIEW_INTERVAL_S,
 )
 from orchestra.llm_client import chat_completion
-from orchestra.task_queue import TaskQueue
 from orchestra.memory import ProjectMemory
-
+from orchestra.task_queue import TaskQueue
 
 # ── System Prompts ─────────────────────────────────────────────────────────
 
@@ -119,9 +118,7 @@ class BrainChat:
         if session_context and "(New project" not in session_context:
             system_prompt += f"\n\n## Previous Session Context\n{session_context}"
 
-        self._chat_history: list[dict] = [
-            {"role": "system", "content": system_prompt}
-        ]
+        self._chat_history: list[dict] = [{"role": "system", "content": system_prompt}]
         self._last_user_input_time: float = time.time()
         self._review_thread: Optional[threading.Thread] = None
         self._running = False
@@ -150,15 +147,19 @@ class BrainChat:
         plan_path = self._project_root / "PLAN.md"
         if plan_path.exists():
             plan_content = plan_path.read_text(errors="replace")
-            self._chat_history.append({
-                "role": "user",
-                "content": f"Here is the current implementation plan:\n\n{plan_content}\n\nI'm ready to work. What should we start with?",
-            })
+            self._chat_history.append(
+                {
+                    "role": "user",
+                    "content": f"Here is the current implementation plan:\n\n{plan_content}\n\nI'm ready to work. What should we start with?",
+                }
+            )
         else:
-            self._chat_history.append({
-                "role": "user",
-                "content": "This is a new project. No implementation plan exists yet. Let's start planning.",
-            })
+            self._chat_history.append(
+                {
+                    "role": "user",
+                    "content": "This is a new project. No implementation plan exists yet. Let's start planning.",
+                }
+            )
 
         # Get initial Brain response
         self._get_brain_response()
@@ -192,8 +193,12 @@ class BrainChat:
         try:
             full_response = ""
             for chunk in chat_completion(
-                BRAIN_BASE_URL, BRAIN_MODEL, self._chat_history,
-                api_key=API_KEY, temperature=0.6, stream=True,
+                BRAIN_BASE_URL,
+                BRAIN_MODEL,
+                self._chat_history,
+                api_key=API_KEY,
+                temperature=0.6,
+                stream=True,
             ):
                 print(chunk, end="", flush=True)
                 full_response += chunk
@@ -214,8 +219,14 @@ class BrainChat:
                     priority=t.get("priority", 5),
                     source="brain_chat",
                 )
-                print(f"  \033[1;32m📋 Task #{task_id} queued: [{t['action']}] {t.get('path', t['description'][:50])}\033[0m")
-                self._memory.log_event("task_queued", f"#{task_id} [{t['action']}] {t.get('path', t['description'][:50])}", {"source": "brain_chat"})
+                print(
+                    f"  \033[1;32m📋 Task #{task_id} queued: [{t['action']}] {t.get('path', t['description'][:50])}\033[0m"
+                )
+                self._memory.log_event(
+                    "task_queued",
+                    f"#{task_id} [{t['action']}] {t.get('path', t['description'][:50])}",
+                    {"source": "brain_chat"},
+                )
 
         except Exception as e:
             print(f"\n\033[1;31m❌ Brain error: {e}\033[0m")
@@ -224,7 +235,9 @@ class BrainChat:
         """Handle slash commands. Returns True if command was handled."""
         if cmd == "/status":
             counts = self._queue.get_counts()
-            print(f"\n📊 Tasks: ⏳{counts['pending']} 🔧{counts['in_progress']} ✅{counts['done']} ❌{counts['failed']}")
+            print(
+                f"\n📊 Tasks: ⏳{counts['pending']} 🔧{counts['in_progress']} ✅{counts['done']} ❌{counts['failed']}"
+            )
             return True
         elif cmd == "/tasks":
             recent = self._queue.get_recent(10)
@@ -248,7 +261,7 @@ class BrainChat:
             events = self._memory.get_recent_events(15)
             print("\n📜 Recent project events:")
             for e in events:
-                ts = e['timestamp'][:16]
+                ts = e["timestamp"][:16]
                 print(f"  [{ts}] {e['type']}: {e['description']}")
             return True
         elif cmd == "/help":
@@ -315,7 +328,9 @@ class BrainChat:
 
         # Get recent tasks to avoid duplicates
         recent = self._queue.get_recent(20)
-        recent_summary = "\n".join(f"  - [{t.status}] {t.action}: {t.path or t.description[:60]}" for t in recent)
+        recent_summary = "\n".join(
+            f"  - [{t.status}] {t.action}: {t.path or t.description[:60]}" for t in recent
+        )
 
         # Build review prompt
         messages = [
@@ -333,8 +348,12 @@ class BrainChat:
         ]
 
         response = chat_completion(
-            BRAIN_BASE_URL, BRAIN_MODEL, messages,
-            api_key=API_KEY, temperature=0.3, max_tokens=4096,
+            BRAIN_BASE_URL,
+            BRAIN_MODEL,
+            messages,
+            api_key=API_KEY,
+            temperature=0.3,
+            max_tokens=4096,
         )
         assert isinstance(response, str)
 
@@ -348,5 +367,11 @@ class BrainChat:
                 priority=t.get("priority", 5),
                 source="brain_review",
             )
-            print(f"\n  \033[1;35m🔍 Review task #{task_id}: [{t['action']}] {t.get('path', t['description'][:50])}\033[0m")
-            self._memory.log_event("task_queued", f"#{task_id} [{t['action']}] {t.get('path', t['description'][:50])}", {"source": "brain_review"})
+            print(
+                f"\n  \033[1;35m🔍 Review task #{task_id}: [{t['action']}] {t.get('path', t['description'][:50])}\033[0m"
+            )
+            self._memory.log_event(
+                "task_queued",
+                f"#{task_id} [{t['action']}] {t.get('path', t['description'][:50])}",
+                {"source": "brain_review"},
+            )

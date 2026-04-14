@@ -1,4 +1,5 @@
 """Tests for search module."""
+
 from recepti.search import KeywordSearcher, highlight_matches
 
 

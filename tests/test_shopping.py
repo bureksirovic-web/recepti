@@ -1,13 +1,18 @@
 """Tests for shopping list generation."""
+
 from datetime import date
+
+from recepti.models import MealPlan
 from recepti.shopping import (
-    generate_shopping_list_from_recipes,
-    format_shopping_list,
+    DAIRY_EGGS,
+    DRY_GOODS,
+    PRODUCE,
+    SPICES,
     _get_ingredient_section,
     _normalize_unit,
-    PRODUCE, DAIRY_EGGS, DRY_GOODS, SPICES,
+    format_shopping_list,
+    generate_shopping_list_from_recipes,
 )
-from recepti.models import MealPlan
 
 
 class TestShopping:

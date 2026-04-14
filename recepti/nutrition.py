@@ -1,33 +1,169 @@
 """Nutrition estimation for vegetarian recipes."""
 
-from recepti.models import Recipe, MealPlan, Child
+from recepti.models import Child, MealPlan, Recipe
 
 # Lookup table: ingredient name -> nutrition per 100g
 # Values are approximate for common Indian vegetarian ingredients
 NUTRITION_DB: dict[str, dict[str, float]] = {
     # Lentils (dried, raw) - per 100g
-    "toor_dal": {"calories": 364, "protein_g": 22, "carbs_g": 60, "fat_g": 1.4, "fiber_g": 15, "iron_mg": 5, "calcium_mg": 130, "folate_mcg": 423, "b12_mcg": 0},
-    "masoor_dal": {"calories": 352, "protein_g": 25, "carbs_g": 60, "fat_g": 1, "fiber_g": 31, "iron_mg": 7, "calcium_mg": 107, "folate_mcg": 90, "b12_mcg": 0},
-    "chana_dal": {"calories": 364, "protein_g": 17, "carbs_g": 60, "fat_g": 3, "fiber_g": 17, "iron_mg": 7, "calcium_mg": 59, "folate_mcg": 310, "b12_mcg": 0},
-    "rajma": {"calories": 352, "protein_g": 22, "carbs_g": 60, "fat_g": 1, "fiber_g": 15, "iron_mg": 7, "calcium_mg": 140, "folate_mcg": 462, "b12_mcg": 0},
-    
+    "toor_dal": {
+        "calories": 364,
+        "protein_g": 22,
+        "carbs_g": 60,
+        "fat_g": 1.4,
+        "fiber_g": 15,
+        "iron_mg": 5,
+        "calcium_mg": 130,
+        "folate_mcg": 423,
+        "b12_mcg": 0,
+    },
+    "masoor_dal": {
+        "calories": 352,
+        "protein_g": 25,
+        "carbs_g": 60,
+        "fat_g": 1,
+        "fiber_g": 31,
+        "iron_mg": 7,
+        "calcium_mg": 107,
+        "folate_mcg": 90,
+        "b12_mcg": 0,
+    },
+    "chana_dal": {
+        "calories": 364,
+        "protein_g": 17,
+        "carbs_g": 60,
+        "fat_g": 3,
+        "fiber_g": 17,
+        "iron_mg": 7,
+        "calcium_mg": 59,
+        "folate_mcg": 310,
+        "b12_mcg": 0,
+    },
+    "rajma": {
+        "calories": 352,
+        "protein_g": 22,
+        "carbs_g": 60,
+        "fat_g": 1,
+        "fiber_g": 15,
+        "iron_mg": 7,
+        "calcium_mg": 140,
+        "folate_mcg": 462,
+        "b12_mcg": 0,
+    },
     # Vegetables - per 100g
-    "palak": {"calories": 23, "protein_g": 2.9, "carbs_g": 3.6, "fat_g": 0.4, "fiber_g": 2.2, "iron_mg": 2.7, "calcium_mg": 99, "folate_mcg": 194, "b12_mcg": 0},
-    "vegetables": {"calories": 25, "protein_g": 1.5, "carbs_g": 5, "fat_g": 0.2, "fiber_g": 2, "iron_mg": 1, "calcium_mg": 50, "folate_mcg": 80, "b12_mcg": 0},
-    
+    "palak": {
+        "calories": 23,
+        "protein_g": 2.9,
+        "carbs_g": 3.6,
+        "fat_g": 0.4,
+        "fiber_g": 2.2,
+        "iron_mg": 2.7,
+        "calcium_mg": 99,
+        "folate_mcg": 194,
+        "b12_mcg": 0,
+    },
+    "vegetables": {
+        "calories": 25,
+        "protein_g": 1.5,
+        "carbs_g": 5,
+        "fat_g": 0.2,
+        "fiber_g": 2,
+        "iron_mg": 1,
+        "calcium_mg": 50,
+        "folate_mcg": 80,
+        "b12_mcg": 0,
+    },
     # Dairy - per 100g
-    "paneer": {"calories": 265, "protein_g": 18, "carbs_g": 1.2, "fat_g": 21, "fiber_g": 0, "iron_mg": 0.5, "calcium_mg": 480, "folate_mcg": 10, "b12_mcg": 0.8},
-    "milk": {"calories": 42, "protein_g": 3.4, "carbs_g": 5, "fat_g": 1, "fiber_g": 0, "iron_mg": 0.1, "calcium_mg": 125, "folate_mcg": 5, "b12_mcg": 0.4},
-    "yogurt": {"calories": 59, "protein_g": 10, "carbs_g": 3.6, "fat_g": 0.7, "fiber_g": 0, "iron_mg": 0.1, "calcium_mg": 110, "folate_mcg": 4, "b12_mcg": 0.5},
-    "eggs": {"calories": 155, "protein_g": 13, "carbs_g": 1.1, "fat_g": 11, "fiber_g": 0, "iron_mg": 1.8, "calcium_mg": 56, "folate_mcg": 47, "b12_mcg": 1.1},
-    
+    "paneer": {
+        "calories": 265,
+        "protein_g": 18,
+        "carbs_g": 1.2,
+        "fat_g": 21,
+        "fiber_g": 0,
+        "iron_mg": 0.5,
+        "calcium_mg": 480,
+        "folate_mcg": 10,
+        "b12_mcg": 0.8,
+    },
+    "milk": {
+        "calories": 42,
+        "protein_g": 3.4,
+        "carbs_g": 5,
+        "fat_g": 1,
+        "fiber_g": 0,
+        "iron_mg": 0.1,
+        "calcium_mg": 125,
+        "folate_mcg": 5,
+        "b12_mcg": 0.4,
+    },
+    "yogurt": {
+        "calories": 59,
+        "protein_g": 10,
+        "carbs_g": 3.6,
+        "fat_g": 0.7,
+        "fiber_g": 0,
+        "iron_mg": 0.1,
+        "calcium_mg": 110,
+        "folate_mcg": 4,
+        "b12_mcg": 0.5,
+    },
+    "eggs": {
+        "calories": 155,
+        "protein_g": 13,
+        "carbs_g": 1.1,
+        "fat_g": 11,
+        "fiber_g": 0,
+        "iron_mg": 1.8,
+        "calcium_mg": 56,
+        "folate_mcg": 47,
+        "b12_mcg": 1.1,
+    },
     # Grains - per 100g
-    "rice": {"calories": 360, "protein_g": 7, "carbs_g": 79, "fat_g": 0.6, "fiber_g": 1.4, "iron_mg": 0.8, "calcium_mg": 10, "folate_mcg": 8, "b12_mcg": 0},
-    "roti": {"calories": 320, "protein_g": 10, "carbs_g": 64, "fat_g": 3, "fiber_g": 6, "iron_mg": 2, "calcium_mg": 40, "folate_mcg": 20, "b12_mcg": 0},
-    
+    "rice": {
+        "calories": 360,
+        "protein_g": 7,
+        "carbs_g": 79,
+        "fat_g": 0.6,
+        "fiber_g": 1.4,
+        "iron_mg": 0.8,
+        "calcium_mg": 10,
+        "folate_mcg": 8,
+        "b12_mcg": 0,
+    },
+    "roti": {
+        "calories": 320,
+        "protein_g": 10,
+        "carbs_g": 64,
+        "fat_g": 3,
+        "fiber_g": 6,
+        "iron_mg": 2,
+        "calcium_mg": 40,
+        "folate_mcg": 20,
+        "b12_mcg": 0,
+    },
     # Nuts - per 100g
-    "peanuts": {"calories": 567, "protein_g": 26, "carbs_g": 16, "fat_g": 49, "fiber_g": 8, "iron_mg": 4.6, "calcium_mg": 92, "folate_mcg": 240, "b12_mcg": 0},
-    "cashews": {"calories": 553, "protein_g": 18, "carbs_g": 30, "fat_g": 44, "fiber_g": 3, "iron_mg": 6.7, "calcium_mg": 37, "folate_mcg": 69, "b12_mcg": 0},
+    "peanuts": {
+        "calories": 567,
+        "protein_g": 26,
+        "carbs_g": 16,
+        "fat_g": 49,
+        "fiber_g": 8,
+        "iron_mg": 4.6,
+        "calcium_mg": 92,
+        "folate_mcg": 240,
+        "b12_mcg": 0,
+    },
+    "cashews": {
+        "calories": 553,
+        "protein_g": 18,
+        "carbs_g": 30,
+        "fat_g": 44,
+        "fiber_g": 3,
+        "iron_mg": 6.7,
+        "calcium_mg": 37,
+        "folate_mcg": 69,
+        "b12_mcg": 0,
+    },
 }
 
 # Unit to grams conversion for common units
@@ -149,28 +285,39 @@ def _convert_to_grams(amount: str | float, unit: str) -> float:
 def estimate_recipe_nutrition(recipe: Recipe) -> dict:
     """
     Estimate nutrition for a Recipe from its ingredients list.
-    
+
     Returns dict with keys: calories, protein_g, carbs_g, fat_g, fiber_g,
     iron_mg, calcium_mg, folate_mcg, b12_mcg
     """
-    totals = {nutrient: 0.0 for nutrient in 
-              ["calories", "protein_g", "carbs_g", "fat_g", "fiber_g",
-               "iron_mg", "calcium_mg", "folate_mcg", "b12_mcg"]}
-    
+    totals = {
+        nutrient: 0.0
+        for nutrient in [
+            "calories",
+            "protein_g",
+            "carbs_g",
+            "fat_g",
+            "fiber_g",
+            "iron_mg",
+            "calcium_mg",
+            "folate_mcg",
+            "b12_mcg",
+        ]
+    }
+
     for ingredient in recipe.ingredients:
         name_key = _parse_ingredient_name(ingredient.name)
-        
+
         if name_key not in NUTRITION_DB:
             # Skip unknown ingredients (could log warning)
             continue
-        
+
         nutrition = NUTRITION_DB[name_key]
         grams = _convert_to_grams(ingredient.amount, ingredient.unit)
         factor = grams / 100.0  # nutrition DB is per 100g
-        
+
         for nutrient in totals:
             totals[nutrient] += nutrition.get(nutrient, 0) * factor
-    
+
     # Handle empty recipe
     servings = max(recipe.servings, 1)
     per_serving = {nutrient: round(val / servings, 2) for nutrient, val in totals.items()}
@@ -241,37 +388,50 @@ def _get_age_group(age_years: float) -> dict:
 
 def _get_nutrients_from_meal_plan(day_plan: MealPlan, recipes_db: dict[int, Recipe]) -> dict:
     """Sum nutrition across all meals in a day plan."""
-    totals = {nutrient: 0.0 for nutrient in 
-              ["calories", "protein_g", "carbs_g", "fat_g", "fiber_g",
-               "iron_mg", "calcium_mg", "folate_mcg", "b12_mcg"]}
-    
+    totals = {
+        nutrient: 0.0
+        for nutrient in [
+            "calories",
+            "protein_g",
+            "carbs_g",
+            "fat_g",
+            "fiber_g",
+            "iron_mg",
+            "calcium_mg",
+            "folate_mcg",
+            "b12_mcg",
+        ]
+    }
+
     for meal_id in [day_plan.breakfast_id, day_plan.lunch_id, day_plan.dinner_id]:
         if meal_id and meal_id in recipes_db:
             recipe = recipes_db[meal_id]
             nutrition = estimate_recipe_nutrition(recipe)
             for nutrient, value in nutrition.items():
                 totals[nutrient] += value
-    
+
     return totals
 
 
-def check_daily_balance(day_plan: MealPlan, children: list[Child], recipes_db: dict[int, Recipe] | None = None) -> dict:
+def check_daily_balance(
+    day_plan: MealPlan, children: list[Child], recipes_db: dict[int, Recipe] | None = None
+) -> dict:
     """
     Assess whether meals cover protein, iron, calcium, folate, b12 for growing kids.
-    
+
     Returns dict with per-child assessment of whether meals cover daily needs.
     """
     if recipes_db is None:
         # Build a simple lookup from day plan if not provided
         recipes_db = {}
-    
+
     day_nutrition = _get_nutrients_from_meal_plan(day_plan, recipes_db)
-    
+
     assessments = {}
     for child in children:
         age_group = _get_age_group(child.age_years)
         needs = age_group["daily_needs"]
-        
+
         assessment = {
             "child_id": child.id,
             "child_name": child.name,
@@ -280,7 +440,7 @@ def check_daily_balance(day_plan: MealPlan, children: list[Child], recipes_db: d
             "meets": {},
             "shortages": {},
         }
-        
+
         for nutrient, required in needs.items():
             actual = day_nutrition.get(nutrient, 0)
             meets = actual >= required * 0.8  # 80% threshold is acceptable
@@ -289,7 +449,7 @@ def check_daily_balance(day_plan: MealPlan, children: list[Child], recipes_db: d
                 shortage = round(required - actual, 2)
                 if shortage > 0:
                     assessment["shortages"][nutrient] = shortage
-        
+
         assessments[child.id] = assessment
-    
+
     return assessments

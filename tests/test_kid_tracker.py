@@ -9,8 +9,8 @@ import pytest
 from recepti.kid_tracker import KidMealHistory
 from recepti.models import Ingredient, NutritionPerServing, Recipe, RecipeTags
 
-
 # ─── Helpers ────────────────────────────────────────────────────────────────────
+
 
 def make_nutrition(calories: float = 300, protein_g: float = 10) -> NutritionPerServing:
     return NutritionPerServing(
@@ -99,8 +99,11 @@ def tracker(history_file: str, recipe_store: FakeRecipeStore) -> KidMealHistory:
 
 # ─── Tests ─────────────────────────────────────────────────────────────────────
 
+
 class TestKidMealHistoryInit:
-    def test_new_tracker_starts_empty(self, history_file: str, recipe_store: FakeRecipeStore) -> None:
+    def test_new_tracker_starts_empty(
+        self, history_file: str, recipe_store: FakeRecipeStore
+    ) -> None:
         t = KidMealHistory(storage_path=history_file)
         t._set_recipe_store(recipe_store)
         assert t.get_child_favorites(child_id=1) == []
@@ -111,7 +114,13 @@ class TestKidMealHistoryInit:
         data = {
             5: {
                 "history": [
-                    {"recipe_id": 1, "meal_type": "lunch", "date": yesterday, "amount_eaten": 0.9, "notes": ""},
+                    {
+                        "recipe_id": 1,
+                        "meal_type": "lunch",
+                        "date": yesterday,
+                        "amount_eaten": 0.9,
+                        "notes": "",
+                    },
                 ],
                 "favorites_cache": [],
                 "dislikes_cache": [],
@@ -126,12 +135,26 @@ class TestKidMealHistoryInit:
 
 class TestRecordMeal:
     def test_record_meal_creates_child(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.8, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.8,
+            notes="",
+        )
         favorites = tracker.get_child_favorites(child_id=1)
         assert 1 in favorites
 
     def test_record_meal_invalidates_caches(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.9, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.9,
+            notes="",
+        )
         assert tracker._data[1]["favorites_cache"] == []
         assert tracker._data[1]["dislikes_cache"] == []
 
@@ -139,9 +162,30 @@ class TestRecordMeal:
 class TestGetChildFavorites:
     def test_favorites_ranked_by_amount(self, tracker: KidMealHistory) -> None:
         # Same recipe eaten twice (total 1.4), third recipe once (0.7)
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(2), amount_eaten=0.5, notes="")
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="dinner", date=recent_date(1), amount_eaten=0.9, notes="")
-        tracker.record_meal(child_id=1, recipe_id=3, meal_type="lunch", date=recent_date(0), amount_eaten=0.7, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(2),
+            amount_eaten=0.5,
+            notes="",
+        )
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="dinner",
+            date=recent_date(1),
+            amount_eaten=0.9,
+            notes="",
+        )
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=3,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.7,
+            notes="",
+        )
         favorites = tracker.get_child_favorites(child_id=1, limit=5)
         assert favorites == [1, 3]
 
@@ -152,12 +196,26 @@ class TestGetChildFavorites:
 class TestGetChildDislikes:
     def test_dislikes_ingredients_from_low_eaten(self, tracker: KidMealHistory) -> None:
         # Recipe 2 = broccoli; eaten only 0.2 → disliked
-        tracker.record_meal(child_id=1, recipe_id=2, meal_type="dinner", date=recent_date(0), amount_eaten=0.2, notes="hated it")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=2,
+            meal_type="dinner",
+            date=recent_date(0),
+            amount_eaten=0.2,
+            notes="hated it",
+        )
         dislikes = tracker.get_child_dislikes(child_id=1)
         assert "broccoli" in dislikes
 
     def test_no_dislikes_if_all_eaten_well(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=2, meal_type="dinner", date=recent_date(0), amount_eaten=0.9, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=2,
+            meal_type="dinner",
+            date=recent_date(0),
+            amount_eaten=0.9,
+            notes="",
+        )
         assert tracker.get_child_dislikes(child_id=1) == []
 
     def test_unknown_child_returns_empty(self, tracker: KidMealHistory) -> None:
@@ -166,7 +224,14 @@ class TestGetChildDislikes:
 
 class TestGetChildHistory:
     def test_history_enriched_with_names(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.9, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.9,
+            notes="",
+        )
         history = tracker.get_child_history(child_id=1, days=30)
         assert len(history) == 1
         assert history[0]["recipe_name"] == "Pasta with Marinara"
@@ -174,7 +239,14 @@ class TestGetChildHistory:
 
     def test_history_respects_days_cutoff(self, tracker: KidMealHistory) -> None:
         # Record from 20 days ago — outside 7-day window
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(20), amount_eaten=0.9, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(20),
+            amount_eaten=0.9,
+            notes="",
+        )
         history = tracker.get_child_history(child_id=1, days=7)
         assert len(history) == 0
 
@@ -184,26 +256,75 @@ class TestGetChildHistory:
 
 class TestGetFamilySummary:
     def test_family_summary_includes_all_children(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.9, notes="")
-        tracker.record_meal(child_id=2, recipe_id=2, meal_type="dinner", date=recent_date(1), amount_eaten=0.2, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.9,
+            notes="",
+        )
+        tracker.record_meal(
+            child_id=2,
+            recipe_id=2,
+            meal_type="dinner",
+            date=recent_date(1),
+            amount_eaten=0.2,
+            notes="",
+        )
         summary = tracker.get_family_summary(days=7)
         assert "1" in summary
         assert "2" in summary
 
     def test_dislikes_reflected_in_summary(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=2, meal_type="dinner", date=recent_date(0), amount_eaten=0.1, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=2,
+            meal_type="dinner",
+            date=recent_date(0),
+            amount_eaten=0.1,
+            notes="",
+        )
         summary = tracker.get_family_summary(days=7)
         assert "broccoli" in summary["1"]["dislikes"]
 
     def test_meals_eaten_count(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.5, notes="")
-        tracker.record_meal(child_id=1, recipe_id=2, meal_type="dinner", date=recent_date(1), amount_eaten=0.5, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.5,
+            notes="",
+        )
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=2,
+            meal_type="dinner",
+            date=recent_date(1),
+            amount_eaten=0.5,
+            notes="",
+        )
         summary = tracker.get_family_summary(days=7)
         assert summary["1"]["meals_eaten"] == 2
 
     def test_top_recipes_in_summary(self, tracker: KidMealHistory) -> None:
-        tracker.record_meal(child_id=1, recipe_id=1, meal_type="lunch", date=recent_date(0), amount_eaten=0.9, notes="")
-        tracker.record_meal(child_id=1, recipe_id=3, meal_type="dinner", date=recent_date(1), amount_eaten=0.9, notes="")
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=1,
+            meal_type="lunch",
+            date=recent_date(0),
+            amount_eaten=0.9,
+            notes="",
+        )
+        tracker.record_meal(
+            child_id=1,
+            recipe_id=3,
+            meal_type="dinner",
+            date=recent_date(1),
+            amount_eaten=0.9,
+            notes="",
+        )
         summary = tracker.get_family_summary(days=7)
         assert "Pasta with Marinara" in summary["1"]["most_eaten_recipes"]
         assert "Cheese Pizza" in summary["1"]["most_eaten_recipes"]

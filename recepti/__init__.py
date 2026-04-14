@@ -1,14 +1,14 @@
 """Data models for Recepti meal planning application."""
 
 from .models import (
-    Recipe,
-    MealPlan,
     Child,
     DailyIntake,
     Ingredient,
+    MealPlan,
     NutritionPerServing,
-    RecipeTags,
+    Recipe,
     RecipeCollection,
+    RecipeTags,
 )
 
 __all__ = [

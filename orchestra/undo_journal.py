@@ -32,7 +32,9 @@ class UndoJournal:
         self._undo_dir = get_undo_dir(project_root)
         self._log_path = self._undo_dir / "journal.jsonl"
 
-    def record_before_write(self, task_id: int, target: Path, action: str, description: str) -> None:
+    def record_before_write(
+        self, task_id: int, target: Path, action: str, description: str
+    ) -> None:
         """Snapshot the target file before the Coder modifies it."""
         backup_path: Optional[str] = None
 

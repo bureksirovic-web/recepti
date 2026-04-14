@@ -17,13 +17,13 @@ from pathlib import Path
 from typing import Optional
 
 from orchestra.config import (
+    API_KEY,
     CODER_BASE_URL,
     CODER_MODEL,
-    API_KEY,
     CODER_POLL_INTERVAL_S,
 )
-from orchestra.task_queue import TaskQueue, Task, TaskAction
 from orchestra.memory import ProjectMemory
+from orchestra.task_queue import Task, TaskAction, TaskQueue
 
 # Path to aider binary
 AIDER_BIN = "/home/tomi/aider-env/bin/aider"
@@ -33,14 +33,17 @@ def _build_aider_command(task: Task, project_root: Path) -> list[str]:
     """Build the Aider CLI command for a given task."""
     cmd = [
         AIDER_BIN,
-        "--model", f"openai/{CODER_MODEL}",
-        "--openai-api-key", API_KEY,
-        "--openai-api-base", CODER_BASE_URL,
+        "--model",
+        f"openai/{CODER_MODEL}",
+        "--openai-api-key",
+        API_KEY,
+        "--openai-api-base",
+        CODER_BASE_URL,
         "--no-show-model-warnings",
-        "--yes-always",          # Auto-accept all changes
-        "--auto-commits",        # Git commit each change
+        "--yes-always",  # Auto-accept all changes
+        "--auto-commits",  # Git commit each change
         "--no-suggest-shell-commands",
-        "--no-pretty",           # Clean output for logging
+        "--no-pretty",  # Clean output for logging
         "--analytics-disable",
     ]
 
@@ -56,7 +59,9 @@ def _build_aider_command(task: Task, project_root: Path) -> list[str]:
 
     # Build the message based on action type
     if task.action == TaskAction.CREATE_FILE:
-        message = f"Create the file `{task.path}` with the following requirements:\n\n{task.description}"
+        message = (
+            f"Create the file `{task.path}` with the following requirements:\n\n{task.description}"
+        )
     elif task.action == TaskAction.EDIT_FILE:
         message = f"Edit the file `{task.path}` with the following changes:\n\n{task.description}"
     elif task.action == TaskAction.DELETE_FILE:
@@ -128,7 +133,9 @@ class CoderWorker:
         """Execute a task by shelling out to Aider."""
         cmd = _build_aider_command(task, self._project_root)
 
-        print(f"\n  \033[1;34m🔧 Coder executing task #{task.id}: [{task.action}] {task.path or task.description[:50]}\033[0m")
+        print(
+            f"\n  \033[1;34m🔧 Coder executing task #{task.id}: [{task.action}] {task.path or task.description[:50]}\033[0m"
+        )
 
         try:
             result = subprocess.run(
@@ -145,11 +152,17 @@ class CoderWorker:
 
             if result.returncode == 0:
                 self._queue.complete_task(task.id, f"Aider completed successfully.\n{output}")
-                self._memory.log_event("task_done", f"#{task.id} [{task.action}] {task.path or task.description[:50]}")
+                self._memory.log_event(
+                    "task_done", f"#{task.id} [{task.action}] {task.path or task.description[:50]}"
+                )
                 print(f"  \033[1;32m✅ Task #{task.id} done\033[0m")
             else:
-                self._queue.fail_task(task.id, f"Aider exit {result.returncode}:\n{errors}\n{output}")
-                self._memory.log_event("task_failed", f"#{task.id} [{task.action}] exit {result.returncode}")
+                self._queue.fail_task(
+                    task.id, f"Aider exit {result.returncode}:\n{errors}\n{output}"
+                )
+                self._memory.log_event(
+                    "task_failed", f"#{task.id} [{task.action}] exit {result.returncode}"
+                )
                 print(f"  \033[1;31m❌ Task #{task.id} failed (exit {result.returncode})\033[0m")
 
         except subprocess.TimeoutExpired:

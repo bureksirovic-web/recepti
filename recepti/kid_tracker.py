@@ -66,9 +66,7 @@ class KidMealHistory:
         self._data[child_id]["dislikes_cache"] = []
         self._save()
 
-    def get_child_history(
-        self, child_id: int, days: int = 30
-    ) -> list[dict[str, Any]]:
+    def get_child_history(self, child_id: int, days: int = 30) -> list[dict[str, Any]]:
         """Get recent history for a child, enriched with recipe names."""
         if child_id not in self._data:
             return []

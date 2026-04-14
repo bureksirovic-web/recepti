@@ -1,7 +1,15 @@
 """Tests for models."""
+
 from datetime import date
+
 from recepti.models import (
-    Ingredient, NutritionPerServing, RecipeTags, MealPlan, Child, DailyIntake, RecipeCollection,
+    Child,
+    DailyIntake,
+    Ingredient,
+    MealPlan,
+    NutritionPerServing,
+    RecipeCollection,
+    RecipeTags,
 )
 
 
@@ -14,8 +22,15 @@ class TestModels:
 
     def test_nutrition_per_serving(self):
         n = NutritionPerServing(
-            calories=180, protein_g=8, carbs_g=30, fat_g=4,
-            fiber_g=6, iron_mg=3, calcium_mg=50, folate_mcg=100, b12_mcg=0,
+            calories=180,
+            protein_g=8,
+            carbs_g=30,
+            fat_g=4,
+            fiber_g=6,
+            iron_mg=3,
+            calcium_mg=50,
+            folate_mcg=100,
+            b12_mcg=0,
         )
         assert n.calories == 180
         assert n.protein_g == 8

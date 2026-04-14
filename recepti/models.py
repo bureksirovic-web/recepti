@@ -7,6 +7,7 @@ from datetime import date
 @dataclass
 class Ingredient:
     """A single ingredient with amount and unit."""
+
     name: str
     amount: str  # str to handle "1/2", "3-4", "to taste", etc.
     unit: str
@@ -15,6 +16,7 @@ class Ingredient:
 @dataclass
 class NutritionPerServing:
     """Nutritional information per serving."""
+
     calories: float
     protein_g: float
     carbs_g: float
@@ -29,6 +31,7 @@ class NutritionPerServing:
 @dataclass
 class RecipeTags:
     """Recipe categorization tags."""
+
     cuisine: str
     meal_type: str
     dietary_tags: list[str] = field(default_factory=list)
@@ -37,6 +40,7 @@ class RecipeTags:
 @dataclass
 class Recipe:
     """A recipe with ingredients, instructions, and nutritional data."""
+
     id: int
     name: str
     description: str
@@ -54,6 +58,7 @@ class Recipe:
 @dataclass
 class MealPlan:
     """A daily meal plan with breakfast, lunch, and dinner recipes."""
+
     date: date
     breakfast_id: int | None = None
     lunch_id: int | None = None
@@ -64,6 +69,7 @@ class MealPlan:
 @dataclass
 class Child:
     """A child with food preferences and restrictions."""
+
     id: int
     name: str
     age_years: float
@@ -74,6 +80,7 @@ class Child:
 @dataclass
 class DailyIntake:
     """A record of food intake for a child at a specific meal."""
+
     child_id: int
     date: date
     meal_type: str
@@ -85,6 +92,7 @@ class DailyIntake:
 @dataclass
 class RecipeCollection:
     """A collection of recipes with search functionality."""
+
     recipes: list[Recipe] = field(default_factory=list)
 
     def find_by_ingredients(self, search_ingredients: list[str]) -> list[tuple[Recipe, int]]:
@@ -99,7 +107,8 @@ class RecipeCollection:
 
         for recipe in self.recipes:
             match_count = sum(
-                1 for ing in recipe.ingredients
+                1
+                for ing in recipe.ingredients
                 if any(search in ing.name.lower() for search in search_lower)
             )
             if match_count > 0:
@@ -112,12 +121,8 @@ class RecipeCollection:
         """Find recipes matching the given tags."""
         results: list[Recipe] = []
         for recipe in self.recipes:
-            if (
-                recipe.tags.cuisine == tags.cuisine
-                or tags.cuisine == ""
-            ) and (
-                recipe.tags.meal_type == tags.meal_type
-                or tags.meal_type == ""
+            if (recipe.tags.cuisine == tags.cuisine or tags.cuisine == "") and (
+                recipe.tags.meal_type == tags.meal_type or tags.meal_type == ""
             ):
                 results.append(recipe)
         return results

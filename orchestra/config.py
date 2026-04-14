@@ -12,10 +12,10 @@ CODER_MODEL = "offline-coder"
 API_KEY = "local"
 
 # ── Timings ────────────────────────────────────────────────────────────────
-CODER_POLL_INTERVAL_S = 2       # How often coder checks for new tasks
-BRAIN_IDLE_THRESHOLD_S = 30     # Seconds of no user input before Brain enters review mode
-BRAIN_REVIEW_INTERVAL_S = 60    # Seconds between review cycles
-DASHBOARD_REFRESH_S = 2         # Dashboard refresh interval
+CODER_POLL_INTERVAL_S = 2  # How often coder checks for new tasks
+BRAIN_IDLE_THRESHOLD_S = 30  # Seconds of no user input before Brain enters review mode
+BRAIN_REVIEW_INTERVAL_S = 60  # Seconds between review cycles
+DASHBOARD_REFRESH_S = 2  # Dashboard refresh interval
 
 # ── Paths (set at runtime via --project flag) ──────────────────────────────
 ORCHESTRA_DIR_NAME = ".orchestra"  # Hidden dir inside project root

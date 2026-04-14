@@ -6,7 +6,6 @@ from typing import Any
 
 from .models import Recipe, RecipeTags
 
-
 RECIPES_JSON = "/workspace/repos/Recepti/data/recipes.json"
 
 
@@ -41,7 +40,9 @@ class RecipeStore:
             id=d["id"],
             name=d["name"],
             description=d.get("description", ""),
-            ingredients=[Ingredient(i["name"], i["amount"], i["unit"]) for i in d.get("ingredients", [])],
+            ingredients=[
+                Ingredient(i["name"], i["amount"], i["unit"]) for i in d.get("ingredients", [])
+            ],
             instructions=d.get("instructions", []),
             tags=RecipeTags(
                 cuisine=d.get("tags", {}).get("cuisine", ""),
@@ -52,9 +53,15 @@ class RecipeStore:
             prep_time_min=d.get("prep_time_min", 0),
             cook_time_min=d.get("cook_time_min", 0),
             nutrition_per_serving=NutritionPerServing(
-                calories=0.0, protein_g=0.0, carbs_g=0.0, fat_g=0.0,
-                fiber_g=0.0, iron_mg=0.0, calcium_mg=0.0,
-                folate_mcg=0.0, b12_mcg=0.0,
+                calories=0.0,
+                protein_g=0.0,
+                carbs_g=0.0,
+                fat_g=0.0,
+                fiber_g=0.0,
+                iron_mg=0.0,
+                calcium_mg=0.0,
+                folate_mcg=0.0,
+                b12_mcg=0.0,
             ),
             difficulty=d.get("difficulty", "medium"),
             source_url=d.get("source_url", ""),
@@ -66,7 +73,9 @@ class RecipeStore:
             "id": r.id,
             "name": r.name,
             "description": r.description,
-            "ingredients": [{"name": i.name, "amount": i.amount, "unit": i.unit} for i in r.ingredients],
+            "ingredients": [
+                {"name": i.name, "amount": i.amount, "unit": i.unit} for i in r.ingredients
+            ],
             "instructions": r.instructions,
             "tags": {
                 "cuisine": r.tags.cuisine,
@@ -94,7 +103,8 @@ class RecipeStore:
             if any(e in ing_names for e in exclude_lower):
                 continue
             match_count = sum(
-                1 for ing in recipe.ingredients
+                1
+                for ing in recipe.ingredients
                 if any(s in ing.name.lower() for s in available_lower)
             )
             if match_count > 0:
