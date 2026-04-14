@@ -8,18 +8,16 @@ import sys
 from datetime import date
 from typing import Optional
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import Update
 from telegram.ext import (
     Application,
-    CallbackContext,
-    CallbackQueryHandler,
     CommandHandler,
     ContextTypes,
     MessageHandler,
     filters,
 )
 
-from recepti.models import Child, Recipe
+from recepti.models import Child
 from recepti.recipe_store import RecipeStore
 from recepti.kid_tracker import KidMealHistory
 from recepti.planner import generate_weekly_plan, format_meal_plan
@@ -235,7 +233,6 @@ async def shopping_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> No
     # Simple demo: create a 3-day plan with random recipes
     from recepti.planner import generate_weekly_plan
     from recepti.models import RecipeCollection
-    from datetime import date, timedelta
     
     collection = RecipeCollection(recipes=all_recipes)
     plans = generate_weekly_plan(days=3, preferences={

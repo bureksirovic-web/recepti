@@ -1,6 +1,6 @@
 """Nutrition estimation for vegetarian recipes."""
 
-from recepti.models import Recipe, MealPlan, Child, NutritionPerServing, Ingredient
+from recepti.models import Recipe, MealPlan, Child
 
 # Lookup table: ingredient name -> nutrition per 100g
 # Values are approximate for common Indian vegetarian ingredients

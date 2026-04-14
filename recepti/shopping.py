@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import date
 from typing import Any
 
-from recepti.models import Recipe, MealPlan, Ingredient
+from recepti.models import Recipe, MealPlan
 
 
 # Store section definitions

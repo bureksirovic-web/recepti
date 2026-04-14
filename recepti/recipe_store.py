@@ -35,7 +35,7 @@ class RecipeStore:
 
     def _dict_to_recipe(self, d: dict[str, Any]) -> Recipe:
         """Convert dict to Recipe."""
-        from .models import Ingredient, NutritionPerServing, RecipeTags
+        from .models import Ingredient, NutritionPerServing
 
         return Recipe(
             id=d["id"],
