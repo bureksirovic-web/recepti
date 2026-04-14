@@ -72,16 +72,16 @@ def _load_family() -> list[Child]:
     if not path.exists():
         return []
     try:
-    with open(path) as f:
-        data = json.load(f)
-    return [Child(
-        id=c["id"],
-        name=c["name"],
-        age_years=c["age_years"],
-        dislikes=c.get("dislikes", []),
-        favorites=c.get("favorites", []),
-    ) for c in data.get("family", [])]
-        except Exception:
+        with open(path) as f:
+            data = json.load(f)
+        return [Child(
+            id=c["id"],
+            name=c["name"],
+            age_years=c["age_years"],
+            dislikes=c.get("dislikes", []),
+            favorites=c.get("favorites", []),
+        ) for c in data.get("family", [])]
+    except Exception:
         return []
 
 # ── Helpers ──────────────────────────────────────────────────────────
@@ -198,7 +198,7 @@ async def plan_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     days = 7
     if ctx.args:
         try:
-            days = min(max(int(ctx.args[0]), 14)
+            days = min(max(int(ctx.args[0]), 14), 14)
         except ValueError:
             pass
     
