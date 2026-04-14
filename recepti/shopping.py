@@ -83,6 +83,34 @@ INGREDIENT_SECTIONS: dict[str, str] = {
 }
 
 
+def _parse_amount_str(amount: str) -> float:
+    """Parse amount string like '1/2', '3-4', 'to taste' to float. Returns 0 on failure."""
+    if isinstance(amount, float):
+        return amount
+    if isinstance(amount, int):
+        return float(amount)
+    s = str(amount).strip().lower()
+    if s in ("", "to taste", "as needed", "a pinch", "pinch"):
+        return 0.0
+    if "/" in s:
+        parts = s.split("/")
+        if len(parts) == 2:
+            try:
+                return float(parts[0]) / float(parts[1])
+            except ValueError:
+                return 0.0
+    if "-" in s:
+        parts = s.split("-")
+        try:
+            return (float(parts[0]) + float(parts[1])) / 2
+        except ValueError:
+            return 0.0
+    try:
+        return float(s)
+    except ValueError:
+        return 0.0
+
+
 def _get_ingredient_section(ingredient_name: str) -> str:
     """Determine the store section for an ingredient."""
     name_lower = ingredient_name.lower().strip()
@@ -243,19 +271,19 @@ def generate_shopping_list_from_recipes(
             for ingredient in recipe.ingredients:
                 key = ingredient.name.lower().strip()
                 unit = _normalize_unit(ingredient.unit)
-                
+                amt = _parse_amount_str(ingredient.amount)
+
                 if key in aggregated:
                     existing_amount, existing_unit = aggregated[key]
                     if _can_combine_units(unit, existing_unit):
                         # Combine amounts
-                        new_amount = existing_amount + ingredient.amount
+                        new_amount = existing_amount + amt
                         aggregated[key] = (new_amount, unit)
                     else:
                         # Can't combine different unit systems - add as separate entry
-                        # Use original unit for now
-                        aggregated[key] = (existing_amount + ingredient.amount, unit)
+                        aggregated[key] = (existing_amount + amt, unit)
                 else:
-                    aggregated[key] = (ingredient.amount, unit)
+                    aggregated[key] = (amt, unit)
     
     # Group by store section
     result: dict[str, list[dict[str, Any]]] = {section: [] for section in STORE_SECTIONS}

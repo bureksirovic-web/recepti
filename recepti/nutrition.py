@@ -105,13 +105,45 @@ def _parse_ingredient_name(name: str) -> str:
     return name
 
 
-def _convert_to_grams(amount: float, unit: str) -> float:
+def _parse_amount(amount: str | float) -> float:
+    """Parse amount string like '1/2', '3-4', 'to taste' to float. Returns 0 on failure."""
+    if isinstance(amount, float):
+        return amount
+    if isinstance(amount, int):
+        return float(amount)
+    s = str(amount).strip().lower()
+    if s in ("", "to taste", "as needed", "a pinch", "pinch"):
+        return 0.0
+    # Try fractions like "1/2", "3/4"
+    if "/" in s:
+        parts = s.split("/")
+        if len(parts) == 2:
+            try:
+                return float(parts[0]) / float(parts[1])
+            except ValueError:
+                return 0.0
+    # Try ranges like "3-4" — take average
+    if "-" in s:
+        parts = s.split("-")
+        try:
+            return (float(parts[0]) + float(parts[1])) / 2
+        except ValueError:
+            return 0.0
+    # Try plain number
+    try:
+        return float(s)
+    except ValueError:
+        return 0.0
+
+
+def _convert_to_grams(amount: str | float, unit: str) -> float:
     """Convert amount in given unit to grams."""
+    num = _parse_amount(amount)
     unit_lower = unit.lower().strip()
     if unit_lower in ("pc", "pcs", "slice", "slices"):
-        return amount * 100  # default piece weight
+        return num * 100  # default piece weight
     factor = UNIT_CONVERSION.get(unit_lower, 100)  # default 100g per unknown unit
-    return amount * factor
+    return num * factor
 
 
 def estimate_recipe_nutrition(recipe: Recipe) -> dict:

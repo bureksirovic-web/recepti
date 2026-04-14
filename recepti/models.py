@@ -8,7 +8,7 @@ from datetime import date
 class Ingredient:
     """A single ingredient with amount and unit."""
     name: str
-    amount: float
+    amount: str  # str to handle "1/2", "3-4", "to taste", etc.
     unit: str
 
 
@@ -41,7 +41,7 @@ class Recipe:
     name: str
     description: str
     ingredients: list[Ingredient]
-    instructions: str
+    instructions: list[str]
     tags: RecipeTags
     servings: int
     prep_time_min: int

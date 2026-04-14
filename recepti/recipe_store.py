@@ -42,7 +42,7 @@ class RecipeStore:
             name=d["name"],
             description=d.get("description", ""),
             ingredients=[Ingredient(i["name"], i["amount"], i["unit"]) for i in d.get("ingredients", [])],
-            instructions=d.get("instructions", ""),
+            instructions=d.get("instructions", []),
             tags=RecipeTags(
                 cuisine=d.get("tags", {}).get("cuisine", ""),
                 meal_type=d.get("tags", {}).get("meal_type", ""),
