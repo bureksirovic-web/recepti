@@ -1,0 +1,794 @@
+{
+  "recipes": [
+    {
+      "id": 31,
+      "name": "Zelena mana",
+      "description": "Traditional Dalmatian green bean soup made with fresh green beans, potatoes, carrots, and celery in a light tomato broth. A beloved summer comfort food from the Dalmatian coast.",
+      "ingredients": [
+        {"name": "fresh green beans", "amount": "500", "unit": "g"},
+        {"name": "potatoes", "amount": "4", "unit": "medium"},
+        {"name": "carrots", "amount": "2", "unit": "medium"},
+        {"name": "celery stalk", "amount": "2", "unit": "stalks"},
+        {"name": "onion", "amount": "1", "unit": "large"},
+        {"name": "garlic cloves", "amount": "3", "unit": "cloves"},
+        {"name": "tomato paste", "amount": "2", "unit": "tbsp"},
+        {"name": "olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "water", "amount": "2", "unit": "liters"},
+        {"name": "salt", "amount": "1", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"},
+        {"name": "fresh parsley", "amount": "1/4", "unit": "cup"}
+      ],
+      "instructions": [
+        "Trim and string the green beans, then cut into 5cm pieces.",
+        "Peel and dice potatoes, carrots, and celery into small cubes. Chop onion finely.",
+        "Heat olive oil in a large pot over medium heat. Sauté onion until translucent, about 5 minutes.",
+        "Add minced garlic and cook for 1 minute until fragrant.",
+        "Stir in tomato paste and cook for 2 minutes.",
+        "Add potatoes, carrots, and celery. Stir to coat with tomato paste.",
+        "Pour in water, bring to boil, then reduce heat and simmer for 15 minutes.",
+        "Add green beans and simmer for another 15 minutes until beans and potatoes are tender.",
+        "Season with salt and black pepper. Garnish with fresh parsley and serve hot."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["traditional", "vegetarian", "gluten-free"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 40,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 32,
+      "name": "Janjeća juha",
+      "description": "Hearty Croatian lamb soup from the continental region. Tender lamb simmered with root vegetables, fresh herbs, and egg noodles. A festive Sunday dish.",
+      "ingredients": [
+        {"name": "lamb neck bones", "amount": "1", "unit": "kg"},
+        {"name": "lamb stew meat", "amount": "500", "unit": "g"},
+        {"name": "carrots", "amount": "3", "unit": "medium"},
+        {"name": "parsnips", "amount": "2", "unit": "medium"},
+        {"name": "celery root", "amount": "1", "unit": "small"},
+        {"name": "onion", "amount": "1", "unit": "large"},
+        {"name": "garlic cloves", "amount": "4", "unit": "cloves"},
+        {"name": "egg noodles", "amount": "300", "unit": "g"},
+        {"name": "bay leaves", "amount": "2", "unit": "leaves"},
+        {"name": "allspice berries", "amount": "4", "unit": "berries"},
+        {"name": "fresh parsley", "amount": "1/2", "unit": "cup"},
+        {"name": "water", "amount": "3", "unit": "liters"},
+        {"name": "salt", "amount": "1.5", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Place lamb bones and meat in a large pot. Cover with cold water and bring to boil.",
+        "Skim off foam and scum for 10 minutes until broth is clear.",
+        "Add bay leaves and allspice berries to the pot.",
+        "Reduce heat to low and simmer covered for 1 hour.",
+        "While soup simmers, dice all root vegetables into small cubes. Chop onion.",
+        "Add onion and whole garlic cloves to the simmering broth. Cook 30 minutes.",
+        "Add carrots, parsnips, and celery root. Simmer for another 30 minutes.",
+        "Remove bay leaves. Season with salt and pepper.",
+        "Cook egg noodles separately in salted water until al dente, drain.",
+        "Add noodles to bowls and ladle hot soup with lamb and vegetables over noodles. Garnish with parsley."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "gluten-free"]
+      },
+      "servings": 9,
+      "prep_time_min": 25,
+      "cook_time_min": 120,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 33,
+      "name": "Pašticada",
+      "description": "The queen of Dalmatian cuisine. Slow-braised beef marinated in vinegar and spices, cooked with pršut, vegetables, and served with homemade dumplings. A showstopper for special occasions.",
+      "ingredients": [
+        {"name": "beef top round", "amount": "1.5", "unit": "kg"},
+        {"name": "pršut smoked ham", "amount": "150", "unit": "g"},
+        {"name": "bacon lardons", "amount": "100", "unit": "g"},
+        {"name": "carrots", "amount": "3", "unit": "medium"},
+        {"name": "celery stalks", "amount": "3", "unit": "stalks"},
+        {"name": "onion", "amount": "2", "unit": "large"},
+        {"name": "garlic cloves", "amount": "5", "unit": "cloves"},
+        {"name": "tomato paste", "amount": "3", "unit": "tbsp"},
+        {"name": "red wine vinegar", "amount": "1/2", "unit": "cup"},
+        {"name": "dry red wine", "amount": "1", "unit": "cup"},
+        {"name": "beef broth", "amount": "2", "unit": "cups"},
+        {"name": "olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "bay leaves", "amount": "2", "unit": "leaves"},
+        {"name": "allspice", "amount": "6", "unit": "berries"},
+        {"name": "flour for dumplings", "amount": "300", "unit": "g"}
+      ],
+      "instructions": [
+        "Pierce beef all over with a knife. Stuff with pršut slices and bacon lardons.",
+        "Tie beef with kitchen string to hold its shape during braising.",
+        "Marinate beef in vinegar, bay leaves, and allspice overnight in the fridge.",
+        "Remove beef from marinade, pat dry. Sear in hot olive oil on all sides until deeply browned.",
+        "In the same pot, sauté diced onion, carrots, and celery until caramelized.",
+        "Add minced garlic and tomato paste, cook 2 minutes.",
+        "Pour in wine and vinegar marinade. Add broth and bring to simmer.",
+        "Add seared beef, cover tightly, and braise in oven at 160°C for 2.5 hours until fork-tender.",
+        "For dumplings: mix flour with eggs and a pinch of salt. Form small dumplings and poach in broth.",
+        "Rest beef 10 minutes, slice against the grain. Arrange on plates with vegetables and dumplings. Spoon pan sauce over top."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "dalmatian"]
+      },
+      "servings": 9,
+      "prep_time_min": 30,
+      "cook_time_min": 180,
+      "difficulty": "Hard"
+    },
+    {
+      "id": 34,
+      "name": "Brudet",
+      "description": "Classic Dalmatian fish stew bursting with sea flavours. Mixed fish and seafood simmered in a rich tomato and wine sauce, spiced with bay leaves and peperonata. Served over polenta.",
+      "ingredients": [
+        {"name": "mixed white fish fillets", "amount": "1", "unit": "kg"},
+        {"name": "cuttlefish or squid", "amount": "500", "unit": "g"},
+        {"name": "mussels in shell", "amount": "500", "unit": "g"},
+        {"name": "shrimp peeled", "amount": "300", "unit": "g"},
+        {"name": "tomatoes", "amount": "6", "unit": "large"},
+        {"name": "onion", "amount": "2", "unit": "large"},
+        {"name": "garlic cloves", "amount": "5", "unit": "cloves"},
+        {"name": "red bell peppers", "amount": "2", "unit": "medium"},
+        {"name": "dry white wine", "amount": "1", "unit": "cup"},
+        {"name": "olive oil", "amount": "6", "unit": "tbsp"},
+        {"name": "bay leaves", "amount": "3", "unit": "leaves"},
+        {"name": "fresh parsley", "amount": "1/2", "unit": "cup"},
+        {"name": "salt", "amount": "1", "unit": "tsp"},
+        {"name": "polenta", "amount": "400", "unit": "g"}
+      ],
+      "instructions": [
+        "Clean and cut fish into large chunks. Clean squid and cut into rings. Scrub mussels.",
+        "Blanch tomatoes in boiling water, peel, and chop roughly.",
+        "Sauté finely diced onion in olive oil until soft. Add sliced garlic and diced peppers.",
+        "Cook until peppers soften, about 10 minutes.",
+        "Stir in chopped tomatoes and bay leaves. Simmer for 20 minutes until sauce thickens.",
+        "Add white wine and simmer 5 more minutes.",
+        "Add fish chunks, cover, and cook 8 minutes.",
+        "Add squid rings and mussels. Cover and cook until mussels open, about 5 minutes.",
+        "Add shrimp in the last 2 minutes of cooking.",
+        "Meanwhile, cook polenta according to package directions with salted water.",
+        "Season brudet with salt, scatter parsley, and serve over creamy polenta."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "seafood", "gluten-free"]
+      },
+      "servings": 9,
+      "prep_time_min": 30,
+      "cook_time_min": 45,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 35,
+      "name": "Crni rižot",
+      "description": "Iconic Dalmatian black risotto coloured with squid ink. Silky Arborio rice slowly cooked with squid, white wine, and seafood broth. A dramatic seafood delicacy.",
+      "ingredients": [
+        {"name": "Arborio rice", "amount": "400", "unit": "g"},
+        {"name": "squid cleaned", "amount": "500", "unit": "g"},
+        {"name": "squid ink sacs", "amount": "4", "unit": "sacs"},
+        {"name": "onion", "amount": "1", "unit": "medium"},
+        {"name": "garlic cloves", "amount": "3", "unit": "cloves"},
+        {"name": "dry white wine", "amount": "1/2", "unit": "cup"},
+        {"name": "fish or seafood broth", "amount": "1", "unit": "liter"},
+        {"name": "olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "butter", "amount": "2", "unit": "tbsp"},
+        {"name": "Parmesan cheese grated", "amount": "100", "unit": "g"},
+        {"name": "fresh parsley", "amount": "1/4", "unit": "cup"},
+        {"name": "salt", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Heat broth in a saucepan and keep warm over low heat.",
+        "Sauté finely diced onion in olive oil until translucent. Add minced garlic.",
+        "Add squid cut into small rings, cook 2 minutes until just opaque.",
+        "Add Arborio rice and stir to coat each grain with oil.",
+        "Pour in white wine and stir until fully absorbed.",
+        "Begin adding warm broth one ladle at a time, stirring constantly. Wait until each addition is absorbed.",
+        "After 15 minutes, crush squid ink sacs and stir into the rice.",
+        "Continue adding broth and stirring. Total cooking time about 20 minutes until rice is al dente.",
+        "Remove from heat. Stir in cold butter and Parmesan for a creamy consistency.",
+        "Season with salt, scatter parsley, and serve immediately with extra Parmesan."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "seafood", "gluten-free"]
+      },
+      "servings": 9,
+      "prep_time_min": 15,
+      "cook_time_min": 35,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 36,
+      "name": "Fiš paprikaš",
+      "description": "Famous Slavonian fish stew with abundant paprika. Catfish or carp cooked in thick tomato broth with copious amounts of sweet and hot paprika, served with homemade egg noodles.",
+      "ingredients": [
+        {"name": "catfish or carp fillets", "amount": "1.2", "unit": "kg"},
+        {"name": "onion", "amount": "2", "unit": "large"},
+        {"name": "garlic cloves", "amount": "4", "unit": "cloves"},
+        {"name": "tomatoes", "amount": "4", "unit": "large"},
+        {"name": "sweet paprika", "amount": "4", "unit": "tbsp"},
+        {"name": "hot paprika", "amount": "2", "unit": "tsp"},
+        {"name": "caraway seeds", "amount": "1", "unit": "tsp"},
+        {"name": "chicken broth", "amount": "1", "unit": "liter"},
+        {"name": "dry white wine", "amount": "1/2", "unit": "cup"},
+        {"name": "olive oil", "amount": "5", "unit": "tbsp"},
+        {"name": "all-purpose flour", "amount": "2", "unit": "tbsp"},
+        {"name": "egg noodles", "amount": "400", "unit": "g"},
+        {"name": "fresh parsley", "amount": "1/4", "unit": "cup"}
+      ],
+      "instructions": [
+        "Cut fish into large chunks and dust lightly with flour seasoned with salt.",
+        "Sauté diced onion in olive oil until golden. Add minced garlic.",
+        "Stir in both paprikas and caraway seeds, cook 2 minutes until fragrant.",
+        "Add chopped tomatoes and cook down for 10 minutes.",
+        "Pour in wine and broth. Bring to a gentle simmer.",
+        "Add fish chunks carefully into the simmering broth.",
+        "Cook for 10-12 minutes until fish flakes easily. Do not stir vigorously.",
+        "Meanwhile, cook egg noodles in salted water until tender, drain.",
+        "Ladle thick fiš paprikaš over noodles and garnish with parsley."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "slavonian", "spicy"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 45,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 37,
+      "name": "Jelaštron",
+      "description": "Hearty Continental Croatian cabbage rolls. Savory pork and rice stuffed cabbage leaves braised in rich tomato sauce with smoked bacon. A treasured comfort food.",
+      "ingredients": [
+        {"name": "large green cabbage head", "amount": "1", "unit": "large"},
+        {"name": "ground pork", "amount": "600", "unit": "g"},
+        {"name": "long grain rice", "amount": "200", "unit": "g"},
+        {"name": "egg", "amount": "1", "unit": "large"},
+        {"name": "onion", "amount": "1", "unit": "medium"},
+        {"name": "garlic cloves", "amount": "3", "unit": "cloves"},
+        {"name": "tomato sauce", "amount": "800", "unit": "ml"},
+        {"name": "smoked bacon", "amount": "200", "unit": "g"},
+        {"name": "carrots", "amount": "2", "unit": "medium"},
+        {"name": "olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "salt", "amount": "1.5", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"},
+        {"name": "sweet paprika", "amount": "2", "unit": "tbsp"}
+      ],
+      "instructions": [
+        "Core cabbage and boil whole head for 10 minutes until leaves soften. Peel off leaves carefully, trim thick ribs.",
+        "Mix ground pork, uncooked rice, beaten egg, minced onion, garlic, salt, and pepper.",
+        "Lay a cabbage leaf flat, place 2 tablespoons of meat mixture at the base, roll up and tuck in sides.",
+        "Arrange bacon lardons in the bottom of a deep Dutch oven.",
+        "Place cabbage rolls seam-side down tightly in the pot.",
+        "Spread grated carrots over rolls. Mix paprika into tomato sauce and pour over rolls.",
+        "Add enough water to almost cover rolls. Bring to simmer.",
+        "Cover and cook on low heat for 1.5 hours until rice is cooked and cabbage is tender.",
+        "Serve hot with crusty bread and sour cream on the side."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "continental"]
+      },
+      "servings": 9,
+      "prep_time_min": 40,
+      "cook_time_min": 100,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 38,
+      "name": "Dalmatinski pršut s domaćim sirom",
+      "description": "Traditional Dalmatian cold appetizer plate showcasing air-cured pršut from Dalmatia paired with Paški sheep's cheese, fresh figs, Dalmatian olives, and dried figs. Simple, elegant, and bursting with coastal terroir.",
+      "ingredients": [
+        {"name": "Dalmatian pršut sliced paper-thin", "amount": "300", "unit": "g"},
+        {"name": "Paški sheep's cheese or Pecorino Sardo", "amount": "300", "unit": "g"},
+        {"name": " Dalmatian olives cured in oil", "amount": "200", "unit": "g"},
+        {"name": "fresh ripe figs", "amount": "9", "unit": "whole"},
+        {"name": "dried figs", "amount": "9", "unit": "whole"},
+        {"name": "wild Dalmatian rosemary", "amount": "4", "unit": "sprigs"},
+        {"name": "extra virgin olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "aged balsamic reduction", "amount": "2", "unit": "tbsp"},
+        {"name": " Maldon sea salt flakes", "amount": "1/2", "unit": "tsp"},
+        {"name": "walnut halves", "amount": "100", "unit": "g"}
+      ],
+      "instructions": [
+        "Remove pršut from refrigeration 30 minutes before serving to come to room temperature for best flavour and texture.",
+        "Slice or break Paški cheese into rough chunks or shave with a cheese plane.",
+        "Arrange Dalmatian olives in a small bowl with olive oil and a rosemary sprig.",
+        "Halve fresh figs and arrange around the plate. Tuck dried figs between.",
+        "Fan pršut slices on a large serving platter, overlapping slightly.",
+        "Place cheese chunks near the figs. Tuck walnut halves around the board.",
+        "Drizzle a little aged balsamic reduction over the cheese and figs.",
+        "Finish with flaky Maldon salt over the figs and serve with remaining rosemary.",
+        "Let diners assemble their own bites by wrapping pršut around cheese with a fig."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["traditional", "dalmatian", "no-cook", "appetizer"]
+      },
+      "servings": 9,
+      "prep_time_min": 15,
+      "cook_time_min": 0,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 39,
+      "name": "Zagorski štrukli",
+      "description": "Legendary Zagorje cheese-filled dumplings. Soft homemade dough stuffed with cottage cheese, bacon, and fresh herbs, served baked with bread crumbs and butter. Croatia's favourite dish.",
+      "ingredients": [
+        {"name": "all-purpose flour", "amount": "500", "unit": "g"},
+        {"name": "eggs", "amount": "2", "unit": "large"},
+        {"name": "water", "amount": "200", "unit": "ml"},
+        {"name": "salt", "amount": "1", "unit": "tsp"},
+        {"name": "fresh cottage cheese", "amount": "800", "unit": "g"},
+        {"name": "smoked bacon lardons", "amount": "200", "unit": "g"},
+        {"name": "eggs", "amount": "2", "unit": "additional"},
+        {"name": "fresh chives", "amount": "3", "unit": "tbsp"},
+        {"name": "butter", "amount": "80", "unit": "g"},
+        {"name": "bread crumbs", "amount": "100", "unit": "g"},
+        {"name": "sour cream", "amount": "200", "unit": "ml"}
+      ],
+      "instructions": [
+        "Make dough: mix flour, eggs, water, and salt into a smooth elastic dough. Rest 30 minutes.",
+        "Fry bacon lardons until crispy. Mix drained crumbled bacon with cottage cheese, 2 beaten eggs, and chives.",
+        "Roll out dough very thin on a floured surface into a large rectangle.",
+        "Spread cottage cheese filling evenly over the dough, leaving a border at edges.",
+        "Roll up tightly like a log, seal edge with water. Cut into 4cm pieces.",
+        "Cook štrukli in salted boiling water for 5-7 minutes until they float. Lift out carefully.",
+        "Meanwhile, melt butter in a large baking dish. Toss bread crumbs until golden.",
+        "Place drained štrukli in the dish, dot with butter, scatter bread crumbs.",
+        "Bake at 200°C for 15-20 minutes until golden and crispy on top. Serve with sour cream."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["traditional", "zagorje", "baked"]
+      },
+      "servings": 9,
+      "prep_time_min": 50,
+      "cook_time_min": 35,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 40,
+      "name": "Odojak ispod peke",
+      "description": "Juicy young pork roasted under a bell-shaped baking lid. Potatoes and vegetables caramelize beneath the falling-cooking meat, infused with rosemary, garlic, and olive oil. An iconic Dalmatian feast.",
+      "ingredients": [
+        {"name": "young pork joint about 4kg", "amount": "1", "unit": "piece"},
+        {"name": "potatoes", "amount": "1.5", "unit": "kg"},
+        {"name": "onions", "amount": "4", "unit": "large"},
+        {"name": "garlic bulb", "amount": "1", "unit": "bulb"},
+        {"name": "carrots", "amount": "3", "unit": "medium"},
+        {"name": "fresh rosemary", "amount": "4", "unit": "sprigs"},
+        {"name": "olive oil", "amount": "150", "unit": "ml"},
+        {"name": "dry white wine", "amount": "1", "unit": "cup"},
+        {"name": "chicken broth", "amount": "1", "unit": "cup"},
+        {"name": "salt", "amount": "2", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1", "unit": "tsp"},
+        {"name": "bay leaves", "amount": "3", "unit": "leaves"}
+      ],
+      "instructions": [
+        "Score the pork skin all over in a crosshatch pattern. Rub with salt, pepper, and rosemary.",
+        "Let pork sit at room temperature for 1 hour.",
+        "Cut potatoes into wedges, slice onions, and break garlic bulb into cloves.",
+        "Spread vegetables in a heavy pot with bay leaves and drizzle with olive oil.",
+        "Pour wine and broth around the vegetables. Place pork on top.",
+        "Cover tightly with the baking lid (peka) or a heavy lid with weights on top.",
+        "Cook over hot coals or in oven at 200°C for 2 hours, then uncover and roast 30 more minutes until skin is crispy.",
+        "Let rest 15 minutes before carving. Serve with caramelized roasted vegetables and pan juices."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "dalmatian", "roasted"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 150,
+      "difficulty": "Hard"
+    },
+    {
+      "id": 41,
+      "name": "Brodet",
+      "description": "Richer cousin of brudet from the Dalmatian islands. Mixed seafood stewed with tomato, white wine, and fresh herbs. Served with toasted polenta slices for soaking up the rich broth.",
+      "ingredients": [
+        {"name": "sea bass or John Dory fillets", "amount": "800", "unit": "g"},
+        {"name": "monkfish chunks", "amount": "400", "unit": "g"},
+        {"name": "clams in shell", "amount": "500", "unit": "g"},
+        {"name": "squid", "amount": "300", "unit": "g"},
+        {"name": "tomatoes", "amount": "5", "unit": "large"},
+        {"name": "onion", "amount": "1", "unit": "large"},
+        {"name": "garlic cloves", "amount": "4", "unit": "cloves"},
+        {"name": "dry white wine", "amount": "1", "unit": "cup"},
+        {"name": "fish stock", "amount": "500", "unit": "ml"},
+        {"name": "olive oil", "amount": "5", "unit": "tbsp"},
+        {"name": "fresh parsley", "amount": "1/4", "unit": "cup"},
+        {"name": "bay leaves", "amount": "2", "unit": "leaves"},
+        {"name": "polenta for serving", "amount": "400", "unit": "g"},
+        {"name": "salt and pepper", "amount": "1", "unit": "to taste"}
+      ],
+      "instructions": [
+        "Clean fish and cut into large pieces. Clean squid and cut into rings. Scrub clams.",
+        "Blanch and peel tomatoes, then blend to a rough purée.",
+        "Sauté diced onion in olive oil until soft. Add garlic, cook 1 minute.",
+        "Add tomato purée and bay leaves. Simmer 15 minutes.",
+        "Pour in wine and stock. Bring to simmer.",
+        "Add monkfish first (firmest), cook 5 minutes, then add squid rings.",
+        "Add fish fillets and clams. Cover and cook until clams open and fish flakes, about 8 minutes.",
+        "Add clams in last 2 minutes. Season with salt and pepper. Scatter parsley.",
+        "Serve immediately over thick sliced polenta that has been grilled with olive oil."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "seafood", "dalmatian"]
+      },
+      "servings": 9,
+      "prep_time_min": 30,
+      "cook_time_min": 50,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 42,
+      "name": "Crni makaroni",
+      "description": "Dramatic Dalmatian black macaroni with squid ink and fresh squid. Thick pasta tubes coated in deep black sauce, tender squid, and a finish of garlic and parsley.",
+      "ingredients": [
+        {"name": "rigatoni or thick macaroni", "amount": "500", "unit": "g"},
+        {"name": "squid cleaned", "amount": "600", "unit": "g"},
+        {"name": "squid ink sacs", "amount": "5", "unit": "sacs"},
+        {"name": "onion", "amount": "1", "unit": "medium"},
+        {"name": "garlic cloves", "amount": "4", "unit": "cloves"},
+        {"name": "tomatoes", "amount": "4", "unit": "medium"},
+        {"name": "dry white wine", "amount": "1/2", "unit": "cup"},
+        {"name": "olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "fresh parsley", "amount": "1/4", "unit": "cup"},
+        {"name": "Parmesan cheese", "amount": "80", "unit": "g"},
+        {"name": "chili flakes", "amount": "1/2", "unit": "tsp"},
+        {"name": "salt", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Cut squid bodies into rings and tentacles into halves. Chop tomatoes.",
+        "Cook macaroni in generously salted water until just under al dente, drain.",
+        "Sauté onion in olive oil. Add garlic and chili flakes.",
+        "Add squid and cook on high heat for 2 minutes until just opaque.",
+        "Pour in wine and let it evaporate. Add tomatoes and cook down.",
+        "Crush squid ink into the sauce, stir until evenly black.",
+        "Add drained macaroni and toss to coat each tube in the black sauce.",
+        "Add a ladle of pasta water, toss on high heat for 2 minutes to create silky sauce.",
+        "Remove from heat, toss with parsley and Parmesan. Serve immediately."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "seafood", "dalmatian"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 43,
+      "name": "Sarajevski ćevap",
+      "description": "Beloved minced meat grill from the Bosnian-Croatian tradition. Spiced beef and lamb cylinders grilled over oak coals, served with chopped raw onion and flatbread. Street food royalty.",
+      "ingredients": [
+        {"name": "ground beef", "amount": "700", "unit": "g"},
+        {"name": "ground lamb", "amount": "300", "unit": "g"},
+        {"name": "onion grated", "amount": "1", "unit": "medium"},
+        {"name": "garlic cloves minced", "amount": "4", "unit": "cloves"},
+        {"name": "all-purpose flour", "amount": "2", "unit": "tbsp"},
+        {"name": "salt", "amount": "2", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1", "unit": "tsp"},
+        {"name": "paprika powder", "amount": "1", "unit": "tsp"},
+        {"name": "baking soda", "amount": "1/2", "unit": "tsp"},
+        {"name": "flatbread for serving", "amount": "9", "unit": "pieces"},
+        {"name": "onion white parts for serving", "amount": "3", "unit": "medium"},
+        {"name": "ajvar relish", "amount": "300", "unit": "ml"}
+      ],
+      "instructions": [
+        "Combine ground beef and lamb in a large bowl. Add grated onion, garlic, flour, salt, pepper, paprika, and baking soda.",
+        "Knead the mixture vigorously for 5 minutes until very smooth and slightly sticky.",
+        "Cover and refrigerate for 2 hours or overnight for best flavour.",
+        "Shape mixture into finger-sized cylinders about 8cm long and 2cm wide.",
+        "Prepare grill with oak or hickory coals until medium-hot.",
+        "Grill ćevap on the hot grill, turning every 2 minutes, until charred on all sides and cooked through, about 8-10 minutes total.",
+        "Warm flatbread on the grill for 30 seconds per side.",
+        "Arrange ćevapi on flatbread, top with finely chopped raw onion and serve with ajvar."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "grilled", "balkan"]
+      },
+      "servings": 9,
+      "prep_time_min": 30,
+      "cook_time_min": 20,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 44,
+      "name": "Pljeskavica",
+      "description": "Massive Balkan grilled meat patty loaded with spices and topped with sirene cheese. Juicy beef patties charred on charcoal, crowned with white cheese, served in lepinja buns with all the fixings.",
+      "ingredients": [
+        {"name": "ground beef", "amount": "1", "unit": "kg"},
+        {"name": "ground pork", "amount": "400", "unit": "g"},
+        {"name": "onion grated", "amount": "2", "unit": "medium"},
+        {"name": "garlic cloves minced", "amount": "4", "unit": "cloves"},
+        {"name": "bread crumbs", "amount": "3", "unit": "tbsp"},
+        {"name": "egg", "amount": "1", "unit": "large"},
+        {"name": "salt", "amount": "2", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1", "unit": "tsp"},
+        {"name": "paprika powder", "amount": "2", "unit": "tsp"},
+        {"name": "kajmak or cream cheese", "amount": "200", "unit": "g"},
+        {"name": "lepinja buns", "amount": "9", "unit": "buns"},
+        {"name": "fresh white cheese sirene", "amount": "200", "unit": "g"},
+        {"name": "raw onion rings", "amount": "2", "unit": "medium"},
+        {"name": "pickled peppers", "amount": "100", "unit": "g"}
+      ],
+      "instructions": [
+        "Mix ground beef and pork with grated onion, garlic, bread crumbs, egg, salt, pepper, and paprika.",
+        "Knead thoroughly for 5 minutes until mixture binds well.",
+        "Refrigerate covered for 1 hour.",
+        "Form into large flat patties about 1.5cm thick, slightly larger than the buns.",
+        "Grill over hot charcoal, pressing lightly with a spatula, for 4-5 minutes per side.",
+        "In the last minute, top each patty with a slice of white cheese and cover to melt.",
+        "Warm lepinja buns on the grill.",
+        "Spread kajmak on both halves of the bun, place patty, onion rings, and pickled peppers. Close and serve."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "grilled", "balkan"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 15,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 45,
+      "name": "Ražnjići",
+      "description": "Succulent Balkan pork skewers marinated in aromatic spices. Cubed pork threaded on skewers and grilled over charcoal until caramelized and juicy, served with flatbread and fresh onion.",
+      "ingredients": [
+        {"name": "pork tenderloin", "amount": "1.2", "unit": "kg"},
+        {"name": "bacon slices", "amount": "9", "unit": "slices"},
+        {"name": "onion sliced", "amount": "2", "unit": "medium"},
+        {"name": "garlic cloves minced", "amount": "3", "unit": "cloves"},
+        {"name": "olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "lemon juice", "amount": "3", "unit": "tbsp"},
+        {"name": "paprika powder", "amount": "2", "unit": "tsp"},
+        {"name": "dried oregano", "amount": "1", "unit": "tsp"},
+        {"name": "salt", "amount": "1.5", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"},
+        {"name": "bell peppers for threading", "amount": "2", "unit": "medium"},
+        {"name": "flatbread for serving", "amount": "9", "unit": "pieces"}
+      ],
+      "instructions": [
+        "Cut pork into 3cm cubes. Mix with sliced onion, garlic, olive oil, lemon juice, paprika, oregano, salt, and pepper.",
+        "Marinate in the fridge for at least 4 hours or overnight.",
+        "Thread pork cubes onto metal skewers, alternating with folded bacon slices and bell pepper chunks.",
+        "Prepare charcoal grill to medium-high heat.",
+        "Grill skewers, turning every 2-3 minutes, for 10-12 minutes total until pork is cooked through with nice char marks.",
+        "Rest skewers 5 minutes, then serve alongside warm flatbread with raw onion."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "grilled", "balkan"]
+      },
+      "servings": 9,
+      "prep_time_min": 25,
+      "cook_time_min": 15,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 46,
+      "name": "Japrak",
+      "description": "Tender grape leaves stuffed with aromatic rice and seasoned pork, topped with sour cream and tomato sauce. A treasured Dalmatian coastal dish perfect for gatherings.",
+      "ingredients": [
+        {"name": "grape leaves in brine jar", "amount": "1", "unit": "jar (about 50 leaves)"},
+        {"name": "ground pork", "amount": "600", "unit": "g"},
+        {"name": "long grain rice", "amount": "250", "unit": "g"},
+        {"name": "onion finely diced", "amount": "1", "unit": "large"},
+        {"name": "garlic cloves minced", "amount": "3", "unit": "cloves"},
+        {"name": "egg", "amount": "1", "unit": "large"},
+        {"name": "fresh dill", "amount": "3", "unit": "tbsp"},
+        {"name": "tomato sauce", "amount": "700", "unit": "ml"},
+        {"name": "sour cream", "amount": "300", "unit": "ml"},
+        {"name": "chicken broth", "amount": "500", "unit": "ml"},
+        {"name": "salt", "amount": "1.5", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Rinse grape leaves and blanch in boiling water for 2 minutes to soften. Drain and cool.",
+        "Mix ground pork with uncooked rice, onion, garlic, egg, dill, salt, and pepper.",
+        "Lay a grape leaf vein-side up. Place 1 tablespoon of filling near the stem end.",
+        "Fold sides in and roll up tightly into a small cigar.",
+        "Arrange stuffed japrak seam-side down in a deep pot, fitting snugly.",
+        "Mix tomato sauce with broth and pour over. Place a heavy plate on top to keep rolls tight.",
+        "Simmer covered for 1 hour until rice is fully cooked.",
+        "Serve 2-3 japrak per person with sour cream and tomato braising sauce."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "dalmatian"]
+      },
+      "servings": 9,
+      "prep_time_min": 40,
+      "cook_time_min": 70,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 47,
+      "name": "Arambašići",
+      "description": "Dalmatian-style tiny cabbage rolls from the island of Hvar. Pork and rice stuffed into individual sauerkraut cabbage leaves, baked slowly in tomato sauce with smoked meat. Bold and tangy.",
+      "ingredients": [
+        {"name": "sauerkraut jar", "amount": "1.5", "unit": "kg"},
+        {"name": "ground pork", "amount": "600", "unit": "g"},
+        {"name": "ground beef", "amount": "300", "unit": "g"},
+        {"name": "long grain rice", "amount": "200", "unit": "g"},
+        {"name": "onion grated", "amount": "1", "unit": "medium"},
+        {"name": "garlic cloves minced", "amount": "3", "unit": "cloves"},
+        {"name": "egg", "amount": "1", "unit": "large"},
+        {"name": "smoked pork ribs", "amount": "400", "unit": "g"},
+        {"name": "tomato sauce", "amount": "700", "unit": "ml"},
+        {"name": "chicken broth", "amount": "300", "unit": "ml"},
+        {"name": "bay leaves", "amount": "2", "unit": "leaves"},
+        {"name": "salt", "amount": "1.5", "unit": "tsp"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Drain and rinse sauerkraut. If leaves are too large, cut in half.",
+        "Mix both meats with uncooked rice, grated onion, garlic, egg, salt, and pepper.",
+        "Place 1 tablespoon of filling at the base of each sauerkraut leaf, roll up, tucking in sides.",
+        "Layer smoked ribs in the bottom of a Dutch oven.",
+        "Arrange arambašići seams down in tight rows over the ribs.",
+        "Mix tomato sauce with broth, pour over rolls. Nestle bay leaves between rolls.",
+        "Cover with a plate and simmer on low heat for 1.5 hours.",
+        "Optional: transfer to baking dish and bake at 180°C for 30 minutes to caramelize top.",
+        "Serve hot with the smoky braising sauce spooned over."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "dalmatian", "fermented"]
+      },
+      "servings": 9,
+      "prep_time_min": 45,
+      "cook_time_min": 100,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 48,
+      "name": "Paški sir s mediteranskim biljem",
+      "description": "A celebration of Paški cheese from the island of Pag. Sharp aged sheep's cheese melted with Dalmatian herbs, drizzled with olive oil and honey, served warm with crusty bread.",
+      "ingredients": [
+        {"name": "Paški cheese or aged Pecorino Sardo", "amount": "600", "unit": "g"},
+        {"name": "fresh rosemary", "amount": "2", "unit": "sprigs"},
+        {"name": "fresh thyme", "amount": "4", "unit": "sprigs"},
+        {"name": "olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "wildflower honey", "amount": "3", "unit": "tbsp"},
+        {"name": "crusty bread loaf", "amount": "1", "unit": "large"},
+        {"name": "garlic clove", "amount": "1", "unit": "clove"},
+        {"name": "black pepper", "amount": "1/2", "unit": "tsp"},
+        {"name": "walnuts toasted", "amount": "100", "unit": "g"},
+        {"name": "fresh oregano", "amount": "3", "unit": "sprigs"},
+        {"name": "dried thyme", "amount": "2", "unit": "tsp"},
+        {"name": "roasted red peppers", "amount": "150", "unit": "g"}
+      ],
+      "instructions": [
+        "Preheat oven to 200°C. Slice bread loaf into thick rounds.",
+        "Slice cheese thinly or crumble into chunks.",
+        "Toss cheese pieces with stripped rosemary and thyme leaves.",
+        "Arrange bread on baking sheet. Top each slice with herbed cheese.",
+        "Drizzle with 2 tablespoons olive oil and 1/2 teaspoon black pepper.",
+        "Bake for 10-12 minutes until cheese is melted, bubbly, and golden at edges.",
+        "Meanwhile, warm remaining olive oil with whole garlic clove for brushing.",
+        "Brush warm bread with garlic oil. Drizzle warm cheese toasts with honey.",
+        "Scatter toasted walnuts over the top and serve immediately while cheese is bubbling."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["traditional", "dalmatian", "vegetarian"]
+      },
+      "servings": 9,
+      "prep_time_min": 15,
+      "cook_time_min": 15,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 49,
+      "name": "Istarski fuži",
+      "description": "Fresh Istrian hand-formed pasta in a rich game sauce. Diamond-shaped pasta pockets holding depth of flavour from wild boar or venison stew, finished with truffles. A treasured Istrian specialty.",
+      "ingredients": [
+        {"name": "all-purpose flour", "amount": "500", "unit": "g"},
+        {"name": "eggs", "amount": "4", "unit": "large"},
+        {"name": "olive oil", "amount": "2", "unit": "tbsp"},
+        {"name": "salt", "amount": "1", "unit": "tsp"},
+        {"name": "wild boar or venison stew meat", "amount": "800", "unit": "g"},
+        {"name": "onion finely diced", "amount": "2", "unit": "large"},
+        {"name": "carrots diced", "amount": "2", "unit": "medium"},
+        {"name": "celery stalks diced", "amount": "2", "unit": "stalks"},
+        {"name": "garlic cloves minced", "amount": "4", "unit": "cloves"},
+        {"name": "tomato paste", "amount": "3", "unit": "tbsp"},
+        {"name": "dry red wine", "amount": "1.5", "unit": "cups"},
+        {"name": "beef broth", "amount": "1", "unit": "liter"},
+        {"name": "fresh truffles or truffle oil", "amount": "20", "unit": "g"},
+        {"name": "butter", "amount": "3", "unit": "tbsp"}
+      ],
+      "instructions": [
+        "Make fresh pasta: Mound flour, make a well, add eggs, olive oil, and salt. Mix and knead into a smooth dough. Rest 30 minutes wrapped.",
+        "Roll pasta thin, cut into 4cm squares. Form into diamond shapes by folding corner to corner.",
+        "Season wild boar pieces and brown in batches in a hot pot. Set aside.",
+        "Sauté onion, carrots, and celery in butter until softened. Add garlic and tomato paste.",
+        "Deglaze with red wine. Add broth and browned meat with any juices.",
+        "Simmer covered for 2 hours until meat is falling apart. Shred meat, return to sauce.",
+        "Cook fuži in salted boiling water for 3-4 minutes until al dente. Drain.",
+        "Toss hot pasta with rich game sauce. Shave fresh truffle over the top and serve."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "istrian", "truffle"]
+      },
+      "servings": 9,
+      "prep_time_min": 60,
+      "cook_time_min": 130,
+      "difficulty": "Hard"
+    },
+    {
+      "id": 50,
+      "name": "Istarski tartufi s jajima",
+      "description": "Luxurious Istrian eggs with truffles. Perfectly fried eggs crowned with shaved white or black truffles and drizzled with truffle oil over creamy polenta. Simple elegance from the Istrian truffle forests.",
+      "ingredients": [
+        {"name": "large eggs", "amount": "18", "unit": "eggs"},
+        {"name": "fresh black or white truffles", "amount": "25", "unit": "g"},
+        {"name": "truffle oil", "amount": "3", "unit": "tbsp"},
+        {"name": "polenta", "amount": "400", "unit": "g"},
+        {"name": "milk", "amount": "800", "unit": "ml"},
+        {"name": "water", "amount": "400", "unit": "ml"},
+        {"name": "butter", "amount": "50", "unit": "g"},
+        {"name": "Parmesan cheese grated", "amount": "100", "unit": "g"},
+        {"name": "olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "fresh chives", "amount": "3", "unit": "tbsp"},
+        {"name": "flaky sea salt", "amount": "1/2", "unit": "tsp"},
+        {"name": "black pepper freshly ground", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Bring milk and water to a boil with a pinch of salt. Slowly pour in polenta while whisking.",
+        "Reduce heat and cook, stirring frequently, for 25-30 minutes until thick and creamy.",
+        "Stir in butter and Parmesan. Keep warm.",
+        "Heat olive oil in a large non-stick pan over medium-low heat.",
+        "Crack eggs carefully into the pan. Cover and cook for 3-4 minutes until whites are set but yolks are runny.",
+        "While eggs cook, use a truffle slicer or fine grater to shave truffle into paper-thin slices.",
+        "Season polenta with salt and pepper. Spread a generous base of truffle polenta on each plate.",
+        "Slide 2 fried eggs onto the polenta. Drizzle with truffle oil and scatter truffle shavings generously over each egg.",
+        "Garnish with snipped chives and flaky sea salt. Serve immediately."
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["traditional", "istrian", "truffle", "luxurious"]
+      },
+      "servings": 9,
+      "prep_time_min": 20,
+      "cook_time_min": 35,
+      "difficulty": "Easy"
+    }
+  ]
+}

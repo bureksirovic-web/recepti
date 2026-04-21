@@ -6,24 +6,32 @@ from typing import Any
 
 from .models import Recipe, RecipeTags
 
-RECIPES_JSON = "/workspace/repos/Recepti/data/recipes.json"
+RECIPES_JSON = "data/recipes.json"
+CROATIAN_RECIPES_JSON = "data/croatian_recipes.json"
 
 
 class RecipeStore:
-    """Load/save recipes from recipes.json."""
+    """Load/save recipes from one or more recipe JSON files."""
 
-    def __init__(self, path: str = RECIPES_JSON):
+    def __init__(self, path: str = RECIPES_JSON, extra_sources: list[str] | None = None):
         self._path = path
+        self._extra_sources = extra_sources or []
         self._recipes: list[Recipe] = []
         self._load()
 
     def _load(self) -> None:
-        """Load recipes from JSON file."""
-        p = Path(self._path)
-        if p.exists():
-            with open(p, "r", encoding="utf-8") as f:
+        all_files: list[str] = []
+        if Path(self._path).exists():
+            all_files.append(self._path)
+        for src in self._extra_sources:
+            if Path(src).exists():
+                all_files.append(src)
+        recipes: list[Recipe] = []
+        for file_path in all_files:
+            with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            self._recipes = [self._dict_to_recipe(r) for r in data.get("recipes", [])]
+            recipes.extend(self._dict_to_recipe(r) for r in data.get("recipes", []))
+        self._recipes = recipes
 
     def _save(self) -> None:
         """Persist recipes to JSON file."""

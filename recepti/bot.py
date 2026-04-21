@@ -24,6 +24,7 @@ from recepti.nutrition import check_daily_balance
 from recepti.planner import format_meal_plan, generate_weekly_plan
 from recepti.recipe_store import RecipeStore
 from recepti.shopping import format_shopping_list, generate_shopping_list_from_recipes
+from recepti.llm_service import suggest_recipe, scale_ingredients_for_family
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -33,11 +34,12 @@ logger = logging.getLogger(__name__)
 
 # ── Config ───────────────────────────────────────────────────────────────
 BOT_TOKEN = os.getenv("RECEPTI_BOT_TOKEN", "")
-DATA_DIR = os.getenv("RECEPTI_DATA_DIR", "/workspace/repos/Recepti/data")
+DATA_DIR = os.getenv("RECEPTI_DATA_DIR", "data")
 
 RECIPES_FILE = f"{DATA_DIR}/recipes.json"
 FAMILY_FILE = f"{DATA_DIR}/family.json"
 MEAL_PLAN_FILE = f"{DATA_DIR}/meal_plans.json"
+CROATIAN_RECIPES_JSON = f"{DATA_DIR}/croatian_recipes.json"
 
 # ── State (simple singleton) ────────────────────────────────────────
 _store: Optional[RecipeStore] = None
@@ -48,7 +50,7 @@ _family: list[Child] = []
 def get_store() -> RecipeStore:
     global _store
     if _store is None:
-        _store = RecipeStore(RECIPES_FILE)
+        _store = RecipeStore(RECIPES_FILE, extra_sources=[CROATIAN_RECIPES_JSON])
     return _store
 
 
@@ -105,6 +107,7 @@ async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
         "/favorites <child_id> — top recipes for a child\n"
         "/balance [date] — nutrition balance check\n"
         "/addmeal <child_id> <recipe_id> <meal_type> <eaten%> — record a meal\n"
+        "/suggest <ingredients> [lunch|dinner|breakfast] — AI recipe suggestion\n"
         "/recipes — list all recipes\n"
         "/recipe <id> — full recipe details\n"
         "/help — this message"
@@ -373,6 +376,68 @@ async def addmeal_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> Non
     )
 
 
+async def suggest_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    """Usage: /suggest <ingredient1>, <ingredient2>, ... [lunch|dinner|breakfast]"""
+    meal_type = "lunch"
+    if ctx.args:
+        last_arg = ctx.args[-1].lower()
+        if last_arg in ("breakfast", "lunch", "dinner"):
+            meal_type = last_arg
+            ingredients = " ".join(ctx.args[:-1]).replace(",", " ")
+        else:
+            ingredients = " ".join(ctx.args).replace(",", " ")
+    else:
+        await update.message.reply_text(
+            "Usage: /suggest <ingredient1>, <ingredient2>, ... [lunch|dinner|breakfast]\n"
+            "Example: /suggest chicken, potatoes, garlic dinner"
+        )
+        return
+
+    if not ingredients.strip():
+        await update.message.reply_text("Please list some ingredients you have.")
+        return
+
+    family = get_family()
+    family_size = sum(1 for c in family if c.age_years > 0) if family else 9
+
+    ingredient_list = [i.strip() for i in ingredients.split() if i.strip()]
+    if not ingredient_list:
+        await update.message.reply_text("No valid ingredients provided.")
+        return
+
+    store = get_store()
+    available = [r.name.lower() for r in store._recipes]
+    matched = [i for i in ingredient_list if any(i.lower() in r for r in available)]
+
+    await update.message.reply_text(f"🍽️ Thinking... using {len(ingredient_list)} ingredient(s)...")
+
+    result = suggest_recipe(
+        available_ingredients=ingredient_list,
+        family_size=family_size,
+        meal_type=meal_type,
+    )
+
+    if result.get("recipe_id") == "error":
+        await update.message.reply_text(
+            f"❌ Suggestion unavailable: {result.get('why_this_recipe', 'Unknown error')}"
+        )
+        return
+
+    lines = [
+        f"✨ *Suggested: {result['recipe_name']}*",
+        f"Why: {result.get('why_this_recipe', 'N/A')}",
+        "",
+        f"Scaling for {family_size} people:",
+        f"_Notes: {result.get('scaling_notes', 'N/A')}_",
+        "",
+    ]
+
+    if matched:
+        lines.append(f"📦 Matching known recipes: {', '.join(matched)}")
+
+    await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
+
+
 async def balance_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     """Nutrition balance check. Usage: /balance [date]"""
     family = get_family()
@@ -440,6 +505,7 @@ def main() -> None:
     application.add_handler(CommandHandler("history", history_command))
     application.add_handler(CommandHandler("favorites", favorites_command))
     application.add_handler(CommandHandler("addmeal", addmeal_command))
+    application.add_handler(CommandHandler("suggest", suggest_command))
     application.add_handler(CommandHandler("balance", balance_command))
     application.add_handler(MessageHandler(filters.COMMAND, unknown))
 

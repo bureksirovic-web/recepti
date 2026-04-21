@@ -1,0 +1,13 @@
+{
+  "family": [
+    {"id": 100, "name": "Tomi", "age_years": 40, "dislikes": [], "favorites": []},
+    {"id": 101, "name": "Ivana", "age_years": 38, "dislikes": [], "favorites": []},
+    {"id": 1, "name": "Tea", "age_years": 11, "dislikes": [], "favorites": []},
+    {"id": 2, "name": "Kao", "age_years": 10, "dislikes": [], "favorites": []},
+    {"id": 3, "name": "Moi", "age_years": 9, "dislikes": [], "favorites": []},
+    {"id": 4, "name": "Avi", "age_years": 7, "dislikes": [], "favorites": []},
+    {"id": 5, "name": "Bo", "age_years": 4, "dislikes": [], "favorites": []},
+    {"id": 6, "name": "Lu", "age_years": 2, "dislikes": [], "favorites": []},
+    {"id": 7, "name": "Ori", "age_years": 0, "dislikes": [], "favorites": []}
+  ]
+}

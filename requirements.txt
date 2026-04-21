@@ -5,3 +5,7 @@
 # If you need to add external libraries in the future, uncomment and modify:
 # openai>=1.0.0  # For official OpenAI client (optional)
 # requests>=2.28.0  # For alternative HTTP client (optional)
+
+python-telegram-bot>=21.0.0
+requests>=2.31.0
+ruff>=0.4.0
