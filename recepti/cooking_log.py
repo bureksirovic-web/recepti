@@ -2,6 +2,9 @@
 
 import json
 import logging
+import os
+import tempfile
+import threading
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Optional
@@ -20,6 +23,7 @@ class CookingLogStore:
         self._sessions: list[CookingSession] = []
         self._members: dict[int, FamilyMember] = {}
         self._next_session_id: int = 1
+        self._lock = threading.RLock()
         self._load()
 
     # ── Members ─────────────────────────────────────────────────────
@@ -77,48 +81,58 @@ class CookingLogStore:
     # ── Sessions ───────────────────────────────────────────────────────
 
     def _load(self) -> None:
-        self._load_members()
-        if not self.log_path.exists():
-            self._sessions = []
-            self._next_session_id = 1
-            return
-        try:
-            with open(self.log_path) as f:
-                data = json.load(f)
-            self._sessions = [
-                CookingSession(
-                    id=s["id"],
-                    date=date.fromisoformat(s["date"]),
-                    recipe_id=s["recipe_id"],
-                    servings_made=float(s["servings_made"]),
-                    servings_served={
-                        int(k): float(v) for k, v in s.get("servings_served", {}).items()
-                    },
-                    notes=s.get("notes", ""),
-                )
-                for s in data if isinstance(data, list)
-            ]
-            self._next_session_id = max(s.id for s in self._sessions) + 1 if self._sessions else 1
-        except Exception as e:
-            logger.warning(f"Could not load cooking log: {e}")
-            self._sessions = []
-            self._next_session_id = 1
+        with self._lock:
+            self._load_members()
+            if not self.log_path.exists():
+                self._sessions = []
+                self._next_session_id = 1
+                return
+            try:
+                with open(self.log_path) as f:
+                    data = json.load(f)
+                self._sessions = [
+                    CookingSession(
+                        id=s["id"],
+                        date=date.fromisoformat(s["date"]),
+                        recipe_id=s["recipe_id"],
+                        servings_made=float(s["servings_made"]),
+                        servings_served={
+                            int(k): float(v) for k, v in s.get("servings_served", {}).items()
+                        },
+                        notes=s.get("notes", ""),
+                    )
+                    for s in data if isinstance(data, list)
+                ]
+                self._next_session_id = max(s.id for s in self._sessions) + 1 if self._sessions else 1
+            except Exception as e:
+                logger.warning(f"Could not load cooking log: {e}")
+                self._sessions = []
+                self._next_session_id = 1
+
+    def _atomic_save(self, data: list) -> None:
+        self.log_path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_fd, tmp_path = tempfile.mkstemp(
+            dir=str(self.log_path.parent), prefix=".cooking_log.tmp."
+        )
+        with os.fdopen(tmp_fd, "w") as f:
+            json.dump(data, f, indent=2, default=str)
+            os.fsync(f.fileno())
+        os.replace(tmp_path, self.log_path)
 
     def _save(self) -> None:
-        data = [
-            {
-                "id": s.id,
-                "date": s.date.isoformat(),
-                "recipe_id": s.recipe_id,
-                "servings_made": s.servings_made,
-                "servings_served": {str(k): v for k, v in s.servings_served.items()},
-                "notes": s.notes,
-            }
-            for s in self._sessions
-        ]
-        self.log_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.log_path, "w") as f:
-            json.dump(data, f, indent=2, default=str)
+        with self._lock:
+            data = [
+                {
+                    "id": s.id,
+                    "date": s.date.isoformat(),
+                    "recipe_id": s.recipe_id,
+                    "servings_made": s.servings_made,
+                    "servings_served": {str(k): v for k, v in s.servings_served.items()},
+                    "notes": s.notes,
+                }
+                for s in self._sessions
+            ]
+            self._atomic_save(data)
 
     def log_session(
         self,
@@ -128,18 +142,19 @@ class CookingLogStore:
         notes: str = "",
         log_date: Optional[date] = None,
     ) -> CookingSession:
-        session = CookingSession(
-            id=self._next_session_id,
-            date=log_date or date.today(),
-            recipe_id=recipe_id,
-            servings_made=servings_made,
-            servings_served=servings_served or {},
-            notes=notes,
-        )
-        self._sessions.append(session)
-        self._next_session_id += 1
-        self._save()
-        return session
+        with self._lock:
+            session = CookingSession(
+                id=self._next_session_id,
+                date=log_date or date.today(),
+                recipe_id=recipe_id,
+                servings_made=servings_made,
+                servings_served=servings_served or {},
+                notes=notes,
+            )
+            self._sessions.append(session)
+            self._next_session_id += 1
+            self._save()
+            return session
 
     def get_sessions(
         self,

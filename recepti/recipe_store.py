@@ -1,6 +1,9 @@
 """Recipe storage and search for Recepti."""
 
 import json
+import os
+import tempfile
+import threading
 from pathlib import Path
 from typing import Any
 
@@ -17,33 +20,41 @@ class RecipeStore:
         self._path = path
         self._extra_sources = extra_sources or []
         self._recipes: list[Recipe] = []
+        self._lock = threading.RLock()
         self._load()
 
     def _load(self) -> None:
-        all_files: list[str] = []
-        if Path(self._path).exists():
-            all_files.append(self._path)
-        for src in self._extra_sources:
-            if Path(src).exists():
-                all_files.append(src)
-        recipes: list[Recipe] = []
-        for file_path in all_files:
-            with open(file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            recipes.extend(self._dict_to_recipe(r) for r in data.get("recipes", []))
-        self._recipes = recipes
+        with self._lock:
+            all_files: list[str] = []
+            if Path(self._path).exists():
+                all_files.append(self._path)
+            for src in self._extra_sources:
+                if Path(src).exists():
+                    all_files.append(src)
+            recipes: list[Recipe] = []
+            for file_path in all_files:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                recipes.extend(self._dict_to_recipe(r) for r in data.get("recipes", []))
+            self._recipes = recipes
 
     def _save(self) -> None:
-        """Persist recipes to JSON file."""
-        data = {"recipes": [self._recipe_to_dict(r) for r in self._recipes]}
-        Path(self._path).parent.mkdir(parents=True, exist_ok=True)
-        with open(self._path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
+        with self._lock:
+            data = {"recipes": [self._recipe_to_dict(r) for r in self._recipes]}
+            Path(self._path).parent.mkdir(parents=True, exist_ok=True)
+            tmp_fd, tmp_path = tempfile.mkstemp(
+                dir=os.path.dirname(os.path.abspath(self._path)), prefix=".recipes.tmp."
+            )
+            with os.fdopen(tmp_fd, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+                os.fsync(f.fileno())
+            os.replace(tmp_path, self._path)
 
     def _dict_to_recipe(self, d: dict[str, Any]) -> Recipe:
         """Convert dict to Recipe."""
         from .models import Ingredient, NutritionPerServing
 
+        n = d.get("nutrition_per_serving", {})
         return Recipe(
             id=d["id"],
             name=d["name"],
@@ -61,15 +72,15 @@ class RecipeStore:
             prep_time_min=d.get("prep_time_min", 0),
             cook_time_min=d.get("cook_time_min", 0),
             nutrition_per_serving=NutritionPerServing(
-                calories=0.0,
-                protein_g=0.0,
-                carbs_g=0.0,
-                fat_g=0.0,
-                fiber_g=0.0,
-                iron_mg=0.0,
-                calcium_mg=0.0,
-                folate_mcg=0.0,
-                b12_mcg=0.0,
+                calories=float(n.get("calories", 0)),
+                protein_g=float(n.get("protein_g", 0)),
+                carbs_g=float(n.get("carbs_g", 0)),
+                fat_g=float(n.get("fat_g", 0)),
+                fiber_g=float(n.get("fiber_g", 0)),
+                iron_mg=float(n.get("iron_mg", 0)),
+                calcium_mg=float(n.get("calcium_mg", 0)),
+                folate_mcg=float(n.get("folate_mcg", 0)),
+                b12_mcg=float(n.get("b12_mcg", 0)),
             ),
             difficulty=d.get("difficulty", "medium"),
             source_url=d.get("source_url", ""),
@@ -77,6 +88,7 @@ class RecipeStore:
 
     def _recipe_to_dict(self, r: Recipe) -> dict[str, Any]:
         """Convert Recipe to dict."""
+        n = r.nutrition_per_serving
         return {
             "id": r.id,
             "name": r.name,
@@ -93,6 +105,17 @@ class RecipeStore:
             "servings": r.servings,
             "prep_time_min": r.prep_time_min,
             "cook_time_min": r.cook_time_min,
+            "nutrition_per_serving": {
+                "calories": n.calories,
+                "protein_g": n.protein_g,
+                "carbs_g": n.carbs_g,
+                "fat_g": n.fat_g,
+                "fiber_g": n.fiber_g,
+                "iron_mg": n.iron_mg,
+                "calcium_mg": n.calcium_mg,
+                "folate_mcg": n.folate_mcg,
+                "b12_mcg": n.b12_mcg,
+            },
             "difficulty": r.difficulty,
             "source_url": r.source_url,
         }
@@ -146,12 +169,13 @@ class RecipeStore:
 
     def add_recipe(self, recipe: Recipe) -> int:
         """Add recipe and assign new id if needed."""
-        if recipe.id == 0:
-            max_id = max((r.id for r in self._recipes), default=0)
-            recipe.id = max_id + 1
-        self._recipes.append(recipe)
-        self._save()
-        return recipe.id
+        with self._lock:
+            if recipe.id == 0:
+                max_id = max((r.id for r in self._recipes), default=0)
+                recipe.id = max_id + 1
+            self._recipes.append(recipe)
+            self._save()
+            return recipe.id
 
     def count(self) -> int:
         """Return number of recipes."""

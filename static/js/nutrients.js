@@ -10,7 +10,7 @@ const NUTRIENT_META = {
   fat_g:      { label: "Fat",       unit: "g",   color: "#d4a07b" },
 };
 
-const BASE_API = ".";
+const BASE_API = "";
 
 let activeCharts = [];
 

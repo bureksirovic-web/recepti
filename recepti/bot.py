@@ -161,6 +161,8 @@ async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
         "/addmeal <child_id> <recipe_id> <meal_type> <eaten%> — record a meal\n"
         "/suggest <ingredients> [lunch|dinner|breakfast] — AI recipe suggestion\n"
         "        /expand <ingredient> — find & add recipes online\n"
+        "/balance-family [days] — family nutrition report + grocery suggestions\n"
+        "/kuhano <recipe_id> [porcija] — zapisnik da ste skuhali nešto\n"
         "/recipes — list all recipes\n"
         "/recipe <id> — full recipe details\n"
         "/help — this message"
@@ -586,6 +588,119 @@ async def balance_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> Non
     await update.message.reply_text("\n".join(lines).strip())
 
 
+async def addmember_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    args = ctx.args
+    if not args or len(args) < 3:
+        await update.message.reply_text(
+            "Usage: /addmember Ime muško/žensko Godine\n"
+            "npr. /addmember Marko muško 8"
+        )
+        return
+
+    text = update.message.text or ""
+    tokens = text.strip().split()
+    if len(tokens) < 4:
+        await update.message.reply_text(
+            "Usage: /addmember Ime muško/žensko Godine\n"
+            "npr. /addmember Marko muško 8"
+        )
+        return
+
+    name = tokens[1]
+    gender_raw = tokens[2].lower()
+    age_raw = tokens[3]
+
+    if name.lower() in ("male", "female"):
+        await update.message.reply_text(
+            "Usage: /addmember Ime muško/žensko Godine\n"
+            "npr. /addmember Marko muško 8"
+        )
+        return
+
+    if gender_raw not in ("male", "female"):
+        await update.message.reply_text(
+            "Usage: /addmember Ime muško/žensko Godine\n"
+            "npr. /addmember Marko muško 8"
+        )
+        return
+
+    try:
+        age = int(age_raw)
+        if age < 1 or age > 120:
+            raise ValueError()
+    except ValueError:
+        await update.message.reply_text(
+            "Usage: /addmember Ime muško/žensko Godine\n"
+            "npr. /addmember Marko muško 8"
+        )
+        return
+
+    from recepti.models import FamilyMember
+
+    existing = get_cooking_log().get_members()
+    max_id = max(m.id for m in existing) if existing else 0
+    new_id = max_id + 1
+
+    member = FamilyMember(
+        id=new_id,
+        name=name,
+        sex=gender_raw,
+        age_years=float(age),
+    )
+    get_cooking_log().add_member(member)
+
+    await update.message.reply_text(
+        f"✅ Dodan član: {name} (ID: {new_id}, {gender_raw}, {age} godina)"
+    )
+
+
+async def kuhano_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    args = ctx.args
+    if not args:
+        await update.message.reply_text(
+            "Upotreba: /kuhano <recipe_id> [porcija]\n"
+            "npr. /kuhano 42\n"
+            "npr. /kuhano 42 6"
+        )
+        return
+
+    try:
+        recipe_id = int(args[0])
+    except ValueError:
+        await update.message.reply_text("Nepoznat ID recepta. Koristi /recipes za popis.")
+        return
+
+    store = get_store()
+    recipe = store.get_recipe_by_id(recipe_id)
+    if recipe is None:
+        await update.message.reply_text(f"Recept #{recipe_id} ne postoji. Koristi /recipes.")
+        return
+
+    portions: float
+    if len(args) >= 2:
+        try:
+            portions = float(args[1])
+            if portions <= 0:
+                raise ValueError()
+        except ValueError:
+            await update.message.reply_text("Broj porcija mora biti pozitivan broj.")
+            return
+    else:
+        portions = float(recipe.servings)
+
+    get_cooking_log().log_session(
+        recipe_id=recipe_id,
+        servings_made=portions,
+        servings_served=None,
+        notes="",
+        log_date=None,
+    )
+
+    await update.message.reply_text(
+        f"✅ Zapisano: recept #{recipe_id} — {recipe.name}, {portions:.0f} porcija"
+    )
+
+
 async def balance_family_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     args = ctx.args
     days = 7
@@ -658,6 +773,8 @@ def main() -> None:
     application.add_handler(CommandHandler("balance", balance_command))
     application.add_handler(CommandHandler("expand", expand_command))
     application.add_handler(CommandHandler("balance-family", balance_family_command))
+    application.add_handler(CommandHandler("addmember", addmember_command))
+    application.add_handler(CommandHandler("kuhano", kuhano_command))
     application.add_handler(MessageHandler(filters.COMMAND, unknown))
 
     if FLASK_PORT:

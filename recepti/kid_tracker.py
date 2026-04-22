@@ -1,6 +1,7 @@
 """Kid meal tracking for Recepti."""
 
 import json
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -11,8 +12,11 @@ from .models import Recipe
 class KidMealHistory:
     """Track a child's meal history and preferences."""
 
-    def __init__(self, storage_path: str = ".kid_history.json"):
-        self._storage_path = storage_path
+    def __init__(self, storage_path: str | None = None):
+        self._storage_path = (
+            storage_path
+            or os.path.join(os.getenv("RECEPTI_DATA_DIR", "data"), "kid_history.json")
+        )
         self._data: dict[int, dict[str, Any]] = {}
         self._recipe_store: Recipe | None = None
         self._load()
@@ -91,6 +95,14 @@ class KidMealHistory:
                 )
         return result
 
+    def _aggregate_by_recipe(self, entries: list[dict]) -> dict[int, float]:
+        """Aggregate entries by recipe_id, returning {recipe_id: total_eaten}."""
+        totals: dict[int, float] = {}
+        for e in entries:
+            rid = e["recipe_id"]
+            totals[rid] = totals.get(rid, 0) + e["amount_eaten"]
+        return totals
+
     def get_child_favorites(self, child_id: int, limit: int = 5) -> list[int]:
         """Return recipe_ids ranked by amount_eaten."""
         if child_id not in self._data:
@@ -98,11 +110,7 @@ class KidMealHistory:
         entries = self._data[child_id]["history"]
         if not entries:
             return []
-        # Aggregate by recipe_id
-        totals: dict[int, float] = {}
-        for e in entries:
-            rid = e["recipe_id"]
-            totals[rid] = totals.get(rid, 0) + e["amount_eaten"]
+        totals = self._aggregate_by_recipe(entries)
         ranked = sorted(totals, key=lambda r: totals[r], reverse=True)
         return ranked[:limit]
 
@@ -127,11 +135,7 @@ class KidMealHistory:
             cutoff_str = cutoff.strftime("%Y-%m-%d")
             recent = [e for e in data["history"] if e["date"] >= cutoff_str]
             meals_eaten = len(recent)
-            # most eaten recipes
-            totals: dict[int, float] = {}
-            for e in recent:
-                rid = e["recipe_id"]
-                totals[rid] = totals.get(rid, 0) + e["amount_eaten"]
+            totals = self._aggregate_by_recipe(recent)
             top_recipes = sorted(totals, key=lambda r: totals[r], reverse=True)[:5]
             most_eaten_names = []
             if self._recipe_store:

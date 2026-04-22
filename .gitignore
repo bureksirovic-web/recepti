@@ -129,3 +129,6 @@ dmypy.json
 cython_debug/
 .orchestra/
 logs/
+
+# Data files (contain family PII — never commit)
+data/*.json

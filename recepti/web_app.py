@@ -11,6 +11,8 @@ from flask_cors import CORS
 
 logger = logging.getLogger(__name__)
 
+DATA_DIR = os.getenv("RECEPTI_DATA_DIR", "data")
+
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
 
 
@@ -185,8 +187,8 @@ def create_app(recipe_store) -> Flask:
             from recepti.family_nutrient_balancer import FamilyNutrientBalancer
             from recepti.grocery_suggester import GrocerySuggester
             store = CookingLogStore(
-                os.path.join(os.path.dirname(__file__), "..", "data", "cooking_log.json"),
-                os.path.join(os.path.dirname(__file__), "..", "data", "family_members.json"),
+                os.path.join(DATA_DIR, "cooking_log.json"),
+                os.path.join(DATA_DIR, "family_members.json"),
             )
             balancer = FamilyNutrientBalancer(store, recipe_store)
             suggester = GrocerySuggester(
@@ -216,7 +218,8 @@ def create_app(recipe_store) -> Flask:
                 ],
                 "suggested_groceries": suggester.suggest_for_family(summaries),
             })
-        except Exception:
+        except Exception as exc:
+            logger.error("Failed to load nutrients endpoint: %s", exc)
             return jsonify({"error": "Nutrient tracking not configured yet"}), 503
 
     @app.route("/api/groceries")
@@ -226,8 +229,8 @@ def create_app(recipe_store) -> Flask:
             from recepti.family_nutrient_balancer import FamilyNutrientBalancer
             from recepti.grocery_suggester import GrocerySuggester
             store = CookingLogStore(
-                os.path.join(os.path.dirname(__file__), "..", "data", "cooking_log.json"),
-                os.path.join(os.path.dirname(__file__), "..", "data", "family_members.json"),
+                os.path.join(DATA_DIR, "cooking_log.json"),
+                os.path.join(DATA_DIR, "family_members.json"),
             )
             balancer = FamilyNutrientBalancer(store, recipe_store)
             suggester = GrocerySuggester(
@@ -238,7 +241,8 @@ def create_app(recipe_store) -> Flask:
             summaries = balancer.family_balance(days=7)
             suggestions = suggester.suggest_for_family(summaries)
             return jsonify({"suggestions": suggestions})
-        except Exception:
+        except Exception as exc:
+            logger.error("Failed to load groceries endpoint: %s", exc)
             return jsonify({"error": "Grocery suggester not configured yet"}), 503
 
     return app
