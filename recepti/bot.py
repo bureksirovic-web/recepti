@@ -25,6 +25,10 @@ from recepti.planner import format_meal_plan, generate_weekly_plan
 from recepti.recipe_store import RecipeStore
 from recepti.shopping import format_shopping_list, generate_shopping_list_from_recipes
 from recepti.llm_service import suggest_recipe, scale_ingredients_for_family
+from recepti.recipe_expander import RecipeExpander
+from recepti.cooking_log import CookingLogStore
+from recepti.family_nutrient_balancer import FamilyNutrientBalancer
+from recepti.grocery_suggester import GrocerySuggester
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -40,11 +44,35 @@ RECIPES_FILE = f"{DATA_DIR}/recipes.json"
 FAMILY_FILE = f"{DATA_DIR}/family.json"
 MEAL_PLAN_FILE = f"{DATA_DIR}/meal_plans.json"
 CROATIAN_RECIPES_JSON = f"{DATA_DIR}/croatian_recipes.json"
+EXPANDED_RECIPES_JSON = f"{DATA_DIR}/expanded_recipes.json"
+COOKING_LOG_JSON = f"{DATA_DIR}/cooking_log.json"
+FAMILY_MEMBERS_JSON = f"{DATA_DIR}/family_members.json"
+
+FLASK_PORT = os.getenv("RECEPTI_FLASK_PORT")
+_flask_app = None
+
+
+def _try_import_flask():
+    global _flask_app
+    if _flask_app is None:
+        try:
+            from recepti.web_app import create_app
+            _flask_app = create_app
+        except ImportError:
+            logger.warning(
+                "Flask not installed. Set RECEPTI_FLASK_PORT and run: pip install flask flask-cors"
+            )
+            _flask_app = False
+    return _flask_app or None
+
 
 # ── State (simple singleton) ────────────────────────────────────────
 _store: Optional[RecipeStore] = None
 _kid_history: Optional[KidMealHistory] = None
 _family: list[Child] = []
+_cooking_log: Optional[CookingLogStore] = None
+_balancer: Optional[FamilyNutrientBalancer] = None
+_suggester: Optional[GrocerySuggester] = None
 
 
 def get_store() -> RecipeStore:
@@ -95,6 +123,30 @@ def _load_family() -> list[Child]:
         return []
 
 
+def get_cooking_log() -> CookingLogStore:
+    global _cooking_log
+    if _cooking_log is None:
+        _cooking_log = CookingLogStore(COOKING_LOG_JSON, FAMILY_MEMBERS_JSON)
+    return _cooking_log
+
+
+def get_balancer() -> FamilyNutrientBalancer:
+    global _balancer
+    if _balancer is None:
+        _balancer = FamilyNutrientBalancer(get_cooking_log(), get_store())
+    return _balancer
+
+
+def get_suggester() -> GrocerySuggester:
+    global _suggester
+    if _suggester is None:
+        ingredient_names = [
+            ing.name for recipe in get_store()._recipes for ing in recipe.ingredients
+        ]
+        _suggester = GrocerySuggester(existing_ingredients=ingredient_names)
+    return _suggester
+
+
 # ── Helpers ──────────────────────────────────────────────────────────
 async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
@@ -108,6 +160,7 @@ async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
         "/balance [date] — nutrition balance check\n"
         "/addmeal <child_id> <recipe_id> <meal_type> <eaten%> — record a meal\n"
         "/suggest <ingredients> [lunch|dinner|breakfast] — AI recipe suggestion\n"
+        "        /expand <ingredient> — find & add recipes online\n"
         "/recipes — list all recipes\n"
         "/recipe <id> — full recipe details\n"
         "/help — this message"
@@ -438,6 +491,56 @@ async def suggest_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> Non
     await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
 
 
+async def expand_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    """Usage: /expand <ingredient> — auto-search and add recipes."""
+    if not ctx.args or len(ctx.args) < 1:
+        await update.message.reply_text(
+            "❌ Usage: /expand <ingredient>\n\n"
+            "Example: /expand red-lentils\n"
+            "        /expand mushrooms\n"
+            "        /expand spinach"
+        )
+        return
+
+    ingredient = " ".join(ctx.args).strip()
+
+    await update.message.reply_text(
+        f"🔍 Searching for vegetarian recipes with *{ingredient}*..."
+    )
+
+    try:
+        expander = RecipeExpander(_store)
+        results = expander.expand_ingredient(ingredient, max_recipes=3)
+
+        successful = [r for r in results if r.success]
+        duplicates = [r for r in results if r.was_duplicate]
+
+        if not successful:
+            count_tried = len(results)
+            msg = (
+                f"❌ No new recipes found for *{ingredient}* "
+                f"({count_tried} URLs checked)."
+            )
+            if duplicates:
+                msg += f"\n⊘ {len(duplicates)} were duplicates — already in DB."
+            await update.message.reply_text(msg, parse_mode="MarkdownV2")
+            return
+
+        recipe_lines = [f"• {r.recipe.name} ({r.recipe.tags.cuisine}, {r.recipe.difficulty})"
+                       for r in successful]
+        count = len(successful)
+
+        msg = (
+            f"✅ Added *{count}* new recipe{'s' if count > 1 else ''}:\n\n"
+            + "\n".join(recipe_lines)
+        )
+        await update.message.reply_text(msg, parse_mode="MarkdownV2")
+
+    except Exception as e:
+        logger.error(f"Error in /expand command: {e}")
+        await update.message.reply_text(f"❌ Error: {str(e)}")
+
+
 async def balance_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     """Nutrition balance check. Usage: /balance [date]"""
     family = get_family()
@@ -483,6 +586,52 @@ async def balance_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> Non
     await update.message.reply_text("\n".join(lines).strip())
 
 
+async def balance_family_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    args = ctx.args
+    days = 7
+    if args and args[0].isdigit():
+        days = max(1, min(30, int(args[0])))
+
+    members = get_cooking_log().get_members()
+    if not members:
+        await update.message.reply_text(
+            "No family members found. Run:\n"
+            "/addmember Name male/female AGE\n"
+            "e.g. /addmember Stipe male 35"
+        )
+        return
+
+    balancer = get_balancer()
+    suggester = get_suggester()
+    summaries = balancer.family_balance(days=days)
+    grocery_lines: list[str] = []
+
+    lines = [f"👨‍👩‍👧‍👦 Family Nutrition ({days}d)\n"]
+    for summary in summaries:
+        deficient = balancer.deficient_nutrients(summary)
+        status = "✅" if not deficient else "⚠️"
+        lines.append(f"{status} {summary.member_name}:")
+        if not deficient:
+            lines.append("  ✅ all targets met")
+        else:
+            for nut, pct, gap in deficient[:3]:
+                lines.append(f"  ❌ {nut}: {pct:.0f}% (need {gap:.1f} more)")
+        lines.append("")
+        if deficient:
+            member_groceries = suggester.suggest_for_summary(summary, top_n=3)
+            for item in member_groceries:
+                name = item.split(" (~")[0]
+                grocery_lines.append(name)
+
+    grocery_unique = list(dict.fromkeys(grocery_lines))
+    if grocery_unique:
+        lines.append("🛒 Suggested groceries:")
+        for item in grocery_unique[:6]:
+            lines.append(f"  • {item}")
+
+    await update.message.reply_text("\n".join(lines).strip())
+
+
 async def unknown(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Unknown command. Send /help for available commands.")
 
@@ -507,7 +656,29 @@ def main() -> None:
     application.add_handler(CommandHandler("addmeal", addmeal_command))
     application.add_handler(CommandHandler("suggest", suggest_command))
     application.add_handler(CommandHandler("balance", balance_command))
+    application.add_handler(CommandHandler("expand", expand_command))
+    application.add_handler(CommandHandler("balance-family", balance_family_command))
     application.add_handler(MessageHandler(filters.COMMAND, unknown))
+
+    if FLASK_PORT:
+        create_app_fn = _try_import_flask()
+        if create_app_fn:
+            import threading
+            store = get_store()
+            flask_app = create_app_fn(store)
+            thread = threading.Thread(
+                target=lambda: flask_app.run(
+                    host="0.0.0.0",
+                    port=int(FLASK_PORT),
+                    debug=False,
+                    use_reloader=False,
+                ),
+                daemon=True,
+            )
+            thread.start()
+            logger.info(f"Flask REST API running on :{FLASK_PORT}")
+        else:
+            logger.warning("Flask REST API disabled — flask-cors not available")
 
     logger.info("Recepti bot starting — polling mode")
     application.run_polling(allowed_updates=Update.ALL_TYPES)

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepti — Family Recipe Bot</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+        header { background: #6366f1; color: white; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        header h1 { font-size: 1.5rem; }
+        header nav a { color: white; text-decoration: none; margin-left: 1.5rem; opacity: 0.9; }
+        header nav a:hover { opacity: 1; }
+        main { max-width: 800px; margin: 3rem auto; padding: 0 1rem; text-align: center; }
+        .hero { margin-bottom: 2rem; }
+        .hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .hero p { color: #64748b; font-size: 1.1rem; margin-bottom: 2rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .stat-card .number { font-size: 2rem; font-weight: 700; color: #6366f1; }
+        .stat-card .label { color: #64748b; font-size: 0.875rem; margin-top: 0.25rem; }
+        .btn { display: inline-block; background: #6366f1; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .btn:hover { background: #4f46e5; }
+        @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🥘 Recepti</h1>
+        <nav>
+            <a href="/recipes">📖 Recipe Browser</a>
+            <a href="/api/recipes">📡 API</a>
+        </nav>
+    </header>
+    <main>
+        <div class="hero">
+            <h2>Family Recipe Collection</h2>
+            <p>Indian, Croatian, and international recipes — all lacto-ovo vegetarian,<br>scaled for a family of 9, with ingredients available in Croatia.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number" id="total-count">—</div>
+                <div class="label">Total Recipes</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="croatian-count">—</div>
+                <div class="label">Croatian Recipes</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="expanded-count">—</div>
+                <div class="label">Expanded Recipes</div>
+            </div>
+        </div>
+        <a href="/recipes" class="btn">Browse All Recipes →</a>
+    </main>
+    <script>
+        async function loadStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                document.getElementById('total-count').textContent = data.total;
+                document.getElementById('croatian-count').textContent = data.by_source.croatian;
+                document.getElementById('expanded-count').textContent = data.by_source.expanded;
+            } catch (e) {
+                document.getElementById('total-count').textContent = '?';
+            }
+        }
+        loadStats();
+    </script>
+</body>
+</html>

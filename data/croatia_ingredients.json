@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "categories": {
+    "vegetables": [
+      "onion", "garlic", "tomato", "potato", "carrot", "bell pepper", "zucchini",
+      "eggplant", "broccoli", "cauliflower", "cabbage", "spinach", "kale",
+      "lettuce", "cucumber", "mushroom", "peas", "green beans", "leek",
+      "celery", "corn", "beetroot", "pumpkin", "radish", "fennel", "asparagus"
+    ],
+    "legumes": [
+      "lentils", "red lentils", "green lentils", "chickpeas", "white beans",
+      "kidney beans", "black beans", "pinto beans", "borlotti beans", "lima beans",
+      "split peas"
+    ],
+    "grains": [
+      "rice", "basmati rice", "jasmine rice", "bulgur", "couscous", "quinoa",
+      "oats", "barley", "millet", "buckwheat", "polenta", "cornmeal",
+      "pasta", "spaghetti", "penne", "fusilli", "lasagna sheets",
+      "bread crumbs", "breadcrumbs"
+    ],
+    "dairy": [
+      "milk", "yogurt", "sour cream", "cream", "butter", "ghee",
+      "cheddar cheese", "mozzarella", "feta cheese", "parmesan",
+      "ricotta", "cream cheese", "kefir", "vrhnje", "svježi sir"
+    ],
+    "eggs": [
+      "eggs", "egg"
+    ],
+    "nuts_seeds": [
+      "walnuts", "almonds", "hazelnuts", "cashews", "pine nuts",
+      "sunflower seeds", "pumpkin seeds", "sesame seeds", "chia seeds",
+      "flax seeds", "hemp seeds"
+    ],
+    "pantry": [
+      "olive oil", "vegetable oil", "coconut oil", "sunflower oil",
+      "flour", "all-purpose flour", "whole wheat flour",
+      "sugar", "brown sugar", "honey", "maple syrup",
+      "salt", "black pepper", "paprika", "cumin", "coriander",
+      "turmeric", "cinnamon", "cardamom", "cloves", "nutmeg",
+      "bay leaves", "oregano", "basil", "thyme", "rosemary", "mint",
+      "parsley", "cilantro", "dill", "vinegar", "apple cider vinegar",
+      "balsamic vinegar", "soy sauce", "tomato paste", "mustard",
+      "vegetable broth", "stock cubes", "cocoa powder", "dark chocolate",
+      "raisins", "dried apricots", "canned tomatoes", "coconut milk",
+      "capers", "olives"
+    ],
+    "fruits": [
+      "apple", "banana", "orange", "lemon", "lime", "grapes",
+      "berries", "strawberries", "blueberries", "raspberries",
+      "peach", "pear", "plum", "apricot", "melon", "watermelon",
+      "dried fruit", "currants"
+    ]
+  }
+}

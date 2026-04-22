@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Browser — Recepti</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>📖 Recipe Browser</h1>
+        <nav>
+            <a href="/">🏠 Home</a>
+            <a href="/api/recipes">📡 API</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <aside class="filters">
+            <h3>🔍 Filters</h3>
+
+            <div class="filter-group">
+                <label for="search-input">Search</label>
+                <input type="text" id="search-input" placeholder="Recipe name or ingredients...">
+            </div>
+
+            <div class="filter-group">
+                <label for="cuisine-filter">Cuisine</label>
+                <select id="cuisine-filter">
+                    <option value="">All Cuisines</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="meal-type-filter">Meal Type</label>
+                <select id="meal-type-filter">
+                    <option value="">All Types</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="difficulty-filter">Difficulty</label>
+                <select id="difficulty-filter">
+                    <option value="">All Levels</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="source-filter">Source</label>
+                <select id="source-filter">
+                    <option value="">All Sources</option>
+                    <option value="original">Original</option>
+                    <option value="croatian">Croatian</option>
+                    <option value="expanded">Expanded</option>
+                </select>
+            </div>
+
+            <button id="clear-filters" class="btn-clear">Clear Filters</button>
+        </aside>
+
+        <main class="content">
+            <div class="stats-bar">
+                <span>Total: <strong id="total-count">—</strong></span>
+                <span>Showing: <strong id="showing-count">—</strong></span>
+            </div>
+
+            <div class="recipe-grid" id="recipe-grid">
+                <div class="loading">Loading recipes...</div>
+            </div>
+
+            <div class="pagination">
+                <button id="prev-page" disabled>← Previous</button>
+                <span id="page-info">Page 1</span>
+                <button id="next-page">Next →</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/recipes.js"></script>
+</body>
+</html>

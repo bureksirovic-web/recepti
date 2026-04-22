@@ -7,7 +7,9 @@ import json
 import logging
 import os
 import re
-from typing import Any
+from typing import Any, Optional
+
+from .models import Ingredient, RecipeTags, NutritionPerServing, Recipe
 
 import requests
 
@@ -112,3 +114,119 @@ def scale_ingredients_for_family(
             "unit": ing.get("unit", ""),
         })
     return scaled
+
+
+def extract_recipe_from_url(
+    url: str,
+    page_content: str,
+    croatia_hint: str,
+    vegetarian_constraint: str = (
+        "ONLY lacto-ovo vegetarian recipes. "
+        "Reject any recipe containing: chicken, beef, pork, fish, salmon, tuna, "
+        "tofu, tempeh, seitan, gelatin, bacon, ham, shrimp, sausage."
+    ),
+    max_tokens: int = 1500,
+) -> Optional[Recipe]:
+    """
+    Extract structured recipe from a scraped web page using LLM.
+
+    Args:
+        url: Source URL (for attribution)
+        page_content: Raw text extracted from the page
+        croatia_hint: Hint about Croatia-available ingredients
+        vegetarian_constraint: Text constraint for vegetarian-only extraction
+        max_tokens: Max LLM response tokens
+
+    Returns:
+        Recipe object or None if extraction fails
+    """
+    prompt = (
+        f"You are a recipe extraction expert. Extract the recipe from this web page.\n\n"
+        f"SOURCE URL: {url}\n\n"
+        f"CROATIA HINT: {croatia_hint}\n\n"
+        f"DIETARY CONSTRAINT: {vegetarian_constraint}\n\n"
+        "Extract ONLY lacto-ovo vegetarian recipes using ingredients available in Croatia.\n\n"
+        "Reply with ONLY valid JSON (no markdown, no explanation):\n"
+        '{\n'
+        '  "name": "Recipe Name",\n'
+        '  "description": "Brief 1-2 sentence description",\n'
+        '  "ingredients": [\n'
+        '    {"name": "ingredient name", "amount": "1", "unit": "cup"}\n'
+        '  ],\n'
+        '  "instructions": ["Step 1 description", "Step 2 description"],\n'
+        '  "tags": {\n'
+        '    "cuisine": "Cuisine type",\n'
+        '    "meal_type": "breakfast|lunch|dinner|snack",\n'
+        '    "dietary_tags": ["vegetarian"]\n'
+        '  },\n'
+        '  "servings": 4,\n'
+        '  "prep_time_min": 15,\n'
+        '  "cook_time_min": 30,\n'
+        '  "difficulty": "easy|medium|hard"\n'
+        '}\n\n'
+        'If no valid vegetarian recipe is found, reply with ONLY:\n'
+        '{"error": "No valid recipe found"}\n\n'
+        "PAGE CONTENT:\n"
+        + page_content[:6000]
+    )
+
+    response = call_openrouter(prompt, max_tokens=max_tokens)
+    if not response:
+        return None
+
+    try:
+        json_start = response.find("{")
+        json_end = response.rfind("}") + 1
+        if json_start == -1 or json_end == 0:
+            logger.error("No JSON found in LLM response")
+            return None
+        json_str = response[json_start:json_end]
+        data = json.loads(json_str)
+
+        if "error" in data or not data.get("name"):
+            logger.warning(f"LLM returned error or no name: {data.get('error', 'missing name')}")
+            return None
+
+        ingredients = [
+            Ingredient(
+                name=ing.get("name", ""),
+                amount=str(ing.get("amount", "")),
+                unit=ing.get("unit", ""),
+            )
+            for ing in data.get("ingredients", [])
+            if ing.get("name")
+        ]
+
+        tags = RecipeTags(
+            cuisine=data.get("tags", {}).get("cuisine", "International"),
+            meal_type=data.get("tags", {}).get("meal_type", "lunch"),
+            dietary_tags=data.get("tags", {}).get("dietary_tags", ["vegetarian"]),
+        )
+
+        instructions = data.get("instructions", [])
+        if isinstance(instructions, str):
+            instructions = [s.strip() for s in instructions.split(".") if s.strip()]
+
+        recipe = Recipe(
+            id=0,
+            name=data.get("name", "Unknown Recipe"),
+            description=data.get("description", ""),
+            ingredients=ingredients,
+            instructions=instructions,
+            tags=tags,
+            servings=data.get("servings", 4),
+            prep_time_min=data.get("prep_time_min", 0),
+            cook_time_min=data.get("cook_time_min", 0),
+            nutrition_per_serving=NutritionPerServing(0, 0, 0, 0, 0, 0, 0, 0, 0),
+            difficulty=data.get("difficulty", "medium"),
+            source_url=url,
+        )
+
+        return recipe
+
+    except json.JSONDecodeError as e:
+        logger.error(f"Failed to parse LLM JSON: {e} — response: {response[:200]}")
+        return None
+    except Exception as e:
+        logger.error(f"extract_recipe_from_url failed: {e}")
+        return None

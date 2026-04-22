@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Nutrition Dashboard — Recepti</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .member-card {
+      background: var(--card-bg, #1e2a38);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .member-card h3 { margin: 0 0 16px; color: #e2c97e; font-size: 1rem; }
+    .grocery-tag {
+      display: inline-block;
+      background: #2d4a63;
+      color: #a8d8b9;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.82rem;
+      margin: 4px 4px 0 0;
+    }
+    .gap-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      margin: 4px 0 2px;
+      overflow: hidden;
+    }
+    .gap-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+    .gap-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      padding: 16px 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .controls select, .controls button {
+      background: #2d4a63;
+      color: #e8f0f8;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .loading {
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      padding: 40px;
+      font-size: 0.9rem;
+    }
+    .error-msg {
+      background: rgba(255,60,60,0.12);
+      border: 1px solid rgba(255,80,80,0.3);
+      color: #ff9090;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="index.html" class="nav-link">Recipes</a>
+    <a href="recipes.html" class="nav-link">Dashboard</a>
+    <span class="nav-link active">Nutrition</span>
+  </nav>
+
+  <div class="controls">
+    <label>
+      Period:
+      <select id="periodSelect">
+        <option value="7">Last 7 days</option>
+        <option value="14">Last 14 days</option>
+        <option value="30">Last 30 days</option>
+      </select>
+    </label>
+    <button id="refreshBtn">Refresh</button>
+    <span id="statusMsg" style="font-size:0.8rem;color:rgba(255,255,255,0.4);"></span>
+  </div>
+
+  <div id="notConfigured" class="error-msg" style="display:none">
+    No family members configured yet. Run <code>/addmember</code> in the Telegram bot first.
+  </div>
+
+  <div id="dashboard" class="dashboard-grid" style="display:none">
+    <div class="member-card" style="grid-column:1/-1">
+      <h3>Suggested Groceries</h3>
+      <div id="groceryTags" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <div id="loading" class="loading">Loading nutrition data…</div>
+
+  <script src="js/nutrients.js"></script>
+</body>
+</html>

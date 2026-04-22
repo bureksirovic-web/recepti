@@ -2,6 +2,12 @@
 
 from dataclasses import dataclass, field
 from datetime import date
+from enum import Enum
+
+
+class Sex(Enum):
+    MALE = "male"
+    FEMALE = "female"
 
 
 @dataclass
@@ -126,3 +132,58 @@ class RecipeCollection:
             ):
                 results.append(recipe)
         return results
+
+
+@dataclass
+class FamilyMember:
+    """A family member with nutrient targets based on WHO/FAO/EFSA RDA."""
+
+    id: int
+    name: str
+    sex: str
+    age_years: float
+    pregnant: bool = False
+    lactating: bool = False
+    dislikes: list[str] = field(default_factory=list)
+
+    @property
+    def life_stage(self) -> str:
+        age = self.age_years
+        if age < 1:
+            return "infant"
+        if age < 4:
+            return "toddler"
+        if age < 10:
+            return "child"
+        if age < 18:
+            return "adolescent"
+        return "adult"
+
+
+@dataclass
+class CookingSession:
+    """A cooking session shared by the whole family."""
+
+    id: int
+    date: date
+    recipe_id: int
+    servings_made: float
+    servings_served: dict[int, float] = field(default_factory=dict)
+    notes: str = ""
+
+
+@dataclass
+class MemberNutritionSummary:
+    """Aggregated nutrient intake for one member over a time window."""
+
+    member_id: int
+    member_name: str
+    rda: dict[str, float]
+    intake: dict[str, float]
+
+    def pct_of_rda(self, nutrient: str) -> float:
+        target = self.rda.get(nutrient, 1)
+        return round(self.intake.get(nutrient, 0) / target * 100, 1)
+
+    def gap(self, nutrient: str) -> float:
+        return max(0.0, round(self.rda.get(nutrient, 0) - self.intake.get(nutrient, 0), 2))
