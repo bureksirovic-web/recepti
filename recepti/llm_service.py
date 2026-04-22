@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
-MODEL = "google/gemini-2.5-flash-preview"
+MODEL = "openai/gpt-oss-120b:free"
 
 
 def call_openrouter(
