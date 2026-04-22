@@ -13,6 +13,108 @@ logger = logging.getLogger(__name__)
 
 DATA_DIR = os.getenv("RECEPTI_DATA_DIR", "data")
 
+_CUISINE_TERMS: dict[str, list[str]] = {
+    "croatian": ["hrvatski recepti", "hrvatska kuhinja"],
+    "punjabi": ["punjabi recepti"],
+    "mediterranean": ["mediteranski recepti"],
+    "zagorje": ["zagorski recepti"],
+    "dalmatian": ["dalmatinski recepti"],
+    "istrian": ["istarski recepti"],
+    "slavonian": ["slavonski recepti"],
+}
+
+_MEAL_TERMS: dict[str, list[str]] = {
+    "breakfast": ["recepti za doručak", "brzi doručak recepti"],
+    "lunch": ["recepti za ručak"],
+    "dinner": ["recepti za večeru"],
+    "snack": ["recepti za užinu"],
+    "dessert": ["deserti", "recepti za desert"],
+}
+
+_DIFFICULTY_TERMS: dict[str, list[str]] = {
+    "easy": ["jednostavni recepti", "lagani recepti"],
+    "medium": ["srednje teški recepti"],
+    "hard": ["zahtjevni recepti"],
+}
+
+
+def _suggest_queries(dimension: str, value: str) -> list[str]:
+    value_lower = value.lower()
+    if dimension == "cuisine":
+        terms = _CUISINE_TERMS.get(value_lower, [f"{value_lower} recepti"])
+        return terms + [f"{value} recipes croatia"]
+    if dimension == "meal_type":
+        terms = _MEAL_TERMS.get(value_lower, [f"recepti za {value_lower}"])
+        return terms + [f"{value} recipes vegetarian"]
+    if dimension == "difficulty":
+        terms = _DIFFICULTY_TERMS.get(value_lower, [f"{value_lower} recepti"])
+        return terms
+    return [f"{value} recepti"]
+
+
+def _build_reason(hole_type: str, dimension: str, value: str, rej_count: int) -> str:
+    if hole_type == "coverage":
+        return f"SPARSE coverage: {dimension}={value}"
+    if hole_type == "rejection":
+        return f"REJECTED cuisine: {value}"
+    return f"BOTH: sparse {dimension}={value} AND rejections"
+
+
+def _get_tag_val(r, dim: str) -> str:
+    t = r.tags
+    if dim == "cuisine":
+        return t.cuisine
+    if dim == "meal_type":
+        return t.meal_type
+    if dim == "difficulty":
+        return r.difficulty
+    return ""
+
+
+def _build_dim(all_recipes, total: int, dim: str) -> dict:
+    counts: dict[str, dict] = {}
+    for r in all_recipes:
+        val = _get_tag_val(r, dim).lower()
+        if val not in counts:
+            counts[val] = {"name": val, "count": 0, "score": 0.0}
+        counts[val]["count"] += 1
+    for info in counts.values():
+        info["score"] = round(info["count"] / total, 4)
+    return counts
+
+
+def _build_holes(all_recipes, total: int) -> list[dict]:
+    if total == 0:
+        return []
+    dim_keys = ["cuisine", "meal_type", "difficulty"]
+
+    def _counts(dim: str) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for r in all_recipes:
+            val = _get_tag_val(r, dim).lower()
+            counts[val] = counts.get(val, 0) + 1
+        return counts
+
+    holes: list[dict] = []
+    for dim in dim_keys:
+        for val, count in _counts(dim).items():
+            if count < 3:
+                priority = 99.0 if count == 0 else round(count / total, 4)
+                status = "EMPTY" if count == 0 else "SPARSE"
+                holes.append(
+                    {
+                        "dimension": dim,
+                        "value": val,
+                        "count": count,
+                        "score": round(count / total, 4),
+                        "priority": priority,
+                        "status": status,
+                        "suggested_queries": _suggest_queries(dim, val),
+                    }
+                )
+    holes.sort(key=lambda h: h["priority"], reverse=True)
+    return holes
+
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
 
 
@@ -160,14 +262,68 @@ def create_app(recipe_store) -> Flask:
             "sources": ["original", "croatian", "expanded"],
         })
 
+    @app.route("/api/search")
+    def search_recipes():
+        """Lightweight search endpoint returning recipe suggestions.
+
+        Query params:
+            q: search query (required)
+            limit: max results (default 8, max 20)
+        """
+        query = request.args.get("q", "").strip()
+        if not query:
+            return jsonify({"error": "Query parameter 'q' is required"}), 400
+
+        limit = min(20, max(1, int(request.args.get("limit", 8))))
+
+        query_lower = query.lower()
+        scored = []
+
+        for recipe in recipe_store._recipes:
+            score = 0
+            name_lower = recipe.name.lower()
+            desc_lower = recipe.description.lower()
+
+            if name_lower == query_lower:
+                score = 100
+            elif name_lower.startswith(query_lower):
+                score = 80
+            elif query_lower in name_lower:
+                score = 50 + (name_lower.find(query_lower) > 0)
+            elif query_lower in desc_lower:
+                score = 20
+
+            if score > 0:
+                scored.append((recipe, score))
+
+        scored.sort(key=lambda x: x[1], reverse=True)
+        results = [
+            {"id": r.id, "name": r.name, "cuisine": r.tags.cuisine}
+            for r, _ in scored[:limit]
+        ]
+
+        return jsonify({
+            "results": results,
+            "query": query,
+            "total": len(results),
+        })
+
     # ── Static file serving ─────────────────────────────────────────
     @app.route("/recipes")
     def serve_recipes():
         return send_from_directory(STATIC_DIR, "recipes.html")
 
+    @app.route("/scrape-todo")
+    def serve_scrape_todo():
+        return send_from_directory(STATIC_DIR, "scrape-todo.html")
+
     @app.route("/nutrients")
     def serve_nutrients():
         return send_from_directory(STATIC_DIR, "nutrients.html")
+
+    @app.route("/coverage")
+    def serve_coverage():
+        return send_from_directory(STATIC_DIR, "coverage.html")
 
     @app.route("/")
     def serve_index():
@@ -244,5 +400,107 @@ def create_app(recipe_store) -> Flask:
         except Exception as exc:
             logger.error("Failed to load groceries endpoint: %s", exc)
             return jsonify({"error": "Grocery suggester not configured yet"}), 503
+
+    @app.route("/api/coverage")
+    def get_coverage():
+        all_recipes = recipe_store._recipes
+        total = len(all_recipes)
+        if total == 0:
+            return jsonify({"error": "No recipes loaded"}), 503
+
+        by_dimension = {
+            "cuisine": _build_dim(all_recipes, total, "cuisine"),
+            "meal_type": _build_dim(all_recipes, total, "meal_type"),
+            "difficulty": _build_dim(all_recipes, total, "difficulty"),
+        }
+
+        holes = _build_holes(all_recipes, total)
+
+        return jsonify(
+            {
+                "by_dimension": by_dimension,
+                "holes": holes,
+                "total_recipes": total,
+            }
+        )
+
+    @app.route("/api/scrape-todo")
+    def get_scrape_todo():
+        try:
+            from recepti.rating_store import RecipeRatingStore
+            ratings_store = RecipeRatingStore(
+                os.path.join(DATA_DIR, "recipe_ratings.json")
+            )
+        except Exception as exc:
+            logger.warning("Ratings store unavailable: %s", exc)
+            ratings_store = None
+
+        all_recipes = recipe_store._recipes
+        total = len(all_recipes)
+        if total == 0:
+            return jsonify({"error": "No recipes loaded"}), 503
+
+        coverage_holes = _build_holes(all_recipes, total)
+
+        rejected_cuisines: dict[str, int] = {}
+        if ratings_store is not None:
+            rejected_cuisines = ratings_store.get_rejected_cuisines(recipe_store, threshold=2)
+
+        targets: list[dict] = []
+        seen_queries: set[str] = set()
+
+        for hole in coverage_holes:
+            dim = hole["dimension"]
+            val = hole["value"]
+            priority = hole["priority"]
+            hole_type = "coverage"
+
+            rej_count = rejected_cuisines.get(val, 0)
+            if dim == "cuisine" and rej_count >= 2:
+                priority = round(priority * (1 + 0.5), 4)
+                hole_type = "both"
+
+            queries = hole["suggested_queries"]
+            for q in queries:
+                if q.lower() not in seen_queries:
+                    targets.append(
+                        {
+                            "query": q,
+                            "reason": _build_reason(hole_type, dim, val, rej_count),
+                            "priority_score": priority,
+                            "type": hole_type,
+                        }
+                    )
+                    seen_queries.add(q.lower())
+
+        if rejected_cuisines and ratings_store is not None:
+            for cuisine, rej_cnt in rejected_cuisines.items():
+                mult = 0.5 if rej_cnt <= 3 else 1.0
+                cuisine_lower = cuisine.lower()
+                cuisine_queries = _suggest_queries("cuisine", cuisine_lower)
+                for q in cuisine_queries:
+                    if q.lower() not in seen_queries:
+                        targets.append(
+                            {
+                                "query": q,
+                                "reason": (
+                                    f"REJECTED cuisine: {rej_cnt} members gave thumbs-down "
+                                    f"on {cuisine}"
+                                ),
+                                "priority_score": round(0.5 * (1 + mult), 4),
+                                "type": "rejection",
+                            }
+                        )
+                        seen_queries.add(q.lower())
+
+        targets.sort(key=lambda t: t["priority_score"], reverse=True)
+
+        return jsonify(
+            {
+                "targets": targets[:20],
+                "coverage_holes": len(coverage_holes),
+                "rejected_cuisines": rejected_cuisines,
+            }
+        )
 
     return app

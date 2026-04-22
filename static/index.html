@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d6a4f">
+    <meta name="description" content="Family recipe collection with Indian, Croatian, and international vegetarian recipes scaled for a family of 9.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <title>Recepti — Family Recipe Bot</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,13 +28,15 @@
         .btn:hover { background: #4f46e5; }
         @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
     </style>
+    <script src="/static/js/theme.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>🥘 Recepti</h1>
-        <nav>
-            <a href="/recipes">📖 Recipe Browser</a>
-            <a href="/api/recipes">📡 API</a>
+        <h1><a href="/" aria-label="Recepti home" aria-current="page" style="color: white; text-decoration: none;">Recepti</a></h1>
+        <span id="theme-toggle-wrap"></span>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="/recipes" aria-label="Recipe Browser"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#book-open"/></svg> Recipe Browser</a>
+            <a href="/api/recipes" aria-label="API"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#clipboard-list"/></svg> API</a>
         </nav>
     </header>
     <main>
@@ -66,6 +73,9 @@
             }
         }
         loadStats();
+    </script>
+    <script>
+        document.getElementById('theme-toggle-wrap').appendChild(window.ReceptiTheme.createToggle());
     </script>
 </body>
 </html>

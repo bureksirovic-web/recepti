@@ -20,7 +20,13 @@ OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 MODEL = "google/gemini-2.5-flash-preview"
 
 
-def call_openrouter(prompt: str) -> str:
+def call_openrouter(
+    prompt: str,
+    model: str = None,
+    temperature: float = None,
+    max_tokens: int = None,
+    **kwargs,
+) -> str:
     if not OPENROUTER_API_KEY:
         raise RuntimeError("OPENROUTER_API_KEY environment variable not set")
     headers = {
@@ -30,11 +36,17 @@ def call_openrouter(prompt: str) -> str:
         "X-Title": "Recepti Family Recipe Bot",
     }
     payload = {
-        "model": MODEL,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.7,
-        "max_tokens": 1024,
     }
+    if model is not None:
+        payload["model"] = model
+    elif MODEL:
+        payload["model"] = MODEL
+    if temperature is not None:
+        payload["temperature"] = temperature
+    if max_tokens is not None:
+        payload["max_tokens"] = max_tokens
+    payload.update(kwargs)
     response = requests.post(
         f"{OPENROUTER_API_BASE}/chat/completions",
         headers=headers,
@@ -230,3 +242,100 @@ def extract_recipe_from_url(
     except Exception as e:
         logger.error(f"extract_recipe_from_url failed: {e}")
         return None
+
+
+def parse_meal_description(
+    text: str,
+    family_members: list[str],
+    known_recipes: list[str],
+) -> dict:
+    """
+    Parse Croatian free-text meal description into structured JSON via LLM.
+    Returns raw dict (parsed by meal_parser.py into dataclasses).
+    """
+    family_str = ", ".join(f'"{n}"' for n in family_members) if family_members else "(none)"
+    recipes_str = ", ".join(f'"{n}"' for n in known_recipes) if known_recipes else "(none)"
+
+    prompt = f"""You are parsing Croatian family meal descriptions.
+
+TASK: Extract structured meal information from free-form Croatian text.
+Return VALID JSON ONLY — no markdown, no explanation, no apology.
+
+FAMILY MEMBERS (exact names): {family_str}
+KNOWN RECIPES (partial names OK): {recipes_str}
+
+CROATIAN MEAL TYPES:
+- "doručak", "doručak", "za doručak" → breakfast
+- "ručak", "za ručak" → lunch
+- "večera", "večeru", "za večeru", "večeri" → dinner
+
+USER INPUT: {text}
+
+RESPONSE FORMAT (valid JSON only, no markdown):
+{{
+  "meals": [
+    {{
+      "meal_type": "breakfast|lunch|dinner",
+      "recipe_name": "matched recipe name or unknown",
+      "eaters": [
+        {{
+          "member_name": "matched member name",
+          "amount": 0.0,
+          "notes": ""
+        }}
+      ]
+    }}
+  ],
+  "confidence": 0.85,
+  "unmatched_members": ["UnknownName"],
+  "unmatched_recipes": ["UnknownRecipe"]
+}}
+
+RULES:
+- Parse amounts: "2 porcije" → 2.0, "pojeo" → 1.0, "nije jela" → 0.0
+- "svi", "sve", "svi su" → all known family members
+- "nitko", "ništa", "nije jela" → skip this meal
+- If recipe name partially matches known_recipes, include in unmatched_recipes
+- Confidence: 1.0 = all matched, 0.5 = partial, 0.0 = no meals found"""
+
+    if not OPENROUTER_API_KEY:
+        return {"meals": [], "confidence": 0.0, "unmatched_members": [], "unmatched_recipes": []}
+
+    try:
+        raw = call_openrouter(prompt)
+        raw = re.sub(r"^```json\s*", "", raw, flags=re.IGNORECASE)
+        raw = re.sub(r"^```\s*", "", raw, flags=re.IGNORECASE)
+        raw = re.sub(r"\s*```$", "", raw, flags=re.IGNORECASE)
+        return json.loads(raw)
+    except (json.JSONDecodeError, KeyError, TypeError, ValueError) as e:
+        logger.warning(f"parse_meal_description failed: {e}")
+        return {"meals": [], "confidence": 0.0, "unmatched_members": [], "unmatched_recipes": []}
+
+
+def translate_text(
+    text: str,
+    target_lang: str,
+    source_lang: str = "en",
+    glossary: list[str] = None,
+) -> str:
+    glossary_instruction = ""
+    if glossary:
+        glossary_instruction = (
+            f"\n\nMUST preserve these terms exactly (do not translate them): "
+            + ", ".join(f'"{term}"' for term in glossary)
+        )
+
+    prompt = f"""Translate the following text from {source_lang} to {target_lang}.
+Use accurate food terminology for Croatian/Mediterranean cuisine.{glossary_instruction}
+
+TEXT TO TRANSLATE:
+{text}
+
+Respond with ONLY the translated text, no explanations or notes."""
+
+    return call_openrouter(
+        prompt,
+        model="google/gemma-4-26b-a4b-it:free",
+        temperature=0.0,
+        max_tokens=2048,
+    )

@@ -2587,6 +2587,702 @@
       "prep_time_min": 10,
       "cook_time_min": 20,
       "difficulty": "Easy"
+    },
+    {
+      "id": 31,
+      "name": "Fiš-paštić",
+      "description": "A traditional Slavonian fish stew made with river fish, potatoes and vegetables in a savory broth",
+      "ingredients": [
+        {"name": "River fish (carp or catfish)", "amount": "1", "unit": "kg"},
+        {"name": "Potatoes", "amount": "4", "unit": "medium"},
+        {"name": "Onion", "amount": "2", "unit": "large"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Tomatoes", "amount": "3", "unit": "medium"},
+        {"name": "Garlic", "amount": "4", "unit": "cloves"},
+        {"name": "Vegetable broth", "amount": "1", "unit": "liter"},
+        {"name": "Vegetable oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Clean and cut fish into portions, season with salt and pepper",
+        "Cut potatoes into cubes and carrots into slices",
+        "Sauté onions in oil until translucent, add garlic",
+        "Add tomatoes and cook until soft",
+        "Add potatoes, carrots and broth, simmer for 15 minutes",
+        "Add fish pieces and cook for 10-15 minutes until fish is done",
+        "Season to taste and serve with fresh bread"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["pescatarian", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 35,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 32,
+      "name": "Čobanac",
+      "description": "A hearty Slavonian goulash with beef, vegetables and paprika, slow-cooked to perfection",
+      "ingredients": [
+        {"name": "Beef chuck", "amount": "800", "unit": "g"},
+        {"name": "Onion", "amount": "3", "unit": "large"},
+        {"name": "Paprika", "amount": "2", "unit": "tbsp"},
+        {"name": "Tomatoes", "amount": "3", "unit": "medium"},
+        {"name": "Potatoes", "amount": "4", "unit": "medium"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Vegetable oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Cut beef into large cubes, season with salt and pepper",
+        "Sauté onions in oil until golden",
+        "Add beef and brown on all sides",
+        "Stir in paprika and cook for 2 minutes",
+        "Add tomatoes, potatoes and carrots",
+        "Add enough water to cover, add bay leaves",
+        "Simmer on low heat for 2-3 hours until meat is tender",
+        "Serve with fresh bread or polenta"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["gluten-free", "dairy-free"]
+      },
+      "servings": 6,
+      "prep_time_min": 30,
+      "cook_time_min": 180,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 33,
+      "name": "Sataraš",
+      "description": "A rustic Slavonian vegetable stew with peppers, tomatoes and onions, perfect for summer",
+      "ingredients": [
+        {"name": "Bell peppers", "amount": "5", "unit": "large"},
+        {"name": "Tomatoes", "amount": "6", "unit": "large"},
+        {"name": "Onion", "amount": "2", "unit": "large"},
+        {"name": "Garlic", "amount": "3", "unit": "cloves"},
+        {"name": "Vegetable oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Sugar", "amount": "1", "unit": "tsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Core and slice bell peppers into strips",
+        "Blanch and peel tomatoes, then chop roughly",
+        "Sauté onion in oil until soft",
+        "Add peppers and cook until they start to soften",
+        "Add tomatoes, garlic, sugar, salt and pepper",
+        "Simmer uncovered for 30-40 minutes until thick",
+        "Serve as a side dish or over pasta"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian", "vegan", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 45,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 34,
+      "name": "Šukijada",
+      "description": "A traditional Slavonian bean stew made with white beans and smoked pork",
+      "ingredients": [
+        {"name": "White beans (dried)", "amount": "400", "unit": "g"},
+        {"name": "Smoked pork ribs", "amount": "300", "unit": "g"},
+        {"name": "Onion", "amount": "2", "unit": "large"},
+        {"name": "Garlic", "amount": "4", "unit": "cloves"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Celery", "amount": "1", "unit": "stalk"},
+        {"name": "Tomatoes", "amount": "2", "unit": "medium"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Vegetable oil", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Soak beans overnight, drain and rinse",
+        "Brown smoked pork in a pot, remove and set aside",
+        "Sauté onions, carrots, celery and garlic in the pot",
+        "Add beans, tomatoes, bay leaves and enough water",
+        "Bring to boil, then simmer for 1 hour",
+        "Add smoked pork and cook for another 30-45 minutes",
+        "Season to taste and serve with bread"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["gluten-free", "dairy-free"]
+      },
+      "servings": 6,
+      "prep_time_min": 20,
+      "cook_time_min": 120,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 35,
+      "name": "Brudet",
+      "description": "A Dalmatian fish stew with white wine, tomatoes and Mediterranean herbs",
+      "ingredients": [
+        {"name": "Mixed white fish", "amount": "1", "unit": "kg"},
+        {"name": "White wine", "amount": "1", "unit": "cup"},
+        {"name": "Tomatoes", "amount": "4", "unit": "large"},
+        {"name": "Onion", "amount": "1", "unit": "large"},
+        {"name": "Garlic", "amount": "4", "unit": "cloves"},
+        {"name": "Olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "Fresh parsley", "amount": "1", "unit": "bunch"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Cut fish into portions, season with salt and pepper",
+        "Sauté onions in olive oil until translucent",
+        "Add garlic and cook for 1 minute",
+        "Add tomatoes and white wine, simmer for 10 minutes",
+        "Add fish pieces and enough water to cover",
+        "Add bay leaves and simmer for 15-20 minutes",
+        "Garnish with fresh parsley and serve"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["pescatarian", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 40,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 36,
+      "name": "Pašticada",
+      "description": "A Dalmatian specialty of beef marinated in wine and vinegar, then slow-cooked with prunes",
+      "ingredients": [
+        {"name": "Beef top round", "amount": "1", "unit": "kg"},
+        {"name": "Red wine", "amount": "750", "unit": "ml"},
+        {"name": "Red wine vinegar", "amount": "250", "unit": "ml"},
+        {"name": "Onion", "amount": "2", "unit": "large"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Prunes", "amount": "10", "unit": "pieces"},
+        {"name": "Bacon", "amount": "100", "unit": "g"},
+        {"name": "Tomato paste", "amount": "2", "unit": "tbsp"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Vegetable oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Marinate beef in wine and vinegar overnight",
+        "Remove beef, pat dry, and season with salt and pepper",
+        "Brown beef in oil with bacon, remove and set aside",
+        "Sauté onions and carrots, add tomato paste",
+        "Return beef, add strained marinade, and bay leaves",
+        "Add prunes and enough water to cover",
+        "Braze in oven at 160°C for 2-3 hours until tender",
+        "Slice thinly and serve with cooking juices"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["gluten-free", "dairy-free"]
+      },
+      "servings": 6,
+      "prep_time_min": 30,
+      "cook_time_min": 180,
+      "difficulty": "Hard"
+    },
+    {
+      "id": 37,
+      "name": "Maneštra",
+      "description": "A Dalmatian minestrone with beans, vegetables and small pasta",
+      "ingredients": [
+        {"name": "Borlotti beans (dried)", "amount": "300", "unit": "g"},
+        {"name": "Potatoes", "amount": "2", "unit": "medium"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Celery", "amount": "2", "unit": "stalks"},
+        {"name": "Zucchini", "amount": "1", "unit": "medium"},
+        {"name": "Tomatoes", "amount": "3", "unit": "medium"},
+        {"name": "Small pasta (ditalini)", "amount": "100", "unit": "g"},
+        {"name": "Olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Garlic", "amount": "3", "unit": "cloves"},
+        {"name": "Fresh parsley", "amount": "1", "unit": "bunch"},
+        {"name": "Salt", "amount": "to taste", "unit": ""}
+      ],
+      "instructions": [
+        "Soak beans overnight, cook until tender",
+        "Sauté onion, carrots, and celery in olive oil",
+        "Add potatoes, zucchini, and tomatoes",
+        "Add cooked beans and enough water",
+        "Simmer for 15 minutes, then add pasta",
+        "Cook until pasta is al dente",
+        "Season and garnish with parsley"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 6,
+      "prep_time_min": 20,
+      "cook_time_min": 60,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 38,
+      "name": "Crni rižot",
+      "description": "A Venetian-inspired Dalmatian black risotto made with cuttlefish ink",
+      "ingredients": [
+        {"name": "Arborio rice", "amount": "400", "unit": "g"},
+        {"name": "Cuttlefish", "amount": "500", "unit": "g"},
+        {"name": "Cuttlefish ink", "amount": "2", "unit": "sachets"},
+        {"name": "White wine", "amount": "1/2", "unit": "cup"},
+        {"name": "Onion", "amount": "1", "unit": "medium"},
+        {"name": "Garlic", "amount": "2", "unit": "cloves"},
+        {"name": "Olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "Fish broth", "amount": "1", "unit": "liter"},
+        {"name": "Fresh parsley", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""}
+      ],
+      "instructions": [
+        "Clean and chop cuttlefish into small pieces",
+        "Sauté onion and garlic in olive oil",
+        "Add cuttlefish and cook for 5 minutes",
+        "Add rice and toast for 2 minutes",
+        "Pour in white wine and let evaporate",
+        "Add broth gradually, stirring constantly",
+        "In the last 5 minutes, add cuttlefish ink",
+        "Season, garnish with parsley and serve"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["pescatarian", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 20,
+      "cook_time_min": 25,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 39,
+      "name": "Štrukli",
+      "description": "Traditional dumplings filled with cottage cheese, a beloved Croatian comfort food",
+      "ingredients": [
+        {"name": "All-purpose flour", "amount": "400", "unit": "g"},
+        {"name": "Eggs", "amount": "2", "unit": "large"},
+        {"name": "Cottage cheese", "amount": "500", "unit": "g"},
+        {"name": "Sour cream", "amount": "200", "unit": "g"},
+        {"name": "Butter", "amount": "50", "unit": "g"},
+        {"name": "Sugar", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "1", "unit": "tsp"},
+        {"name": "Breadcrumbs", "amount": "50", "unit": "g"}
+      ],
+      "instructions": [
+        "Make dough with flour, eggs, salt and water, rest for 30 minutes",
+        "Mix cottage cheese with sugar, one egg and sour cream",
+        "Roll dough thin, spread filling evenly",
+        "Roll tightly and cut into pieces",
+        "Cook in salted boiling water for 10-15 minutes",
+        "Drain and top with buttered breadcrumbs",
+        "Serve warm with additional sour cream"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 4,
+      "prep_time_min": 45,
+      "cook_time_min": 20,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 40,
+      "name": "Burek",
+      "description": "Flaky phyllo pastry filled with cheese and eggs, a popular breakfast throughout Croatia",
+      "ingredients": [
+        {"name": "Phyllo pastry", "amount": "500", "unit": "g"},
+        {"name": "White cheese (burek cheese)", "amount": "400", "unit": "g"},
+        {"name": "Eggs", "amount": "4", "unit": "large"},
+        {"name": "Sour cream", "amount": "200", "unit": "g"},
+        {"name": "Butter (melted)", "amount": "100", "unit": "g"},
+        {"name": "Sugar", "amount": "1", "unit": "tbsp"},
+        {"name": "Salt", "amount": "1", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Mix cheese with eggs, sour cream, sugar and salt",
+        "Brush a baking pan with melted butter",
+        "Layer phyllo sheets, brushing each with butter",
+        "Spread cheese filling evenly",
+        "Roll up and place seam-side down in pan",
+        "Brush top with remaining butter",
+        "Bake at 180°C for 40-45 minutes until golden",
+        "Cut into squares and serve warm"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "breakfast",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 8,
+      "prep_time_min": 30,
+      "cook_time_min": 45,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 41,
+      "name": "Sarma",
+      "description": "Cabbage leaves stuffed with minced meat and rice, slow-cooked in sauerkraut juice",
+      "ingredients": [
+        {"name": "Sauerkraut (cabbage leaves)", "amount": "1", "unit": "kg"},
+        {"name": "Ground pork", "amount": "500", "unit": "g"},
+        {"name": "Ground beef", "amount": "300", "unit": "g"},
+        {"name": "Rice", "amount": "100", "unit": "g"},
+        {"name": "Egg", "amount": "1", "unit": "large"},
+        {"name": "Onion", "amount": "1", "unit": "medium"},
+        {"name": "Bacon", "amount": "100", "unit": "g"},
+        {"name": "Paprika", "amount": "1", "unit": "tbsp"},
+        {"name": "Tomato paste", "amount": "2", "unit": "tbsp"},
+        {"name": "Vegetable oil", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""}
+      ],
+      "instructions": [
+        "Mix ground meats with rice, egg, onion, salt and paprika",
+        "Separate sauerkraut leaves, remove tough stems",
+        "Place filling on each leaf, roll and tuck ends",
+        "Layer bacon in pot, arrange rolls tightly",
+        "Add tomato paste and water to cover",
+        "Simmer on low heat for 2-3 hours",
+        "Serve with bread and sour cream"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dinner",
+        "dietary_tags": ["gluten-free"]
+      },
+      "servings": 6,
+      "prep_time_min": 45,
+      "cook_time_min": 150,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 42,
+      "name": "Pašteta",
+      "description": "A smooth liver pate spread made with pork liver and onions, perfect on fresh bread",
+      "ingredients": [
+        {"name": "Pork liver", "amount": "500", "unit": "g"},
+        {"name": "Onion", "amount": "2", "unit": "large"},
+        {"name": "Butter", "amount": "100", "unit": "g"},
+        {"name": "Eggs (hard boiled)", "amount": "3", "unit": "large"},
+        {"name": "Bacon", "amount": "100", "unit": "g"},
+        {"name": "Garlic", "amount": "2", "unit": "cloves"},
+        {"name": "Marjoram", "amount": "1", "unit": "tsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Clean liver, remove any sinews",
+        "Fry bacon until crispy, remove and set aside",
+        "Sauté onions until golden",
+        "Add liver and cook until no longer pink",
+        "Add garlic and marjoram, cook 2 more minutes",
+        "Blend everything with eggs and butter until smooth",
+        "Season with salt and pepper",
+        "Refrigerate until firm, serve on bread"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "snack",
+        "dietary_tags": ["gluten-free"]
+      },
+      "servings": 8,
+      "prep_time_min": 20,
+      "cook_time_min": 25,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 43,
+      "name": "Dinstana leća",
+      "description": "Braised lentils with caramelized onions and spices, a warming continental dish",
+      "ingredients": [
+        {"name": "Brown lentils", "amount": "400", "unit": "g"},
+        {"name": "Onion", "amount": "3", "unit": "large"},
+        {"name": "Garlic", "amount": "3", "unit": "cloves"},
+        {"name": "Carrots", "amount": "1", "unit": "medium"},
+        {"name": "Vegetable broth", "amount": "1", "unit": "liter"},
+        {"name": "Vegetable oil", "amount": "3", "unit": "tbsp"},
+        {"name": "Bay leaves", "amount": "2", "unit": "pieces"},
+        {"name": "Cumin", "amount": "1", "unit": "tsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Sauté onions slowly until deep golden, about 20 minutes",
+        "Add garlic, cumin and cook 1 minute",
+        "Add lentils, broth, bay leaves and carrots",
+        "Bring to boil, then simmer for 30-40 minutes",
+        "Season with salt and pepper",
+        "Serve with crusty bread"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian", "vegan", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 50,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 44,
+      "name": "Grašković",
+      "description": "A creamy pea stew with potatoes and carrots, a traditional comfort food",
+      "ingredients": [
+        {"name": "Frozen peas", "amount": "500", "unit": "g"},
+        {"name": "Potatoes", "amount": "3", "unit": "medium"},
+        {"name": "Carrots", "amount": "2", "unit": "medium"},
+        {"name": "Onion", "amount": "1", "unit": "large"},
+        {"name": "Sour cream", "amount": "200", "unit": "g"},
+        {"name": "Vegetable broth", "amount": "750", "unit": "ml"},
+        {"name": "Butter", "amount": "2", "unit": "tbsp"},
+        {"name": "Fresh dill", "amount": "3", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""}
+      ],
+      "instructions": [
+        "Sauté onion in butter until translucent",
+        "Add carrots and potatoes, cook for 5 minutes",
+        "Add broth and simmer until vegetables are tender",
+        "Add peas and cook for 10 more minutes",
+        "Stir in sour cream and fresh dill",
+        "Season and serve with fresh bread"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 35,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 45,
+      "name": "Buhtle",
+      "description": "Fluffy fried doughnuts dusted with sugar, a beloved sweet treat from Dalmatia",
+      "ingredients": [
+        {"name": "All-purpose flour", "amount": "500", "unit": "g"},
+        {"name": "Milk (warm)", "amount": "250", "unit": "ml"},
+        {"name": "Eggs", "amount": "2", "unit": "large"},
+        {"name": "Sugar", "amount": "50", "unit": "g"},
+        {"name": "Instant yeast", "amount": "7", "unit": "g"},
+        {"name": "Butter (softened)", "amount": "50", "unit": "g"},
+        {"name": "Salt", "amount": "1", "unit": "pinch"},
+        {"name": "Vegetable oil (for frying)", "amount": "500", "unit": "ml"},
+        {"name": "Powdered sugar (for dusting)", "amount": "100", "unit": "g"}
+      ],
+      "instructions": [
+        "Mix flour with yeast and sugar, add warm milk",
+        "Add eggs, butter and salt, knead until smooth",
+        "Let dough rise for 1 hour until doubled",
+        "Divide into balls, let rest 15 minutes",
+        "Fry in oil at 170°C until golden on all sides",
+        "Drain and dust generously with powdered sugar",
+        "Serve warm"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dessert",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 12,
+      "prep_time_min": 30,
+      "cook_time_min": 20,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 46,
+      "name": "Kremšnite",
+      "description": "Creamy vanilla slice pastries with custard filling, Croatia's most famous dessert",
+      "ingredients": [
+        {"name": "Phyllo pastry sheets", "amount": "10", "unit": "large"},
+        {"name": "Milk", "amount": "1", "unit": "liter"},
+        {"name": "Egg yolks", "amount": "6", "unit": "large"},
+        {"name": "Sugar", "amount": "200", "unit": "g"},
+        {"name": "Cornstarch", "amount": "80", "unit": "g"},
+        {"name": "Vanilla sugar", "amount": "2", "unit": "tbsp"},
+        {"name": "Butter", "amount": "50", "unit": "g"},
+        {"name": "Heavy cream", "amount": "300", "unit": "ml"},
+        {"name": "Powdered sugar", "amount": "50", "unit": "g"}
+      ],
+      "instructions": [
+        "Brush phyllo with butter, layer in baking pan",
+        "Bake at 180°C until golden and crisp",
+        "Heat milk with vanilla",
+        "Whisk yolks with sugar until pale",
+        "Add cornstarch and mix until smooth",
+        "Pour into milk, cook stirring until thick",
+        "Pour custard over phyllo base, chill 4 hours",
+        "Top with whipped cream and dust with powdered sugar"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dessert",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 12,
+      "prep_time_min": 30,
+      "cook_time_min": 30,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 47,
+      "name": "Štrudla od jabuka",
+      "description": "Traditional apple strudel with thin crispy phyllo, cinnamon and raisins",
+      "ingredients": [
+        {"name": "Apples (Granny Smith)", "amount": "1", "unit": "kg"},
+        {"name": "Phyllo pastry", "amount": "8", "unit": "sheets"},
+        {"name": "Sugar", "amount": "150", "unit": "g"},
+        {"name": "Breadcrumbs", "amount": "50", "unit": "g"},
+        {"name": "Butter (melted)", "amount": "100", "unit": "g"},
+        {"name": "Raisins", "amount": "100", "unit": "g"},
+        {"name": "Cinnamon", "amount": "2", "unit": "tsp"},
+        {"name": "Lemon juice", "amount": "1", "unit": "tbsp"}
+      ],
+      "instructions": [
+        "Peel and slice apples thinly",
+        "Mix apples with sugar, cinnamon, raisins and lemon",
+        "Layer phyllo sheets brushing with butter",
+        "Sprinkle breadcrumbs over phyllo",
+        "Spread apple filling evenly",
+        "Roll tightly and place seam-side down",
+        "Brush with remaining butter",
+        "Bake at 180°C for 45 minutes until golden",
+        "Dust with powdered sugar and serve warm"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "dessert",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 10,
+      "prep_time_min": 25,
+      "cook_time_min": 45,
+      "difficulty": "Medium"
+    },
+    {
+      "id": 48,
+      "name": "Fižol u pavlaci",
+      "description": "Braised beans in sour cream sauce, a simple and satisfying traditional dish",
+      "ingredients": [
+        {"name": "Borlotti beans (dried)", "amount": "400", "unit": "g"},
+        {"name": "Sour cream", "amount": "300", "unit": "g"},
+        {"name": "Onion", "amount": "1", "unit": "large"},
+        {"name": "Garlic", "amount": "2", "unit": "cloves"},
+        {"name": "Butter", "amount": "2", "unit": "tbsp"},
+        {"name": "Vegetable broth", "amount": "500", "unit": "ml"},
+        {"name": "Fresh parsley", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Soak beans overnight, cook until tender",
+        "Sauté onion and garlic in butter",
+        "Add beans and broth, simmer for 15 minutes",
+        "Stir in sour cream and heat through",
+        "Season with salt and pepper",
+        "Garnish with parsley and serve"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 90,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 49,
+      "name": "Lećenik",
+      "description": "A savory lentil pie with eggs and herbs, traditional from Dalmatian inland",
+      "ingredients": [
+        {"name": "Brown lentils", "amount": "300", "unit": "g"},
+        {"name": "Eggs", "amount": "4", "unit": "large"},
+        {"name": "Onion", "amount": "1", "unit": "medium"},
+        {"name": "Garlic", "amount": "2", "unit": "cloves"},
+        {"name": "Fresh parsley", "amount": "3", "unit": "tbsp"},
+        {"name": "Olive oil", "amount": "3", "unit": "tbsp"},
+        {"name": "All-purpose flour", "amount": "3", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Cook lentils until soft, drain any excess water",
+        "Sauté onion and garlic in 1 tbsp oil",
+        "Mix lentils with sautéed onion, eggs, parsley, flour",
+        "Season with salt and pepper",
+        "Heat remaining oil in pan, add lentil mixture",
+        "Cook covered for 10 minutes, flip and cook other side",
+        "Serve warm with salad"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian"]
+      },
+      "servings": 4,
+      "prep_time_min": 15,
+      "cook_time_min": 35,
+      "difficulty": "Easy"
+    },
+    {
+      "id": 50,
+      "name": "Zelena salata",
+      "description": "A fresh garden salad with olive oil and lemon dressing, perfect year-round",
+      "ingredients": [
+        {"name": "Mixed salad greens", "amount": "200", "unit": "g"},
+        {"name": "Romaine lettuce", "amount": "1", "unit": "head"},
+        {"name": "Radishes", "amount": "6", "unit": "pieces"},
+        {"name": "Spring onions", "amount": "3", "unit": "stalks"},
+        {"name": "Cucumber", "amount": "1", "unit": "medium"},
+        {"name": "Olive oil", "amount": "4", "unit": "tbsp"},
+        {"name": "Lemon juice", "amount": "2", "unit": "tbsp"},
+        {"name": "Salt", "amount": "to taste", "unit": ""},
+        {"name": "Black pepper", "amount": "1/2", "unit": "tsp"}
+      ],
+      "instructions": [
+        "Wash and dry all greens thoroughly",
+        "Tear greens into bite-sized pieces",
+        "Slice cucumber and radishes thinly",
+        "Slice spring onions",
+        "Combine all vegetables in a bowl",
+        "Whisk olive oil with lemon juice, salt and pepper",
+        "Drizzle dressing over salad just before serving",
+        "Toss gently and serve immediately"
+      ],
+      "tags": {
+        "cuisine": "Croatian",
+        "meal_type": "lunch",
+        "dietary_tags": ["vegetarian", "vegan", "gluten-free"]
+      },
+      "servings": 4,
+      "prep_time_min": 10,
+      "cook_time_min": 0,
+      "difficulty": "Easy"
     }
   ]
 }

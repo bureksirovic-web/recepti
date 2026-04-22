@@ -1,0 +1,35 @@
+# =============================================================================
+# Recepti Web — systemd service unit
+# Place in: /etc/systemd/system/recepti-web.service
+# Enable:   sudo systemctl enable recepti-web && sudo systemctl start recepti-web
+# =============================================================================
+
+[Unit]
+Description=Recepti — Croatian Recipe Bot & Web App
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tomi/Recepti
+Environment=RECEPTI_DATA_DIR=/home/tomi/Recepti/data
+ExecStart=/home/tomi/Recepti/.venv/bin/python3 -c "
+from recepti.recipe_store import RecipeStore
+from recepti.web_app import create_app
+store = RecipeStore('data/recipes.json', extra_sources=[
+    'data/croatian_recipes.json',
+    'data/expanded_recipes.json',
+])
+app = create_app(store)
+app.run(host='127.0.0.1', port=5001, debug=False, use_reloader=False)
+"
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/tomi/Recepti/data/logs/web.log
+StandardError=append:/home/tomi/Recepti/data/logs/web.log
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/home/tomi/Recepti/data
+
+[Install]
+WantedBy=multi-user.target

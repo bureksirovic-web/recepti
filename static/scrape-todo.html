@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d6a4f">
+    <meta name="description" content="Recipe scraping targets for expanding our collection">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Recipe Scraping Targets — Recepti</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/theme.js" defer></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header>
+        <h1><a href="/" aria-label="Recepti home" style="color: white; text-decoration: none;"><svg class="icon" aria-hidden="true" style="width:20px;height:20px;vertical-align:middle;margin-right:6px"><use href="/static/svg/icons.svg#icon-clipboard-list"/></svg> Scrape Targets</a></h1>
+        <span id="theme-toggle-wrap"></span>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="/" aria-label="Home"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#home"/></svg> Home</a>
+            <a href="/recipes" aria-label="Recipes"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#icon-book-open"/></svg> Recipes</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main class="content" id="main-content" style="max-width:1100px;margin:0 auto;width:100%">
+            <div class="page-header animate-on-scroll">
+                <h2 class="page-title">Recipe Scraping Targets</h2>
+                <p class="page-subtitle">Prioritized queries to expand our recipe collection — <span id="target-count">—</span> targets identified</p>
+            </div>
+
+            <div class="animate-on-scroll" style="margin-bottom:24px">
+                <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                    <div class="filter-group" style="margin-bottom:0;min-width:140px">
+                        <label for="type-filter" class="form-label">Filter by Type</label>
+                        <select id="type-filter" class="select">
+                            <option value="all">All Types</option>
+                            <option value="coverage">Coverage</option>
+                            <option value="rejection">Rejection</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-left:auto">
+                        <button id="copy-coverage-btn" class="btn btn-secondary" title="Copy all coverage queries">
+                            <svg class="icon" aria-hidden="true" style="width:16px;height:16px"><use href="/static/svg/icons.svg#icon-external-link"/></svg> Copy Coverage
+                        </button>
+                        <button id="copy-all-btn" class="btn btn-secondary" title="Copy all visible queries">
+                            <svg class="icon" aria-hidden="true" style="width:16px;height:16px"><use href="/static/svg/icons.svg#icon-external-link"/></svg> Copy All
+                        </button>
+                        <button id="refresh-btn" class="btn btn-secondary" title="Refresh data">
+                            <svg class="icon" aria-hidden="true" style="width:16px;height:16px"><use href="/static/svg/icons.svg#icon-refresh"/></svg> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="table-container" class="table-wrapper animate-on-scroll">
+                <table class="table" id="targets-table">
+                    <thead>
+                        <tr>
+                            <th style="width:90px">Type</th>
+                            <th>Query</th>
+                            <th style="width:120px">Priority</th>
+                            <th>Reason</th>
+                            <th style="width:60px">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="targets-body">
+                        <tr class="skeleton-row">
+                            <td colspan="5">
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="empty-state" class="animate-on-scroll" style="display:none;text-align:center;padding:48px 24px;color:var(--text-muted)">
+                <svg class="icon" aria-hidden="true" style="width:48px;height:48px;margin-bottom:16px;opacity:0.4"><use href="/static/svg/icons.svg#icon-check"/></svg>
+                <p style="font-size:15px;font-weight:500">No targets match the current filter</p>
+                <p style="font-size:13px;margin-top:4px">Try selecting a different type above</p>
+            </div>
+
+            <div id="error-state" class="animate-on-scroll" style="display:none;text-align:center;padding:48px 24px;color:var(--danger)">
+                <svg class="icon" aria-hidden="true" style="width:48px;height:48px;margin-bottom:16px"><use href="/static/svg/icons.svg#icon-alert-circle"/></svg>
+                <p style="font-size:15px;font-weight:500">Failed to load scraping targets</p>
+                <p style="font-size:13px;margin-top:4px;color:var(--text-muted)">Please try again later</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:white;padding:10px 20px;border-radius:var(--radius);font-size:14px;font-weight:500;opacity:0;transition:all 0.2s ease;z-index:100;pointer-events:none">Copied!</div>
+
+    <script src="/static/js/scrape-todo.js"></script>
+    <script src="/static/js/animations.js"></script>
+    <script>
+        document.getElementById('theme-toggle-wrap').appendChild(window.ReceptiTheme.createToggle());
+    </script>
+</body>
+</html>

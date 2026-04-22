@@ -1,183 +1,1617 @@
+/* ==========================================================================
+   Recepti Design System
+   Full token set with light/dark mode, typography, spacing, motion
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties
+   -------------------------------------------------------------------------- */
 :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --success: #22c55e;
-    --warning: #f59e0b;
-    --bg: #f8fafc;
-    --card-bg: #ffffff;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --border: #e2e8f0;
-    --radius: 8px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  /* Colors - Light Mode */
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --primary: #2d6a4f;
+  --primary-dark: #1b4332;
+  --primary-light: #40916c;
+  --secondary: #d4a574;
+  --accent: #e76f51;
+  --text: #1a1a1a;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --border: #e5e7eb;
+  --border-focus: #2d6a4f;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 26px;
+  --font-size-3xl: 32px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Motion */
+  --motion-fast: 100ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --motion-dramatic: 400ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Border Radius */
+  --radius: 8px;
+
+  /* Z-Index Scale */
+  --z-dropdown: 30;
+  --z-sticky: 40;
+  --z-overlay: 49;
+  --z-drawer: 50;
+  --z-modal: 60;
+  --z-toast: 70;
+  --z-tooltip: 80;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #1f2937;
+  --surface-raised: #374151;
+  --primary: #52b788;
+  --primary-dark: #40916c;
+  --primary-light: #74c69d;
+  --secondary: #d4a574;
+  --accent: #f4845f;
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+  --text-light: #6b7280;
+  --border: #374151;
+  --border-focus: #52b788;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --success: #34d399;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base Reset & Defaults
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header */
-header {
-    background: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
+/* --------------------------------------------------------------------------
+   3. Icon Utility
+   -------------------------------------------------------------------------- */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Keyframe Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Skeleton Loader
+   -------------------------------------------------------------------------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius);
+}
+
+.skeleton-card {
+  height: 220px;
+  border-radius: var(--radius);
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text:last-child {
+  width: 60%;
+}
+
+/* --------------------------------------------------------------------------
+   6. Button System
+   -------------------------------------------------------------------------- */
+.btn-icon { padding: 8px; width: 36px; height: 36px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all var(--motion-base) var(--ease-standard);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   7. Badge System
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.badge-indian {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.badge-croatian {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.badge-expanded {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.badge-hunter {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.badge-full {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-sparse {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.badge-empty {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   8. Card System
+   -------------------------------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.card-hover {
+  transition: box-shadow var(--motion-base) var(--ease-standard),
+              transform var(--motion-base) var(--ease-standard);
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   9. Form Components
+   -------------------------------------------------------------------------- */
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--motion-base) var(--ease-standard);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--motion-base) var(--ease-standard);
+}
+
+/* --------------------------------------------------------------------------
+   10. Navigation
+   -------------------------------------------------------------------------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all var(--motion-base) var(--ease-standard);
+}
+
+.nav-link:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.nav-link-active {
+  background: rgba(45, 106, 79, 0.08);
+  color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   11. Layout
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-header {
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. Recipe Card (JS Compatible)
+   -------------------------------------------------------------------------- */
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.recipe-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.recipe-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.recipe-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meta-times {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ingredient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   13. Recipe Grid (JS Compatible)
+   -------------------------------------------------------------------------- */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   14. Stats Bar (JS Compatible)
+   -------------------------------------------------------------------------- */
+.stats-bar {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   15. Pagination (JS Compatible)
+   -------------------------------------------------------------------------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  transition: all var(--motion-base) var(--ease-standard);
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--bg);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination button.primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.pagination button.primary:hover {
+  background: var(--primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   16. Loading (JS Compatible)
+   -------------------------------------------------------------------------- */
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   17. Recipe Drawer
+   -------------------------------------------------------------------------- */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: var(--z-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-slow) var(--ease-standard);
+}
+
+.drawer-overlay-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  width: 480px;
+  height: calc(100vh - 64px);
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: var(--z-drawer);
+  transform: translateX(100%);
+  transition: transform var(--motion-slow) var(--ease-standard);
+  overflow-y: auto;
+}
+
+.drawer-open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 1;
+}
+
+.drawer-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.drawer-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--bg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.drawer-close:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   18. Search Typeahead
+   -------------------------------------------------------------------------- */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px 10px 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--bg);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.search-clear-visible {
+  display: flex;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+  overflow: hidden;
+  display: none;
+}
+
+.search-suggestions-open {
+  display: block;
+}
+
+.search-suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.search-suggestion-item:hover {
+  background: var(--bg);
+}
+
+.search-suggestion-item mark {
+  background: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   19. Table (Scrape-Todo)
+   -------------------------------------------------------------------------- */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: var(--bg);
+}
+
+/* --------------------------------------------------------------------------
+   20. Charts (Coverage)
+   -------------------------------------------------------------------------- */
+.chart-container {
+  position: relative;
+  height: 260px;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   20b. Nutrition Page Utilities
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.controls select,
+.controls button {
+  background: var(--surface-raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 14px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.controls select:hover,
+.controls button:hover {
+  border-color: var(--border-focus);
+}
+
+.error-msg {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 20px;
+  text-align: center;
+}
+
+.gap-alert {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius);
+}
+
+.gap-alert-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  margin-bottom: 8px;
+}
+
+.gap-badge {
+  display: inline-block;
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  margin: 2px 2px 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   21. Nutrition Page Cards
+   -------------------------------------------------------------------------- */
+.member-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--bg);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width var(--motion-slow) var(--ease-standard);
+}
+
+.progress-fill-low {
+  background: var(--danger);
+}
+
+.progress-fill-mid {
+  background: var(--warning);
+}
+
+.progress-fill-good {
+  background: var(--success);
+}
+
+.grocery-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Member card nutrient rows */
+.member-nutrients {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.nutrient-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nutrient-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.nutrient-name {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.nutrient-pct {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* Member card gaps section */
+.member-gaps {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.gap-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gap-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100px;
+  font-size: 13px;
+}
+
+.gap-pct {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--danger);
+}
+
+/* Member card groceries section */
+.member-groceries {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.grocery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.empty-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+    22. Coverage Page Layout
+    -------------------------------------------------------------------------- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.holes-sidebar {
+  width: 400px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .holes-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   22b. Coverage Holes List
+   -------------------------------------------------------------------------- */
+.hole-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.hole-row:last-child {
+  border-bottom: none;
+}
+
+.hole-label {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.hole-count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.hole-bar-wrapper {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.hole-bar {
+  height: 4px;
+  background: var(--bg);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.hole-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width var(--motion-slow) var(--ease-standard);
+}
+
+/* --------------------------------------------------------------------------
+   23. Accessibility
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   24. Tags & Badges (Legacy JS Compatibility)
+   -------------------------------------------------------------------------- */
+.tag {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #ede9fe;
+  color: #5b21b6;
+  font-weight: 500;
+}
+
+.tag-difficulty-easy {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.tag-difficulty-medium {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.tag-difficulty-hard {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.source-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.source-badge-indian {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.source-badge-croatian {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.source-badge-expanded {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.source-badge-hunter {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* --------------------------------------------------------------------------
+   25. Filters Sidebar
+   -------------------------------------------------------------------------- */
+.filters {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+
+.filters h3 {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.filter-group {
+  margin-bottom: 16px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.btn-clear {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all var(--motion-base) var(--ease-standard);
+}
+
+.btn-clear:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   26. Layout Utilities
+   -------------------------------------------------------------------------- */
+.layout {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   27. Scroll Animations
+   -------------------------------------------------------------------------- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.recipe-card:nth-child(1) { transition-delay: 0ms; }
+.recipe-card:nth-child(2) { transition-delay: 110ms; }
+.recipe-card:nth-child(3) { transition-delay: 220ms; }
+.recipe-card:nth-child(4) { transition-delay: 330ms; }
+.recipe-card:nth-child(5) { transition-delay: 440ms; }
+.recipe-card:nth-child(6) { transition-delay: 550ms; }
+.recipe-card:nth-child(7) { transition-delay: 660ms; }
+.recipe-card:nth-child(8) { transition-delay: 770ms; }
+.recipe-card:nth-child(9) { transition-delay: 880ms; }
+.recipe-card:nth-child(10) { transition-delay: 990ms; }
+.recipe-card:nth-child(11) { transition-delay: 1100ms; }
+.recipe-card:nth-child(12) { transition-delay: 1210ms; }
+
+/* --------------------------------------------------------------------------
+   28. Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   28. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .page-header {
+    padding: 24px 0 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  /* Filters sidebar - full width, static, collapsible */
+  .filters {
+    width: 100%;
+    position: static;
+    padding: 12px;
+  }
+
+  .filters details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .filters summary {
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-header h1 { font-size: 1.5rem; }
-header nav a { color: white; text-decoration: none; margin-left: 1.5rem; opacity: 0.9; }
-header nav a:hover { opacity: 1; }
+  }
 
-/* Layout */
-.layout { display: flex; max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; gap: 1.5rem; }
+  .filters summary::after {
+    content: '▼';
+    font-size: 10px;
+    transition: transform var(--motion-base) var(--ease-standard);
+  }
 
-/* Filters Sidebar */
-.filters {
-    width: 240px;
-    flex-shrink: 0;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    box-shadow: var(--shadow);
-    height: fit-content;
-    position: sticky;
-    top: 5rem;
-}
-.filters h3 { margin-bottom: 1rem; font-size: 1rem; color: var(--text-muted); }
+  .filters details[open] summary::after {
+    transform: rotate(180deg);
+  }
 
-.filter-group { margin-bottom: 1rem; }
-.filter-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.25rem; }
-.filter-group input,
-.filter-group select {
-    width: 100%;
-    padding: 0.4rem 0.6rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.875rem;
-}
-.filter-group input:focus,
-.filter-group select:focus { outline: 2px solid var(--primary); border-color: var(--primary); }
-
-.btn-clear {
-    width: 100%;
-    padding: 0.5rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    color: var(--text-muted);
-}
-.btn-clear:hover { background: var(--bg); }
-
-/* Content Area */
-.content { flex: 1; min-width: 0; }
-
-.stats-bar {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-}
-
-/* Recipe Grid */
-.recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.loading {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-muted);
-}
-
-/* Recipe Card */
-.recipe-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 1rem;
-    box-shadow: var(--shadow);
+  .filters .filter-content {
+    padding: 0 12px 12px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    transition: box-shadow 0.2s;
+    gap: 12px;
+  }
+
+  /* Recipe grid - single column */
+  .recipe-grid {
+    grid-template-columns: minmax(100%, 1fr);
+  }
+
+  /* Drawer - full screen on mobile */
+  .drawer {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    border-left: none;
+    touch-action: pan-y;
+  }
+
+  .drawer-open {
+    transform: translateX(0);
+  }
+
+  .drawer-header {
+    padding: 16px;
+  }
+
+  .drawer-body {
+    padding: 16px;
+  }
+
+  /* Stats bar - wrap on small screens */
+  .stats-bar {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  /* Pagination - smaller buttons, tighter gap */
+  .pagination {
+    gap: 8px;
+  }
+
+  .pagination button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* Navbar - hide non-essential links on small screens */
+  header nav a:not(:first-child) {
+    display: none;
+  }
+
+  header nav a:first-child {
+    display: flex;
+  }
+
+  /* Touch targets - minimum 44x44px for form inputs */
+  .input,
+  .select,
+  .search-input {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  /* Touch targets - minimum 44x44px for buttons */
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 16px;
+  }
+
+  .btn-icon {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px;
+  }
 }
-.recipe-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
-.recipe-card header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
-.recipe-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+/* Very small screens (480px and below) */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 20px;
+  }
 
-.description { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .recipe-card {
+    padding: 12px;
+  }
 
-.meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.tag {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    background: #ede9fe;
-    color: #5b21b6;
-    font-weight: 500;
+  .drawer-header {
+    padding: 16px;
+  }
+
+  .drawer-body {
+    padding: 16px;
+  }
+
+  .filters {
+    padding: 12px;
+  }
 }
-.tag.difficulty-easy { background: #dcfce7; color: #166534; }
-.tag.difficulty-medium { background: #fef9c3; color: #854d0e; }
-.tag.difficulty-hard { background: #fee2e2; color: #991b1b; }
 
-.times { display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--text-muted); }
-
-.ingredients-preview { display: flex; flex-wrap: wrap; gap: 0.25rem; }
-.ingredient-tag {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    background: var(--bg);
-    color: var(--text-muted);
+/* Hide mobile filter toggle on desktop (769px and above) */
+@media (min-width: 769px) {
+  .mobile-filter-toggle {
+    display: none !important;
+  }
 }
-.more { font-size: 0.65rem; color: var(--text-muted); padding: 0.15rem 0.4rem; }
 
-/* Source Badge */
-.source-badge {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    font-weight: 600;
-    flex-shrink: 0;
-}
-.source-badge.original { background: #fef3c7; color: #92400e; }
-.source-badge.croatian { background: #dbeafe; color: #1e40af; }
-.source-badge.expanded { background: #d1fae5; color: #065f46; }
+/* --------------------------------------------------------------------------
+   29. Print Styles
+   -------------------------------------------------------------------------- */
+@media print {
+  .navbar,
+  .skip-link,
+  .drawer,
+  .drawer-overlay,
+  .controls,
+  .btn-clear,
+  button,
+  .copy-btn,
+  .btn,
+  .mobile-filter-toggle {
+    display: none !important;
+  }
 
-/* Pagination */
-.pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; }
-.pagination button {
-    padding: 0.5rem 1rem;
+  body {
     background: white;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.875rem;
-}
-.pagination button:hover:not(:disabled) { background: var(--bg); }
-.pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
-.pagination button.primary { background: var(--primary); color: white; border-color: var(--primary); }
-.pagination button.primary:hover { background: var(--primary-dark); }
+    color: #000;
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .layout { flex-direction: column; }
-    .filters { width: 100%; position: static; }
-    .recipe-grid { grid-template-columns: 1fr; }
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .card,
+  .member-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .charts-grid,
+  .chart-container {
+    display: none !important;
+  }
+
+  .hole-row {
+    display: table-row;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .hole-label {
+    display: table-cell;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .hole-count {
+    display: table-cell;
+    font-size: 11px;
+    padding: 6px 8px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+
+  .hole-bar-wrapper {
+    display: table-cell;
+    width: 200px;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+
+  .hole-bar {
+    height: 12px;
+    border: 1px solid #333;
+    background: white;
+  }
+
+  .hole-bar-fill {
+    height: 100%;
+    background: #333 !important;
+    border-right: 1px solid #000;
+  }
+
+  .holes-sidebar,
+  .coverage-holes {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 1;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th,
+  .table td {
+    border: 1px solid #333;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .table th {
+    background: #f0f0f0;
+    font-weight: 600;
+  }
+
+  .type-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid #333;
+    font-size: 10px;
+  }
+
+  .query-text,
+  .reason-text {
+    font-size: 11px;
+  }
+
+  .page-break-before {
+    page-break-before: always;
+    break-before: always;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .page-header,
+  .page-title,
+  h1, h2, h3, h4,
+  p, td, th, li {
+    color: #000;
+    background: white;
+  }
+
+  .page-header {
+    box-shadow: none;
+    background: white;
+  }
 }

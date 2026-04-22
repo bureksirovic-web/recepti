@@ -53,7 +53,7 @@ class TestKuhanoCommand:
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
-        assert "Nepoznat ID recepta" in reply
+        assert "Ne mogu naći" in reply
 
     def test_recipe_not_found_replies_error(self, mock_store, mock_cooking_log):
         update = make_update()
@@ -74,6 +74,7 @@ class TestKuhanoCommand:
         ctx = make_ctx(["42"])
 
         mock_recipe = MagicMock()
+        mock_recipe.id = 42
         mock_recipe.name = "Paški makaruni"
         mock_recipe.servings = 4
 
@@ -100,6 +101,7 @@ class TestKuhanoCommand:
         ctx = make_ctx(["42", "6"])
 
         mock_recipe = MagicMock()
+        mock_recipe.id = 42
         mock_recipe.name = "Paški makaruni"
         mock_recipe.servings = 4
 

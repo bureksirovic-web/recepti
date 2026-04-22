@@ -29,29 +29,38 @@ class CookingLogStore:
     # ── Members ─────────────────────────────────────────────────────
 
     def _load_members(self) -> None:
-        if not self.members_path.exists():
-            return
-        try:
-            with open(self.members_path) as f:
-                data = json.load(f)
-            for d in data if isinstance(data, list) else []:
-                self._members[d["id"]] = FamilyMember(
-                    id=d["id"],
-                    name=d["name"],
-                    sex=d["sex"],
-                    age_years=float(d["age_years"]),
-                    pregnant=d.get("pregnant", False),
-                    lactating=d.get("lactating", False),
-                    dislikes=d.get("dislikes", []),
-                )
-        except Exception as e:
-            logger.warning(f"Could not load members from {self.members_path}: {e}")
+        with self._lock:
+            if not self.members_path.exists():
+                return
+            try:
+                with open(self.members_path) as f:
+                    data = json.load(f)
+                self._members.clear()
+                for d in data if isinstance(data, list) else []:
+                    self._members[d["id"]] = FamilyMember(
+                        id=d["id"],
+                        name=d["name"],
+                        sex=d["sex"],
+                        age_years=float(d["age_years"]),
+                        pregnant=d.get("pregnant", False),
+                        lactating=d.get("lactating", False),
+                        dislikes=d.get("dislikes", []),
+                    )
+            except Exception as e:
+                logger.warning(f"Could not load members from {self.members_path}: {e}")
 
     def get_members(self) -> list[FamilyMember]:
         return list(self._members.values())
 
     def get_member(self, member_id: int) -> Optional[FamilyMember]:
         return self._members.get(member_id)
+
+    def get_member_by_name(self, name: str) -> Optional[FamilyMember]:
+        name_lower = name.lower()
+        for member in self._members.values():
+            if member.name.lower() == name_lower:
+                return member
+        return None
 
     def add_member(self, member: FamilyMember) -> None:
         self._members[member.id] = member
@@ -62,21 +71,31 @@ class CookingLogStore:
         self._save_members()
 
     def _save_members(self) -> None:
-        data = [
-            {
-                "id": m.id,
-                "name": m.name,
-                "sex": m.sex,
-                "age_years": m.age_years,
-                "pregnant": m.pregnant,
-                "lactating": m.lactating,
-                "dislikes": m.dislikes,
-            }
-            for m in self._members.values()
-        ]
-        self.members_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.members_path, "w") as f:
-            json.dump(data, f, indent=2, default=str)
+        with self._lock:
+            data = [
+                {
+                    "id": m.id,
+                    "name": m.name,
+                    "sex": m.sex,
+                    "age_years": m.age_years,
+                    "pregnant": m.pregnant,
+                    "lactating": m.lactating,
+                    "dislikes": m.dislikes,
+                }
+                for m in self._members.values()
+            ]
+            self.members_path.parent.mkdir(parents=True, exist_ok=True)
+            fd, tmp = tempfile.mkstemp(dir=str(self.members_path.parent), prefix=".tmp_", text=True)
+            try:
+                with os.fdopen(fd, "w") as f:
+                    json.dump(data, f, indent=2, default=str)
+                    f.flush()
+                    os.fsync(f.fileno())
+                os.replace(tmp, self.members_path)
+            except Exception:
+                if os.path.exists(tmp):
+                    os.unlink(tmp)
+                raise
 
     # ── Sessions ───────────────────────────────────────────────────────
 

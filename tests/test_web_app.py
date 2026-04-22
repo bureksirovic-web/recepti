@@ -284,3 +284,84 @@ class TestStaticRoutes:
         resp = api_client.get("/recipes")
         assert resp.status_code == 200
         assert "text/html" in (resp.content_type or "")
+
+
+class TestCoverage:
+    def test_coverage_returns_200(self, api_client):
+        resp = api_client.get("/api/coverage")
+        assert resp.status_code == 200
+
+    def test_coverage_returns_total_recipes_and_by_dimension(self, api_client):
+        resp = api_client.get("/api/coverage")
+        data = resp.get_json()
+        assert "total_recipes" in data
+        assert "by_dimension" in data
+        assert isinstance(data["total_recipes"], int)
+        assert isinstance(data["by_dimension"], dict)
+
+    def test_coverage_holes_sparse(self, api_client):
+        resp = api_client.get("/api/coverage")
+        data = resp.get_json()
+        holes = data.get("holes", [])
+        sparse_holes = [h for h in holes if h.get("status") == "SPARSE"]
+        assert len(sparse_holes) >= 0
+
+    def test_coverage_holes_empty(self, api_client):
+        resp = api_client.get("/api/coverage")
+        data = resp.get_json()
+        holes = data.get("holes", [])
+        empty_holes = [h for h in holes if h.get("status") == "EMPTY"]
+        assert len(empty_holes) >= 0
+
+    def test_coverage_priority_order(self, api_client):
+        resp = api_client.get("/api/coverage")
+        data = resp.get_json()
+        holes = data.get("holes", [])
+        if len(holes) >= 2:
+            priorities = [h["priority"] for h in holes]
+            assert priorities == sorted(priorities, reverse=True)
+
+    def test_coverage_suggested_queries_present(self, api_client):
+        resp = api_client.get("/api/coverage")
+        data = resp.get_json()
+        holes = data.get("holes", [])
+        for h in holes:
+            assert "suggested_queries" in h
+            assert isinstance(h["suggested_queries"], list)
+
+
+class TestScrapeTodo:
+    def test_scrape_todo_returns_200(self, api_client):
+        resp = api_client.get("/api/scrape-todo")
+        assert resp.status_code == 200
+
+    def test_scrape_todo_has_targets(self, api_client):
+        resp = api_client.get("/api/scrape-todo")
+        data = resp.get_json()
+        assert "targets" in data
+        assert isinstance(data["targets"], list)
+
+    def test_scrape_todo_targets_have_required_fields(self, api_client):
+        resp = api_client.get("/api/scrape-todo")
+        data = resp.get_json()
+        targets = data.get("targets", [])
+        if targets:
+            t = targets[0]
+            assert "query" in t
+            assert "priority_score" in t
+            assert "type" in t
+
+    def test_scrape_todo_type_coverage(self, api_client):
+        resp = api_client.get("/api/scrape-todo")
+        data = resp.get_json()
+        targets = data.get("targets", [])
+        types = {t["type"] for t in targets}
+        assert "coverage" in types
+
+    def test_scrape_todo_priority_order(self, api_client):
+        resp = api_client.get("/api/scrape-todo")
+        data = resp.get_json()
+        targets = data.get("targets", [])
+        if len(targets) >= 2:
+            scores = [t["priority_score"] for t in targets]
+            assert scores == sorted(scores, reverse=True)

@@ -1,92 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d6a4f">
+  <meta name="description" content="Nutrient tracking and family nutrition balance">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <title>Family Nutrition Dashboard — Recepti</title>
-  <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="/static/js/theme.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <style>
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .member-card {
-      background: var(--card-bg, #1e2a38);
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .member-card h3 { margin: 0 0 16px; color: #e2c97e; font-size: 1rem; }
-    .grocery-tag {
-      display: inline-block;
-      background: #2d4a63;
-      color: #a8d8b9;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.82rem;
-      margin: 4px 4px 0 0;
-    }
-    .gap-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 4px;
-      margin: 4px 0 2px;
-      overflow: hidden;
-    }
-    .gap-fill {
-      height: 100%;
-      border-radius: 4px;
-      transition: width 0.4s ease;
-    }
-    .gap-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.76rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 8px;
-    }
-    .controls {
-      display: flex;
-      gap: 12px;
-      padding: 16px 20px;
-      align-items: center;
-      flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .controls select, .controls button {
-      background: #2d4a63;
-      color: #e8f0f8;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-    .loading {
-      text-align: center;
-      color: rgba(255,255,255,0.4);
-      padding: 40px;
-      font-size: 0.9rem;
-    }
-    .error-msg {
-      background: rgba(255,60,60,0.12);
-      border: 1px solid rgba(255,80,80,0.3);
-      color: #ff9090;
-      border-radius: 10px;
-      padding: 16px;
-      margin: 20px;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
-  <nav class="topbar">
-    <a href="index.html" class="nav-link">Recipes</a>
-    <a href="recipes.html" class="nav-link">Dashboard</a>
-    <span class="nav-link active">Nutrition</span>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" aria-label="Recepti home">
+      <svg class="icon" aria-hidden="true" width="20" height="20"><use href="/static/svg/icons.svg#heart-pulse"/></svg>
+      Recepti
+    </a>
+    <div class="nav-links">
+      <a href="recipes.html" aria-label="Recipes">
+        <svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#book-open"/></svg>
+        Recipes
+      </a>
+      <a href="/" aria-label="Dashboard">
+        <svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#sliders"/></svg>
+        Dashboard
+      </a>
+      <a href="nutrients.html" aria-current="page" aria-label="Nutrition">
+        <svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#heart-pulse"/></svg>
+        Nutrition
+      </a>
+    </div>
+    <span id="theme-toggle-wrap"></span>
   </nav>
 
   <div class="controls">
@@ -102,19 +50,24 @@
     <span id="statusMsg" style="font-size:0.8rem;color:rgba(255,255,255,0.4);"></span>
   </div>
 
+  <div id="main-content">
   <div id="notConfigured" class="error-msg" style="display:none">
     No family members configured yet. Run <code>/addmember</code> in the Telegram bot first.
   </div>
 
   <div id="dashboard" class="dashboard-grid" style="display:none">
-    <div class="member-card" style="grid-column:1/-1">
+    <div class="member-card animate-on-scroll" style="grid-column:1/-1">
       <h3>Suggested Groceries</h3>
       <div id="groceryTags" style="margin-top:8px"></div>
     </div>
   </div>
 
   <div id="loading" class="loading">Loading nutrition data…</div>
+</div>
 
-  <script src="js/nutrients.js"></script>
+<script src="/static/js/nutrients.js"></script>
+  <script>
+    document.getElementById('theme-toggle-wrap').appendChild(window.ReceptiTheme.createToggle());
+  </script>
 </body>
 </html>

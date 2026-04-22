@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d6a4f">
+    <meta name="description" content="Browse and search our collection of family recipes with filters for cuisine, meal type, and difficulty.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <title>Recipe Browser — Recepti</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/theme.js" defer></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header>
-        <h1>📖 Recipe Browser</h1>
-        <nav>
-            <a href="/">🏠 Home</a>
-            <a href="/api/recipes">📡 API</a>
+        <h1><a href="/" aria-label="Recepti home" style="color: white; text-decoration: none;">Recipe Browser</a></h1>
+        <span id="theme-toggle-wrap"></span>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="/" aria-label="Home" aria-current="page"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#home"/></svg> Home</a>
+            <a href="/api/recipes" aria-label="API"><svg class="icon" aria-hidden="true"><use href="/static/svg/icons.svg#clipboard-list"/></svg> API</a>
         </nav>
     </header>
 
@@ -61,7 +69,14 @@
             <button id="clear-filters" class="btn-clear">Clear Filters</button>
         </aside>
 
-        <main class="content">
+        <main class="content" id="main-content">
+            <div class="search-wrapper">
+                <svg class="icon search-icon" aria-hidden="true"><use href="svg/icons.svg#search"/></svg>
+                <input type="search" id="typeahead-search" class="search-input" placeholder="Search recipes..." autocomplete="off" aria-autocomplete="list" aria-controls="search-suggestions" aria-expanded="false" role="combobox">
+                <button class="search-clear" id="search-clear" aria-label="Clear search" hidden><svg aria-hidden="true" width="16" height="16"><use href="/static/svg/icons.svg#icon-x"/></svg></button>
+                <div id="search-suggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions" hidden></div>
+            </div>
+
             <div class="stats-bar">
                 <span>Total: <strong id="total-count">—</strong></span>
                 <span>Showing: <strong id="showing-count">—</strong></span>
@@ -79,6 +94,23 @@
         </main>
     </div>
 
+    <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+    <aside class="drawer" id="recipe-drawer" role="dialog" aria-label="Recipe details" aria-modal="true" hidden>
+        <header class="drawer-header">
+            <h2 id="drawer-title"></h2>
+            <button class="drawer-close" id="drawer-close" aria-label="Close recipe details">
+                <svg aria-hidden="true" width="24" height="24"><use href="/static/svg/icons.svg#icon-x"/></svg>
+            </button>
+        </header>
+        <div class="drawer-body" id="drawer-body">
+            <!-- Dynamic content loaded here -->
+        </div>
+    </aside>
+
     <script src="/static/js/recipes.js"></script>
+    <script src="/static/js/animations.js"></script>
+    <script>
+        document.getElementById('theme-toggle-wrap').appendChild(window.ReceptiTheme.createToggle());
+    </script>
 </body>
 </html>

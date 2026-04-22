@@ -187,3 +187,13 @@ class MemberNutritionSummary:
 
     def gap(self, nutrient: str) -> float:
         return max(0.0, round(self.rda.get(nutrient, 0) - self.intake.get(nutrient, 0), 2))
+
+
+@dataclass
+class RatingEvent:
+    event_id: int
+    member_id: int
+    recipe_id: int
+    stars: int | None
+    thumbs: bool | None
+    date: date

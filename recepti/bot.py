@@ -29,6 +29,12 @@ from recepti.recipe_expander import RecipeExpander
 from recepti.cooking_log import CookingLogStore
 from recepti.family_nutrient_balancer import FamilyNutrientBalancer
 from recepti.grocery_suggester import GrocerySuggester
+from recepti.rating_store import RecipeRatingStore
+from recepti.recipe_hunter import RecipeHunter
+from recepti.hunt_notification import HuntNotificationStore
+from recepti.meal_parser import parse_meal_description, MealParsingResult
+from recepti.meal_state import MealStateStore, PendingMealSession
+from recepti.verification_formatter import format_verification_message
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -47,6 +53,7 @@ CROATIAN_RECIPES_JSON = f"{DATA_DIR}/croatian_recipes.json"
 EXPANDED_RECIPES_JSON = f"{DATA_DIR}/expanded_recipes.json"
 COOKING_LOG_JSON = f"{DATA_DIR}/cooking_log.json"
 FAMILY_MEMBERS_JSON = f"{DATA_DIR}/family_members.json"
+RECIPE_RATINGS_JSON = f"{DATA_DIR}/recipe_ratings.json"
 
 FLASK_PORT = os.getenv("RECEPTI_FLASK_PORT")
 _flask_app = None
@@ -73,6 +80,10 @@ _family: list[Child] = []
 _cooking_log: Optional[CookingLogStore] = None
 _balancer: Optional[FamilyNutrientBalancer] = None
 _suggester: Optional[GrocerySuggester] = None
+_rating_store: Optional[RecipeRatingStore] = None
+_notification_store: Optional[HuntNotificationStore] = None
+_hunter: Optional[RecipeHunter] = None
+_meal_state: MealStateStore | None = None
 
 
 def get_store() -> RecipeStore:
@@ -147,6 +158,208 @@ def get_suggester() -> GrocerySuggester:
     return _suggester
 
 
+def get_rating_store() -> RecipeRatingStore:
+    global _rating_store
+    if _rating_store is None:
+        _rating_store = RecipeRatingStore(RECIPE_RATINGS_JSON)
+    return _rating_store
+
+
+def get_notification_store() -> HuntNotificationStore:
+    global _notification_store
+    if _notification_store is None:
+        _notification_store = HuntNotificationStore(
+            os.path.join(DATA_DIR, "hunt_notifications.json")
+        )
+    return _notification_store
+
+
+def get_hunter() -> RecipeHunter:
+    global _hunter
+    if _hunter is None:
+        _hunter = RecipeHunter(
+            recipe_store=get_store(),
+            cooking_log=get_cooking_log(),
+            ratings=get_rating_store(),
+            balancer=get_balancer(),
+            notification_store=get_notification_store(),
+            state_file=os.path.join(DATA_DIR, "hunt_state.json"),
+        )
+    return _hunter
+
+
+def get_meal_state() -> MealStateStore:
+    global _meal_state
+    if _meal_state is None:
+        _meal_state = MealStateStore()
+    return _meal_state
+
+
+# ── Conversational Meal Handler ─────────────────────────────────────
+async def conversational_meal_handler(
+    update: Update, ctx: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Handle free-text meal descriptions from non-technical users."""
+    if not os.getenv("ENABLE_CONVERSATIONAL_MEALS", "").lower() in ("1", "true", "yes"):
+        return
+
+    text = update.message.text.strip()
+    user_id = update.effective_user.id
+
+    # Check for pending verification confirmations
+    pending = get_meal_state().get_pending(user_id)
+    if pending:
+        text_lower = text.lower()
+        if any(w in text_lower for w in ["potvrdi", "potvrđeno", "ok", "da", "je", "točno"]):
+            await _confirm_meal(update, pending)
+            return
+        if any(w in text_lower for w in ["ispravi", "popravi", "ne", "krivo", "pogrešno"]):
+            await _fix_meal(update, pending)
+            return
+        if get_meal_state().is_awaiting_disambiguation(user_id):
+            await _handle_disambiguation(update, pending, text)
+            return
+
+    # Keyword pre-check
+    meal_keywords = [
+        "ručak", "doručak", "večeru", "večera",
+        "jeli", "jela", "jelo", "pojeo", "pojela",
+        "kuhala", "kuhao", "kuhali", "servirala", "servirali",
+        "porcija", "porcije", "servirano",
+    ]
+    if not any(kw in text.lower() for kw in meal_keywords):
+        return
+
+    # Parse via LLM
+    cooking_log = get_cooking_log()
+    members = cooking_log.get_members()
+    family_names = [m.name for m in members]
+    recipe_store = get_store()
+    known_recipes = [r.name for r in recipe_store._recipes]
+
+    result = parse_meal_description(text, family_names, known_recipes)
+    if not result.meals:
+        await update.message.reply_text(
+            "❌ Nisam uspjela raspoznati obroke u poruci.\n"
+            "Molim te napiši slobodno, npr:\n"
+            "\"ručak: šuklji, tomi je pojeo 2 porcije, ivana 1 porciju\"\n"
+            "\"danas za večeru: salata, svi su jeli\""
+        )
+        return
+
+    # Fuzzy match members and recipes
+    from difflib import SequenceMatcher
+
+    def fuzzy_match(name: str, candidates: list[str], threshold: float = 0.7) -> str | None:
+        name_lower = name.lower()
+        for cand in candidates:
+            if SequenceMatcher(None, name_lower, cand.lower()).ratio() >= threshold:
+                return cand
+        return None
+
+    member_matches: dict[str, str] = {}
+    for name in result.unmatched_members:
+        matched = fuzzy_match(name, family_names, 0.7)
+        if matched:
+            member_matches[name] = matched
+
+    recipe_matches: dict[str, str] = {}
+    for name in result.unmatched_recipes:
+        matched = fuzzy_match(name, known_recipes, 0.6)
+        if matched:
+            recipe_matches[name] = matched
+
+    # Format verification message
+    msg = format_verification_message(result, member_matches, recipe_matches, text)
+    if len(msg) > 4000:
+        msg = msg[:4000] + "\n\n[poruka skraćena]"
+
+    # Save pending and ask for confirmation
+    import json, time
+    pending_session = PendingMealSession(
+        user_id=user_id,
+        chat_id=update.effective_chat.id,
+        raw_text=text,
+        parsed_meals_json=json.dumps(result, default=str),
+        timestamp=time.time(),
+        session_key="pending",
+        awaiting_disambiguation=list(result.unmatched_members),
+    )
+    get_meal_state().save_pending(user_id, pending_session)
+    await update.message.reply_text(msg)
+
+
+async def _confirm_meal(
+    update: Update, pending: PendingMealSession
+) -> None:
+    """Log the verified meal session to cooking_log."""
+    import json
+    from datetime import date
+    from recepti.models import CookingSession
+
+    result = MealParsingResult(**json.loads(pending.parsed_meals_json))
+    cooking_log = get_cooking_log()
+
+    for meal in result.meals:
+        recipe = get_store().find_by_name(meal.recipe_name)
+        if not recipe:
+            continue
+        servings_served = {}
+        for eater in meal.eaters:
+            member = cooking_log.get_member_by_name(eater.member_name)
+            if member:
+                servings_served[member.id] = eater.amount
+        if not servings_served:
+            continue
+        session = CookingSession(
+            id=0,
+            date=date.today(),
+            recipe_id=recipe.id,
+            servings_made=sum(servings_served.values()),
+            servings_served=servings_served,
+            notes=meal.notes,
+        )
+        cooking_log.log_session(session)
+
+    get_meal_state().clear_pending(pending.user_id)
+    await update.message.reply_text("✅ OK, zabilježeno!")
+
+
+async def _fix_meal(
+    update: Update, pending: PendingMealSession
+) -> None:
+    """Clear pending and ask user to re-enter."""
+    get_meal_state().clear_pending(pending.user_id)
+    await update.message.reply_text(
+        "❌ OK, ispravit ćemo.\n"
+        "Molim te napiši ponovno, npr:\n"
+        "\"ručak: šuklji, tomi je pojeo 2 porcije, ivana 1\""
+    )
+
+
+async def _handle_disambiguation(
+    update: Update, pending: PendingMealSession, text: str
+) -> None:
+    """Handle a disambiguation response for an unmatched member name."""
+    if get_meal_state().resolve_disambiguation(pending.user_id, text.strip()):
+        remaining = get_meal_state().get_pending(pending.user_id)
+        if remaining and not remaining.awaiting_disambiguation:
+            await update.message.reply_text(
+                "✅ OK, zabilježeno!\n(Pokušat ću ponovo s ispravnim imenima)"
+            )
+            get_meal_state().clear_pending(pending.user_id)
+        else:
+            await update.message.reply_text(
+                f"✅ OK, {text.strip()} zabilježen. "
+                f"Što je s ostalima? ({len(remaining.awaiting_disambiguation) if remaining else 0} preostalo)"
+            )
+    else:
+        await update.message.reply_text(
+            f"❓ Nisam siguran tko je '{text.strip()}'. "
+            "Molim te napiši ime člana obitelji."
+        )
+
+
 # ── Helpers ──────────────────────────────────────────────────────────
 async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
@@ -163,6 +376,7 @@ async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
         "        /expand <ingredient> — find & add recipes online\n"
         "/balance-family [days] — family nutrition report + grocery suggestions\n"
         "/kuhano <recipe_id> [porcija] — zapisnik da ste skuhali nešto\n"
+        "/okusi <recipe_id> [👍|👎|1-5] — ocijeni recept (thumbs ili zvijezdice)\n"
         "/recipes — list all recipes\n"
         "/recipe <id> — full recipe details\n"
         "/help — this message"
@@ -658,38 +872,84 @@ async def kuhano_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None
     args = ctx.args
     if not args:
         await update.message.reply_text(
-            "Upotreba: /kuhano <recipe_id> [porcija]\n"
+            "Upotreba: /kuhano <ime ili ID> [porcija]\n"
             "npr. /kuhano 42\n"
-            "npr. /kuhano 42 6"
+            "npr. /kuhano jota\n"
+            "npr. /kuhano jota 6"
         )
         return
 
-    try:
-        recipe_id = int(args[0])
-    except ValueError:
-        await update.message.reply_text("Nepoznat ID recepta. Koristi /recipes za popis.")
-        return
-
     store = get_store()
-    recipe = store.get_recipe_by_id(recipe_id)
-    if recipe is None:
-        await update.message.reply_text(f"Recept #{recipe_id} ne postoji. Koristi /recipes.")
-        return
-
     portions: float
-    if len(args) >= 2:
-        try:
-            portions = float(args[1])
-            if portions <= 0:
-                raise ValueError()
-        except ValueError:
-            await update.message.reply_text("Broj porcija mora biti pozitivan broj.")
+    recipe_id_for_log: int
+    recipe_name: str
+
+    first_arg = args[0]
+
+    if first_arg.isdigit():
+        recipe = store.get_recipe_by_id(int(first_arg))
+        if recipe is None:
+            await update.message.reply_text(f"Recept #{first_arg} ne postoji. Koristi /recipes.")
             return
+        recipe_id_for_log = recipe.id
+        recipe_name = recipe.name
+        if len(args) >= 2:
+            try:
+                portions = float(args[1])
+                if portions <= 0:
+                    raise ValueError()
+            except ValueError:
+                await update.message.reply_text("Broj porcija mora biti pozitivan broj.")
+                return
+        else:
+            portions = float(recipe.servings)
     else:
-        portions = float(recipe.servings)
+        name_query = first_arg
+        if len(args) >= 2 and args[1].replace(".", "").isdigit():
+            name_query = args[0]
+            try:
+                portions = float(args[1])
+                if portions <= 0:
+                    raise ValueError()
+            except ValueError:
+                await update.message.reply_text("Broj porcija mora biti pozitivan broj.")
+                return
+        else:
+            if len(args) >= 2:
+                name_query = f"{args[0]} {args[1]}"
+                portions = float(args[2]) if len(args) >= 3 and args[2].replace(".", "").isdigit() else 0.0
+                if portions <= 0:
+                    name_query = f"{args[0]} {args[1]}"
+                    portions = 0.0
+            else:
+                portions = 0.0
+
+        results = store.find_by_name(name_query)
+        if not results:
+            await update.message.reply_text(
+                f"Ne mogu naći '{name_query}'. "
+                "Pokušaj /search luk kupus ili /recipes za popis svih recepata."
+            )
+            return
+
+        if len(results) == 1:
+            recipe = results[0]
+        else:
+            lines = [f"Nađeno {len(results)} recepata — koji je točan?\n"]
+            for r in results[:5]:
+                lines.append(f"  /kuhano {r.id} — {r.name}")
+            lines.append("")
+            lines.append(f"(ili idi s /kuhano {results[0].id} ako misliš da je to {results[0].name})")
+            await update.message.reply_text("\n".join(lines))
+            return
+
+        recipe_id_for_log = recipe.id
+        recipe_name = recipe.name
+        if portions <= 0:
+            portions = float(recipe.servings)
 
     get_cooking_log().log_session(
-        recipe_id=recipe_id,
+        recipe_id=recipe_id_for_log,
         servings_made=portions,
         servings_served=None,
         notes="",
@@ -697,7 +957,7 @@ async def kuhano_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None
     )
 
     await update.message.reply_text(
-        f"✅ Zapisano: recept #{recipe_id} — {recipe.name}, {portions:.0f} porcija"
+        f"✅ Zapisano: recept #{recipe_id_for_log} — {recipe_name}, {portions:.0f} porcija"
     )
 
 
@@ -747,6 +1007,134 @@ async def balance_family_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE)
     await update.message.reply_text("\n".join(lines).strip())
 
 
+async def okusi_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    args = ctx.args
+    if not args or len(args) < 1:
+        await update.message.reply_text(
+            "Upotreba: /okusi <recipe_id> [👍|👎|1-5]\n"
+            "npr. /okusi 31\n"
+            "npr. /okusi 31 👍\n"
+            "npr. /okusi 31 👎\n"
+            "npr. /okusi 31 4"
+        )
+        return
+
+    try:
+        recipe_id = int(args[0])
+    except ValueError:
+        await update.message.reply_text("ID recepta mora biti broj. npr. /okusi 31")
+        return
+
+    recipe = get_store().get_recipe_by_id(recipe_id)
+    if recipe is None:
+        await update.message.reply_text(f"Recept #{recipe_id} ne postoji.")
+        return
+
+    stars: int | None = None
+    thumbs: bool | None = None
+
+    if len(args) == 1:
+        thumbs = True
+    else:
+        second = args[1].lower()
+        if second in ("👍", "like", "lajk", "love", "volim"):
+            thumbs = True
+        elif second in ("👎", "dislike", "dislajk", "ne", "disliked"):
+            thumbs = False
+        else:
+            try:
+                stars = int(second)
+                if not (1 <= stars <= 5):
+                    raise ValueError()
+                if len(args) >= 3 and args[2].lower() in ("👎", "dislike", "ne"):
+                    thumbs = False
+                elif len(args) >= 3 and args[2].lower() in ("👍", "like"):
+                    thumbs = True
+            except ValueError:
+                await update.message.reply_text(
+                    "Nepoznat argument. Koristi 👍, 👎, ili broj 1-5.\n"
+                    "npr. /okusi 31 👍  ili  /okusi 31 4"
+                )
+                return
+
+    try:
+        event = get_rating_store().log_rating(
+            member_id=0,
+            recipe_id=recipe_id,
+            stars=stars,
+            thumbs=thumbs,
+        )
+    except ValueError as e:
+        await update.message.reply_text(f"Greška: {e}")
+        return
+
+    parts = [f"✅ Ocjenjeno: #{recipe_id} — {recipe.name}"]
+    if stars is not None:
+        parts.append(f"{'⭐' * stars}")
+    if thumbs is True:
+        parts.append("👍 volimo!")
+    elif thumbs is False:
+        parts.append("👎 nije nam se svidjelo")
+
+    await update.message.reply_text("\n".join(parts))
+
+
+async def hunt_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    args = ctx.args
+    hunter = get_hunter()
+
+    if args and args[0].lower() in ("status", "stat", "st"):
+        pending = get_notification_store().get_pending()
+        recent = get_notification_store().get_recent(limit=3)
+        if not pending and not recent:
+            await update.message.reply_text("Hunter nije pronašao ništa novo.")
+            return
+        lines = ["📡 Hunter status:\n"]
+        if pending:
+            for n in pending:
+                lines.append(f"  🆕 {n.timestamp[:10]}: {n.hunt_summary}")
+                if n.recipes:
+                    lines.append(f"     Recipes: {', '.join(n.recipes[:5])}")
+        if recent and recent != pending:
+            lines.append(f"\nZadnji run:")
+            for n in recent[:2]:
+                lines.append(f"  📅 {n.timestamp[:10]}: {n.hunt_summary}")
+        await update.message.reply_text("\n".join(lines))
+        return
+
+    if args and args[0].lower() in ("force", "now", "run"):
+        await update.message.reply_text("Hunter se pokreće... Ovo može potrajati par minuta.")
+        stats = hunter.hunt_once()
+        msgs = [f"✅ Hunter cycle done:"]
+        msgs.append(f"  Recipes found: {stats.get('recipes_found', 0)}")
+        msgs.append(f"  Recipes added: {stats.get('recipes_added', 0)}")
+        if stats.get("blacklisted"):
+            msgs.append(f"  Blacklisted: {', '.join(stats['blacklisted'])}")
+        msgs.append(f"  Cycle #{stats.get('cycle_count', 0)}")
+        await update.message.reply_text("\n".join(msgs))
+        return
+
+    if args and args[0].lower() in ("stop", "kill"):
+        hunter.stop()
+        await update.message.reply_text("Hunter zaustavljen.")
+        return
+
+    if args and args[0].lower() in ("start", "on"):
+        hunter.start()
+        await update.message.reply_text("Hunter pokrenut u pozadini.")
+        return
+
+    hunter.start()
+    interval = int(os.getenv("RECEPTI_HUNT_INTERVAL_HOURS", "24"))
+    await update.message.reply_text(
+        f"🕷️ Hunter aktiviran!\n"
+        f"  Interval: svakih {interval} sati\n"
+        f"  /hunt force — pokreni odmah\n"
+        f"  /hunt status — vidi rezultate\n"
+        f"  /hunt start/stop — uključi/isključi"
+    )
+
+
 async def unknown(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Unknown command. Send /help for available commands.")
 
@@ -775,7 +1163,10 @@ def main() -> None:
     application.add_handler(CommandHandler("balance-family", balance_family_command))
     application.add_handler(CommandHandler("addmember", addmember_command))
     application.add_handler(CommandHandler("kuhano", kuhano_command))
+    application.add_handler(CommandHandler("okusi", okusi_command))
+    application.add_handler(CommandHandler("hunt", hunt_command))
     application.add_handler(MessageHandler(filters.COMMAND, unknown))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, conversational_meal_handler))
 
     if FLASK_PORT:
         create_app_fn = _try_import_flask()

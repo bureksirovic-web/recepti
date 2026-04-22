@@ -167,6 +167,24 @@ class RecipeStore:
                 return r
         return None
 
+    def find_by_name(self, query: str) -> list[Recipe]:
+        """Return recipes whose name contains query (case-insensitive, partial match)."""
+        q = query.lower()
+        scored: list[tuple[Recipe, int]] = []
+        for recipe in self._recipes:
+            score = 0
+            name_lower = recipe.name.lower()
+            if name_lower == q:
+                score = 100
+            elif name_lower.startswith(q):
+                score = 80
+            elif q in name_lower:
+                score = name_lower.find(q) + 1
+            if score > 0:
+                scored.append((recipe, score))
+        scored.sort(key=lambda x: x[1], reverse=True)
+        return [r for r, _ in scored]
+
     def add_recipe(self, recipe: Recipe) -> int:
         """Add recipe and assign new id if needed."""
         with self._lock:
