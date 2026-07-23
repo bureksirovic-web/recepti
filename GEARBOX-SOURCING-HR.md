@@ -2,7 +2,7 @@
 
 **Market survey, Croatia + EU tier-2 · compiled 2026-07-22**
 
-Duty point: 4 kW / 1440 rpm motor on IEC **112 B14** flange · n2 ≈ 36 rpm (i ≈ 40) · transmitted power est. 2–2.5 kW · output torque demand est. **500–600 Nm** · mounted vertically, **output shaft DOWN (V5)** · hanging axial load on output shaft est. **1.8–4.2 kN** · spiral interface = NMRV110 hollow shaft (nominal Ø42; a Ø28 stub would imply a bushing — see §B4.1). Current unit (Tehnopan-branded NMRV110 i=40) has **no thermal equilibrium below 108 °C** under load. Three more drives must be **ordered within ~3–4 weeks** and delivered **before early September 2026**.
+Duty point: 4 kW / 1440 rpm motor on IEC **112 B14** flange · n2 ≈ 36 rpm (i ≈ 40) · transmitted power est. 2–2.5 kW · output torque demand est. **500–600 Nm** · mounted vertically, **output shaft DOWN (V5)** · hanging axial load on output shaft est. **1.8–4.2 kN** · spiral interface = NMRV110 hollow shaft, **Ø42 mm (owner-confirmed by measurement, 2026-07-23)**. Current unit (Tehnopan-branded NMRV110 i=40) has **no thermal equilibrium below 108 °C** under load. Three more drives must be **ordered within ~3–4 weeks** and delivered **before early September 2026**.
 
 ---
 
@@ -131,7 +131,7 @@ What exists (both confirmed as products, numbers unpublished in accessible sourc
 #### B4.1 Genuine Motovario NMRV110 i=40, factory V5
 
 * **Performance:** with 4 kW/1400 rpm at i=40: **n2 = 35 rpm, M2 = 863 Nm** ([websystem.pl NMRV110-U40-4kW listing](https://websystem.pl/z-silnikiem-40-kw/28084-NMRV110-U40-4kW.html), [SNIPPET 2026-07-22]) → implied dynamic efficiency ≈ 0.79 [COMPUTED: 863 Nm × 3.665 rad/s ÷ 4000 W], matching the site's overheating arithmetic. **The heat problem remains by design.**
-* **Bore:** hollow output **Ø42 mm** — stated independently by [RS](https://int.rsdelivers.com/product/motovario/nmrv-p110-400-25028-42-b3-mv/motovario-worm-gearbox-400100-gear-ratio-932-nm/2166649), [258 Engineering](https://258engineeringsupplies.com/product/nmrv-p110-401-42mm-gearbox/), websystem.pl [all SNIPPET 2026-07-22]. **No Ø28 variant of size 110 exists on any source found** — Ø28 belongs to smaller frames (e.g. 075). ⚠ **Re-measure the spiral stub before ordering anything:** if it is really Ø28, the current drive has a bushing or is a smaller frame than believed.
+* **Bore:** hollow output **Ø42 mm** — stated independently by [RS](https://int.rsdelivers.com/product/motovario/nmrv-p110-400-25028-42-b3-mv/motovario-worm-gearbox-400100-gear-ratio-932-nm/2166649), [258 Engineering](https://258engineeringsupplies.com/product/nmrv-p110-401-42mm-gearbox/), websystem.pl [all SNIPPET 2026-07-22]. **No Ø28 variant of size 110 exists on any source found** — Ø28 belongs to smaller frames (e.g. 075). ✅ **Owner confirmed 2026-07-23: the spiral stub is Ø42 mm** — the installed unit matches the standard NMRV110 bore, the Ø28 question is closed, and genuine NMRV110 / WGM110 units are dimensional drop-ins.
 * **V5 ordering rules:** per the Motovario NMRV use/maintenance manual ([ManualsLib copy](https://www.manualslib.com/manual/3019294/Motovario-Nmrv.html), [SNIPPET 2026-07-22]): mounting position **must be specified at order for sizes 090–110**; sizes 110/130 have fill/level/drain plugs; **the closed transport cap must be replaced with the supplied breather plug before start-up**. V5 oil quantity in litres: [UNVERIFIED].
 * **Fa2:** catalogue value **[UNVERIFIED]** (Fr2/Fa2 tables sit in the [official VSF/NMRV technical catalogue](https://my.motovario.com/uploads/pdf_static/TECHNICAL%20CATALOGUE_VSF_IEC_STD_EN_rev0_2017.pdf) — unopenable from this environment; §E). Task brief carries **Fa2 ≈ 2.4 kN** [TASK BRIEF] vs 1.8–4.2 kN demand → **top of the load range exceeds the allowance; like-for-like NMRV110 replacement is not axially safe without the catalogue check.** Series-level only: DirectIndustry lists NMRV max radial 16,500 N / max torque 1,550 Nm ([Motovario product page there](https://www.directindustry.com/prod/motovario/product-2245-458738.html)) — series maximum, not size-110.
 * **IEC 112 B14:** exists at size 110 — M&M Intercom lists ["Gearbox NMRV 110 i=40 100/112B14"](https://www.mmintercom.com/en/gearbox-nmrv-110-i40-100-112b14-product-14865/) [SNIPPET 2026-07-22].
@@ -198,13 +198,13 @@ Heat column = P·(1/η−1) at 2.5 kW [COMPUTED]. Question marks mean [UNVERIFIE
 **Genuine Motovario NMRV130 i=40, factory V5 + breather, 4 kW 112B14** via MGA Trgovina / Fluidmatic / M&M Intercom — cast-iron housing and larger oil volume buy thermal margin, but ~665 W of heat remains and the Ø45 bore forces interface rework anyway. Pair it with a written catalogue cite of NMRV130 Fa2 before ordering. The **WGM110 at 550 EUR / 4–10 days** (Trgovina Ekstra) is a legitimate *emergency spare* to survive harvest if a unit dies — it is not a fix (aluminium-housing claim, unknown Fa2, same η).
 
 ### Spiral-interface rework — price it in now (estimate, not sourced)
-The spiral stub is sized for the NMRV110 Ø42 hollow shaft. Every recommended option changes the bore: KA67 = Ø40 [SNIPPET]; NORD/Bonfiglioli bores [UNVERIFIED]; NMRV130 = Ø45 [SNIPPET].
+The spiral stub is **Ø42 mm (owner-confirmed, 2026-07-23)** — sized for the NMRV110 hollow shaft. The recommended options change the bore: KA67 = Ø40 [SNIPPET] → turn the stub down to Ø40 with a new key seat; NORD SK 9022.1 and Bonfiglioli A55 bores [UNVERIFIED] — **ask each for a Ø42 hollow-bore option in the RFQ; if one exists, the rework line item disappears for that offer**; NMRV130 = Ø45 [SNIPPET] → stepped adapter bushing 45→42.
 * Work needed per unit: machine the stub down (42→40) with new key seat, **or** turn a stepped adapter bushing (45→42), plus trial fit.
 * **ESTIMATE: €150–400 per drive** at a Slavonia machine shop (Đakovo/Osijek/Slavonski Brod), 3 units → **€450–1,200 total, ~1 week**. This is a guess for budgeting, not a quoted price — get it quoted alongside the drives (Reducta-IM, A.1-6, even sells pužne spirale and may quote the whole interface).
-* ⚠ Before any order: **physically re-measure the existing spiral stub** — the task brief's "28 or 42 mm" ambiguity matters, and no Ø28 variant of size-110 exists ([§B4.1]), so a Ø28 stub would mean the installed base differs from the assumed NMRV110 standard.
+* ✅ Stub measurement done: **Ø42 mm confirmed by the owner (2026-07-23)** — the brief's "28 or 42 mm" ambiguity is closed; no Ø28 variant of size-110 exists anyway ([§B4.1]).
 
 ### Deadline math
-Order window closes ~2026-08-12/19. Week 1 (now): send the same written RFQ to all three channels + fallback, containing: duty data (4 kW 1440 rpm IEC112 B14; n2 ≈ 36 rpm; 600 Nm; S1 continuous; vertical, output shaft down; hanging axial 1.8–4.2 kN; silo ambient up to ~40 °C), and require **written catalogue cites for η and Fa2 in the vertical position, factory oil fill + breather for output-down, firm delivery date, price for 3 + 1 spare option**. Week 2: compare, order the winner. Any supplier who cannot produce the catalogue pages inside a week has answered the reliability question for you.
+Order window closes ~2026-08-12/19. Week 1 (now): send the same written RFQ to all three channels + fallback, containing: duty data (4 kW 1440 rpm IEC112 B14; n2 ≈ 36 rpm; 600 Nm; S1 continuous; vertical, output shaft down; hanging axial 1.8–4.2 kN; hollow output bore **Ø42 mm preferred** — quote nearest available bore + adapter if unavailable; silo ambient up to ~40 °C), and require **written catalogue cites for η and Fa2 in the vertical position, factory oil fill + breather for output-down, firm delivery date, price for 3 + 1 spare option**. Week 2: compare, order the winner. Any supplier who cannot produce the catalogue pages inside a week has answered the reliability question for you.
 
 ---
 
@@ -223,7 +223,7 @@ Blocked from this research environment (egress 403) but public; any normal brows
 ## F. Dead ends recorded (negative results with value)
 
 * **reduktori.hr** — NXDOMAIN, zero indexed pages: defunct/nonexistent (2026-07-22).
-* **No Ø28 hollow-bore variant of NMRV110 exists** on any source found; Ø28 belongs to smaller frames → re-measure the spiral stub.
+* **No Ø28 hollow-bore variant of NMRV110 exists** on any source found; Ø28 belongs to smaller frames. (Owner subsequently measured the stub: **Ø42 mm**, 2026-07-23 — question closed.)
 * **No Croatian channel for Transtecno or Chiaravalli** (site:.hr searches empty); nearest are Sever pogonska tehnika (Maribor) and Serbian distributors.
 * **No official Motovario HR distributor confirmable from Motovario's side** — locator page unreadable from this environment; MGA/Fluidmatic self-declarations stand unrebutted.
 * **"END elektromotori"** — no such Croatian company found.
