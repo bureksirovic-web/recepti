@@ -3,7 +3,7 @@
 import json
 import logging
 import re
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
@@ -11,7 +11,7 @@ import requests
 from duckduckgo_search import DDGS
 from lxml import html
 
-from .models import Ingredient, Recipe, RecipeTags, NutritionPerServing
+from .models import Recipe
 from .recipe_store import RecipeStore
 
 logger = logging.getLogger(__name__)

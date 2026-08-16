@@ -1,4 +1,5 @@
 import os
+
 from recepti.recipe_store import RecipeStore
 from recepti.web_app import create_app
 

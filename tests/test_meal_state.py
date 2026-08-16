@@ -1,9 +1,11 @@
 """Tests for meal_state.py."""
 
-import pytest
-import time
-import tempfile
 import os
+import tempfile
+import time
+
+import pytest
+
 from recepti.meal_state import MealStateStore, PendingMealSession
 
 

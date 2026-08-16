@@ -5,7 +5,6 @@ from pathlib import Path
 
 from recepti.recipe_store import RecipeStore
 
-
 DATA_DIR = Path(__file__).parent.parent / "data"
 CROATIAN_RECIPES_PATH = DATA_DIR / "croatian_recipes.json"
 RECIPES_PATH = DATA_DIR / "recipes.json"

@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock
 
-import pytest
-
 from recepti.grocery_suggester import GrocerySuggester
 from recepti.models import MemberNutritionSummary
 

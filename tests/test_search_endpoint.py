@@ -6,12 +6,6 @@ from pathlib import Path
 
 import pytest
 
-from recepti.models import (
-    Ingredient,
-    NutritionPerServing,
-    Recipe,
-    RecipeTags,
-)
 from recepti.recipe_store import RecipeStore
 from recepti.web_app import create_app
 

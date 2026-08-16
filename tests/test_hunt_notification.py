@@ -2,12 +2,10 @@
 
 import json
 import threading
-from pathlib import Path
-from unittest.mock import MagicMock
 
 import pytest
 
-from recepti.hunt_notification import HuntNotification, HuntNotificationStore
+from recepti.hunt_notification import HuntNotificationStore
 
 
 @pytest.fixture

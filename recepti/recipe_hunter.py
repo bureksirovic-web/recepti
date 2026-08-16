@@ -12,7 +12,7 @@ import re
 import tempfile
 import threading
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -20,10 +20,10 @@ import requests
 from duckduckgo_search import DDGS
 from lxml import html
 
-from .models import Recipe, RecipeTags, Ingredient, NutritionPerServing
-from .scraper import fetch, extract_jsonld, parse_jsonld_recipe
+from .llm_service import extract_recipe_from_url
+from .models import Ingredient, NutritionPerServing, Recipe, RecipeTags
 from .recipe_store import RecipeStore
-from .llm_service import call_openrouter, extract_recipe_from_url
+from .scraper import extract_jsonld, fetch, parse_jsonld_recipe
 
 logger = logging.getLogger(__name__)
 

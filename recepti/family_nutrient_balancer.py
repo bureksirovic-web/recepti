@@ -3,7 +3,7 @@
 from datetime import date, timedelta
 from typing import Optional
 
-from recepti.models import FamilyMember, MemberNutritionSummary, Recipe
+from recepti.models import FamilyMember, MemberNutritionSummary
 
 
 class FamilyNutrientBalancer:
@@ -58,7 +58,7 @@ class FamilyNutrientBalancer:
     def rda_for_member(self, member: FamilyMember) -> dict[str, float]:
         key = self._rda_key(member)
         base = self.RDA_TABLE.get(key, self.RDA_TABLE["adult_male"])
-        scale = max(0.5, min(1.5, (age := member.age_years) / 30))
+        scale = max(0.5, min(1.5, member.age_years / 30))
         return {k: round(v * scale, 2) for k, v in base.items()}
 
     def _scale_nutrition(

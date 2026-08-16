@@ -1,6 +1,6 @@
 """Tests for CuisineBlacklister."""
 
-from unittest.mock import MagicMock, call
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -22,7 +22,7 @@ class TestSync:
         blacklister.cooking_log.get_members.return_value = [member]
         blacklister.ratings.get_rejected_cuisines.return_value = {"punjabi": 3}
 
-        result = blacklister.sync()
+        blacklister.sync()
 
         assert "punjabi" in member.dislikes
 

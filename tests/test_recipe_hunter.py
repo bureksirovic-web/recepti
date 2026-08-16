@@ -1,22 +1,18 @@
 """Tests for RecipeHunter and its coverage helpers."""
 
 import json
-import os
-import threading
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-from recepti.models import Recipe, RecipeTags, Ingredient, NutritionPerServing
+from recepti.models import Ingredient, NutritionPerServing, Recipe, RecipeTags
 from recepti.recipe_hunter import (
+    RecipeHunter,
     _build_holes,
     _build_reason,
     _get_tag_val,
     _suggest_queries,
-    RecipeHunter,
 )
-
 
 # ── Coverage helpers ────────────────────────────────────────────────────────────────
 

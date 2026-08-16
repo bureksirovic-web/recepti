@@ -4,8 +4,8 @@ import os
 from unittest.mock import MagicMock, patch
 
 import pytest
-import recepti.llm_service as llm_mod
 
+import recepti.llm_service as llm_mod
 from recepti.llm_service import (
     call_openrouter,
     scale_ingredients_for_family,
@@ -80,6 +80,7 @@ class TestModuleImports:
     def test_imports_with_api_key(self):
         with patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-key"}):
             import importlib
+
             import recepti.llm_service
             importlib.reload(recepti.llm_service)
             assert recepti.llm_service.OPENROUTER_API_KEY == "test-key"

@@ -4,8 +4,11 @@ import json
 import logging
 import random
 from dataclasses import dataclass
-from datetime import datetime, timedelta
-from typing import Optional
+from datetime import datetime
+from typing import TYPE_CHECKING, Optional
+
+if TYPE_CHECKING:
+    from recepti.recipe_expander import RecipeExpander
 
 logger = logging.getLogger(__name__)
 

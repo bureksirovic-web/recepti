@@ -1,7 +1,7 @@
 import os
+
 import pytest
 from playwright.sync_api import Page, expect
-
 
 BASE_URL = os.getenv("TEST_BASE_URL", "http://127.0.0.1:5001")
 

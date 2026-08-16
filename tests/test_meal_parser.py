@@ -1,12 +1,11 @@
 """Tests for meal_parser.py."""
 
-import pytest
 from recepti.meal_parser import (
-    parse_meal_description,
+    KEYWORD_PRECHECK,
+    EaterEntry,
     MealParsingResult,
     ParsedMeal,
-    EaterEntry,
-    KEYWORD_PRECHECK,
+    parse_meal_description,
 )
 
 

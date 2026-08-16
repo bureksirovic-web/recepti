@@ -1,6 +1,6 @@
 """Croatian Telegram verification message formatter for parsed meals."""
 
-from recepti.meal_parser import EaterEntry, MealParsingResult, ParsedMeal
+from recepti.meal_parser import EaterEntry, MealParsingResult
 
 MEAL_LABELS = {
     "breakfast": "🍳 DORUČAK",

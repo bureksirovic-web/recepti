@@ -9,9 +9,9 @@ import os
 import re
 from typing import Any, Optional
 
-from .models import Ingredient, RecipeTags, NutritionPerServing, Recipe
-
 import requests
+
+from .models import Ingredient, NutritionPerServing, Recipe, RecipeTags
 
 logger = logging.getLogger(__name__)
 
@@ -321,7 +321,7 @@ def translate_text(
     glossary_instruction = ""
     if glossary:
         glossary_instruction = (
-            f"\n\nMUST preserve these terms exactly (do not translate them): "
+            "\n\nMUST preserve these terms exactly (do not translate them): "
             + ", ".join(f'"{term}"' for term in glossary)
         )
 

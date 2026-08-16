@@ -1060,7 +1060,7 @@ async def okusi_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
                 return
 
     try:
-        event = get_rating_store().log_rating(
+        get_rating_store().log_rating(
             member_id=0,
             recipe_id=recipe_id,
             stars=stars,

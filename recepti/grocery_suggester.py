@@ -2,7 +2,6 @@
 
 from recepti.models import MemberNutritionSummary
 
-
 NUTRIENT_INGREDIENTS: dict[str, list[tuple[str, float]]] = {
     "iron_mg": [
         ("leća", 6.5), ("grah", 5.5), ("šparoga", 2.1), ("blitva", 1.8),

@@ -1,8 +1,7 @@
 """Tests for verification_formatter.py."""
 
-import pytest
+from recepti.meal_parser import EaterEntry, MealParsingResult, ParsedMeal
 from recepti.verification_formatter import format_verification_message
-from recepti.meal_parser import MealParsingResult, ParsedMeal, EaterEntry
 
 
 class TestVerificationMessage:

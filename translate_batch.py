@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv(str(Path(__file__).parent / ".env"))
 
-from recepti.llm_service import call_openrouter
+from recepti.llm_service import call_openrouter  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
