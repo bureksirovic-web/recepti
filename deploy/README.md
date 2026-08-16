@@ -6,6 +6,7 @@
 |---|---|---|
 | Flask web app | 5001 | Serves static HTML + REST API |
 | Cloudflare Tunnel | — | Exposes port 5001 as https://recepti.opghaha.eu |
+| Telegram bot | — | Long-running polling; answers in-chat commands |
 
 ## Prerequisites
 
@@ -46,6 +47,35 @@ git pull
 sudo systemctl restart recepti-web
 # Tunnel auto-reconnects; no restart needed unless it breaks
 ```
+
+## Deploy the Telegram bot (durable, always-on)
+
+The web app and tunnel are separate from the bot. To run the bot so it survives
+reboots / container restarts, install it as a systemd service:
+
+```bash
+cd /home/tomi/Recepti
+chmod +x deploy/bot-start.sh deploy/bot-stop.sh
+sudo bash deploy/bot-start.sh     # creates .env, installs + starts recepti-bot.service
+```
+
+Requirements on the host (checked by `bot-start.sh`):
+- Repo at `/home/tomi/Recepti` and a venv at `/home/tomi/Recepti/.venv`
+- `RECEPTI_BOT_TOKEN` and `OPENROUTER_API_KEY` set in the shell (first run writes
+  them to `/home/tomi/Recepti/.env`, chmod 600 — never committed), or paste them
+  when prompted.
+
+Once the service is up, open the bot (@Hahai_recepti_bot) and send **/start** to
+activate it, then try `/search`, `/plan`, `/shopping`, `/kuhano`, `/okusi`.
+
+```bash
+sudo systemctl status recepti-bot --no-pager   # status
+tail -f /home/tomi/Recepti/data/logs/bot.log   # logs
+sudo bash deploy/bot-stop.sh                   # stop + disable
+```
+
+> The unit (`deploy/systemd/recepti-bot.service`) hardens the process
+> (NoNewPrivileges, ReadWritePaths, PrivateTmp) and auto-restarts on failure.
 
 ## Stop
 

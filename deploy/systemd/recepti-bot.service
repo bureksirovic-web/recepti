@@ -1,0 +1,41 @@
+# =============================================================================
+# Recepti — Telegram Bot systemd service unit
+# Place in: /etc/systemd/system/recepti-bot.service
+# Enable:   sudo systemctl enable recepti-bot && sudo systemctl start recepti-bot
+#
+# Secret env (RECEPTI_BOT_TOKEN, OPENROUTER_API_KEY) lives in:
+#   /home/tomi/Recepti/.env   (chmod 600 — never commit)
+# Format: KEY=value, one per line. systemd brackets the file.
+# =============================================================================
+
+[Unit]
+Description=Recepti — Telegram Recipe Bot (long-running polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tomi
+WorkingDirectory=/home/tomi/Recepti
+Environment=RECEPTI_DATA_DIR=/home/tomi/Recepti/data
+EnvironmentFile=/home/tomi/Recepti/.env
+ExecStart=/home/tomi/Recepti/.venv/bin/python3 -m recepti.bot
+ExecStop=/bin/kill -TERM $MAINPID
+# run_polling() exits cleanly on SIGINT/SIGTERM; give it time to flush.
+TimeoutStopSec=15
+Restart=on-failure
+RestartSec=5
+# 3 failed starts in 60s -> give up and let systemd report (avoids crash-loop storm)
+StartLimitIntervalSec=60
+StartLimitBurst=3
+StandardOutput=append:/home/tomi/Recepti/data/logs/bot.log
+StandardError=append:/home/tomi/Recepti/data/logs/bot.log
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/tomi/Recepti/data
+PrivateTmp=true
+RestrictAddressFamilies=AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target
