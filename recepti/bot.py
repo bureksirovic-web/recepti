@@ -18,22 +18,22 @@ from telegram.ext import (
     filters,
 )
 
-from recepti.kid_tracker import KidMealHistory
-from recepti.models import Child
-from recepti.nutrition import check_daily_balance
-from recepti.planner import format_meal_plan, generate_weekly_plan
-from recepti.recipe_store import RecipeStore
-from recepti.shopping import format_shopping_list, generate_shopping_list_from_recipes
-from recepti.llm_service import suggest_recipe, scale_ingredients_for_family
-from recepti.recipe_expander import RecipeExpander
 from recepti.cooking_log import CookingLogStore
 from recepti.family_nutrient_balancer import FamilyNutrientBalancer
 from recepti.grocery_suggester import GrocerySuggester
-from recepti.rating_store import RecipeRatingStore
-from recepti.recipe_hunter import RecipeHunter
 from recepti.hunt_notification import HuntNotificationStore
-from recepti.meal_parser import parse_meal_description, MealParsingResult
+from recepti.kid_tracker import KidMealHistory
+from recepti.llm_service import suggest_recipe
+from recepti.meal_parser import MealParsingResult, parse_meal_description
 from recepti.meal_state import MealStateStore, PendingMealSession
+from recepti.models import Child
+from recepti.nutrition import check_daily_balance
+from recepti.planner import format_meal_plan, generate_weekly_plan
+from recepti.rating_store import RecipeRatingStore
+from recepti.recipe_expander import RecipeExpander
+from recepti.recipe_hunter import RecipeHunter
+from recepti.recipe_store import RecipeStore
+from recepti.shopping import format_shopping_list, generate_shopping_list_from_recipes
 from recepti.verification_formatter import format_verification_message
 
 logging.basicConfig(
@@ -200,7 +200,7 @@ async def conversational_meal_handler(
     update: Update, ctx: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """Handle free-text meal descriptions from non-technical users."""
-    if not os.getenv("ENABLE_CONVERSATIONAL_MEALS", "").lower() in ("1", "true", "yes"):
+    if os.getenv("ENABLE_CONVERSATIONAL_MEALS", "").lower() not in ("1", "true", "yes"):
         return
 
     text = update.message.text.strip()
@@ -275,7 +275,8 @@ async def conversational_meal_handler(
         msg = msg[:4000] + "\n\n[poruka skraćena]"
 
     # Save pending and ask for confirmation
-    import json, time
+    import json
+    import time
     pending_session = PendingMealSession(
         user_id=user_id,
         chat_id=update.effective_chat.id,
@@ -295,6 +296,7 @@ async def _confirm_meal(
     """Log the verified meal session to cooking_log."""
     import json
     from datetime import date
+
     from recepti.models import CookingSession
 
     result = MealParsingResult(**json.loads(pending.parsed_meals_json))
@@ -1096,7 +1098,7 @@ async def hunt_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
                 if n.recipes:
                     lines.append(f"     Recipes: {', '.join(n.recipes[:5])}")
         if recent and recent != pending:
-            lines.append(f"\nZadnji run:")
+            lines.append("\nZadnji run:")
             for n in recent[:2]:
                 lines.append(f"  📅 {n.timestamp[:10]}: {n.hunt_summary}")
         await update.message.reply_text("\n".join(lines))
@@ -1105,7 +1107,7 @@ async def hunt_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     if args and args[0].lower() in ("force", "now", "run"):
         await update.message.reply_text("Hunter se pokreće... Ovo može potrajati par minuta.")
         stats = hunter.hunt_once()
-        msgs = [f"✅ Hunter cycle done:"]
+        msgs = ["✅ Hunter cycle done:"]
         msgs.append(f"  Recipes found: {stats.get('recipes_found', 0)}")
         msgs.append(f"  Recipes added: {stats.get('recipes_added', 0)}")
         if stats.get("blacklisted"):

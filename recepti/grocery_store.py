@@ -29,12 +29,19 @@ class GroceryStore:
         self._json_path = json_path
         self._ingredients: dict[str, dict] = {}
         self._loaded = False
+        self._file_mtime: float | None = None
 
     def _ensure_loaded(self) -> None:
-        """Lazily load ingredients from JSON file on first access."""
-        if self._loaded:
-            return
-        self._loaded = True
+        if self._loaded and self._file_mtime is not None:
+            try:
+                current_mtime = os.path.getmtime(self._json_path)
+                if current_mtime == self._file_mtime:
+                    return
+            except OSError:
+                return
+        self._loaded = False
+        self._ingredients = {}
+        self._file_mtime = None
 
         if os.path.exists(self._json_path):
             try:
@@ -47,8 +54,10 @@ class GroceryStore:
                         self._ingredients[name_lower] = entry
                     if croatian_lower and croatian_lower != name_lower:
                         self._ingredients[croatian_lower] = entry
+                self._file_mtime = os.path.getmtime(self._json_path)
             except (json.JSONDecodeError, OSError):
                 pass
+        self._loaded = True
 
     def get(self, name: str) -> dict | None:
         """Case-insensitive lookup by name or croatian_name. Returns full dict or None."""
@@ -56,11 +65,14 @@ class GroceryStore:
         return self._ingredients.get(name.lower())
 
     def is_available(self, name: str) -> bool:
-        """Return True/False via get(). Defaults True if not found."""
         entry = self.get(name)
         if entry is None:
             return True
-        return entry.get("available", True)
+        if entry.get("available") is False:
+            return False
+        if entry.get("import_required") is True:
+            return False
+        return True
 
     def all_ingredients(self) -> list[dict]:
         """Return list of all ingredient dicts."""

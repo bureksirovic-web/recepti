@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <title>Recipe Browser — Recepti</title>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <script src="/static/js/theme.js" defer></script>
+    <script src="/static/js/theme.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -64,6 +64,18 @@
                     <option value="croatian">Croatian</option>
                     <option value="expanded">Expanded</option>
                 </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="toggle-label">
+                    <input type="checkbox" id="grocery-toggle" class="toggle-input">
+                    <span class="toggle-switch" role="switch" aria-checked="false" aria-label="Filter by grocery availability"></span>
+                    <span class="toggle-text">
+                        <svg aria-hidden="true" width="14" height="14" style="vertical-align:middle"><use href="/static/svg/icons.svg#icon-shopping-cart"/></svg>
+                        Samo dostupni sastojci
+                    </span>
+                </label>
+                <p class="toggle-hint">Sakrij recepte s uvoznim sastojcima</p>
             </div>
 
             <button id="clear-filters" class="btn-clear">Clear Filters</button>

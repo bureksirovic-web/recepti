@@ -1,6 +1,7 @@
 const API = '/api';
 let allRecipes = [];
 let filtered = [];
+let groceryAvailable = false;
 let page = 1;
 const PER_PAGE = 12;
 const SKELETON_COUNT = 12;
@@ -48,7 +49,7 @@ function populate(selectId, options) {
 
 async function loadRecipes() {
     try {
-        const res = await fetch(`${API}/recipes?per_page=200`);
+        const res = await fetch(`${API}/recipes?per_page=200${groceryAvailable ? '&grocery_available=true' : ''}`);
         const data = await res.json();
         allRecipes = data.recipes;
         hideSkeletons();
@@ -66,6 +67,13 @@ function applyFilters() {
     const m = document.getElementById('meal-type-filter').value;
     const d = document.getElementById('difficulty-filter').value;
     const src = document.getElementById('source-filter').value;
+
+    const g = document.getElementById('grocery-toggle').checked;
+    if (groceryAvailable !== g) {
+        groceryAvailable = g;
+        loadRecipes();
+        return;
+    }
 
     filtered = allRecipes.filter(r => {
         if (s && !r.name.toLowerCase().includes(s) && !r.description.toLowerCase().includes(s)) return false;
@@ -100,14 +108,29 @@ function render() {
 
 function card(r) {
     const badge = r.id <= 30 ? 'original' : r.id <= 50 ? 'croatian' : 'expanded';
-    const badgeLabel = r.id <= 30 ? 'Indian' : r.id <= 50 ? 'Croatian' : 'Expanded';
+    const badgeLabel = r.id <= 30 ? 'Original' : r.id <= 50 ? 'Croatian' : 'Expanded';
     const diffClass = `difficulty-${r.difficulty}`;
+
+    const availBadge = groceryAvailable && r.is_available === true
+        ? `<span class="avail-badge avail-yes" title="All ingredients available">
+             <svg aria-hidden="true" width="12" height="12"><use href="/static/svg/icons.svg#icon-check"/></svg>
+             Dostupno
+           </span>`
+        : groceryAvailable && r.is_available === false
+        ? `<span class="avail-badge avail-no" title="Missing: ${esc(r.missing_ingredients?.join(', '))}">
+             <svg aria-hidden="true" width="12" height="12"><use href="/static/svg/icons.svg#icon-x"/></svg>
+             ${r.missing_ingredients?.length || 0} nedostupno
+           </span>`
+        : '';
 
     return `
         <article class="recipe-card" tabindex="0" role="button" aria-label="View recipe: ${esc(r.name)}" data-recipe-id="${r.id}">
             <header>
                 <h3>${esc(r.name)}</h3>
-                <span class="source-badge ${badge}">${badgeLabel}</span>
+                <div class="badge-row">
+                    <span class="source-badge ${badge}">${badgeLabel}</span>
+                    ${availBadge}
+                </div>
             </header>
             <p class="description">${esc(r.description)}</p>
             <div class="meta">
@@ -205,19 +228,19 @@ function openDrawer(recipeId) {
 
     setTimeout(() => document.getElementById('drawer-close').focus(), 50);
 
-    fetch(`${API}/recipe/${recipeId}`)
+    fetch(`${API}/recipe/${recipeId}${groceryAvailable ? '?grocery_available=true' : ''}`)
         .then(r => r.ok ? r.json() : Promise.reject(new Error(`${r.status} ${r.statusText}`)))
         .then(recipe => {
-            title.textContent = recipe.name;
+            title.textContent = recipe.name_croatian || recipe.name;
             const badge = recipe.id <= 30 ? 'original' : recipe.id <= 50 ? 'croatian' : 'expanded';
-            const badgeLabel = recipe.id <= 30 ? 'Indian' : recipe.id <= 50 ? 'Croatian' : 'Expanded';
+            const badgeLabel = recipe.id <= 30 ? 'Original' : recipe.id <= 50 ? 'Croatian' : 'Expanded';
 
             const ingredientsHtml = recipe.ingredients.map((ing, i) => `
                 <li class="ingredient-item">
                     <input type="checkbox" id="ing-${i}" class="ingredient-check">
                     <label for="ing-${i}">
                         <svg aria-hidden="true" width="16" height="16"><use href="/static/svg/icons.svg#icon-check"/></svg>
-                        ${esc(ing.name)}${ing.amount ? ` - ${esc(ing.amount)}` : ''}
+                        ${esc(ing.name_croatian || ing.name)}${ing.amount ? ` - ${esc(ing.amount)}` : ''}
                     </label>
                 </li>
             `).join('');
@@ -232,7 +255,7 @@ function openDrawer(recipeId) {
             body.innerHTML = `
                 <div class="drawer-meta">
                     <span class="source-badge ${badge}">${badgeLabel}</span>
-                    <span class="tag">${esc(recipe.cuisine)}</span>
+                    <span class="tag">${esc(recipe.cuisine || recipe.tags?.cuisine || '')}</span>
                     <span class="tag difficulty-${recipe.difficulty}">${recipe.difficulty}</span>
                 </div>
                 <div class="drawer-times">
@@ -240,6 +263,22 @@ function openDrawer(recipeId) {
                     <span><svg aria-label="Cook time" width="16" height="16"><use href="/static/svg/icons.svg#icon-clock"/></svg> Cook: ${recipe.cook_time_min}m</span>
                     <span><svg aria-label="Servings" width="16" height="16"><use href="/static/svg/icons.svg#icon-users"/></svg> Servings: ${recipe.servings}</span>
                 </div>
+                ${groceryAvailable && recipe.missing_ingredients?.length > 0 ? `
+                <div class="drawer-missing-section">
+                    <h4 class="drawer-section-title missing-title">
+                        <svg aria-hidden="true" width="16" height="16" style="color:var(--error)"><use href="/static/svg/icons.svg#icon-x"/></svg>
+                        Nedostupni sastojci (${recipe.missing_ingredients.length})
+                    </h4>
+                    <ul class="missing-list">
+                        ${recipe.missing_ingredients.map(ing => `
+                            <li class="missing-item">
+                                <svg aria-hidden="true" width="14" height="14" style="color:var(--error)"><use href="/static/svg/icons.svg#icon-x"/></svg>
+                                ${esc(ing)}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                ` : ''}
                 <section class="drawer-section">
                     <h3 class="drawer-section-title">Sastojci</h3>
                     <ul class="ingredient-list">${ingredientsHtml}</ul>
@@ -313,7 +352,7 @@ function initTypeahead() {
                 <span style="flex: 1;">
                     <strong>${highlightMatch(recipe.name, query)}</strong>
                 </span>
-                <span style="font-size: 12px; color: var(--text-muted);">${esc(recipe.cuisine || '')}</span>
+                <span style="font-size: 12px; color: var(--text-muted);">${esc(recipe.cuisine || recipe.tags?.cuisine || '')}</span>
             `;
             suggestions.appendChild(div);
         });
@@ -439,6 +478,9 @@ function setupListeners() {
     document.getElementById('meal-type-filter').addEventListener('change', applyFilters);
     document.getElementById('difficulty-filter').addEventListener('change', applyFilters);
     document.getElementById('source-filter').addEventListener('change', applyFilters);
+    document.getElementById('grocery-toggle').addEventListener('change', () => {
+        applyFilters();
+    });
 
     document.getElementById('clear-filters').addEventListener('click', () => {
         ['search-input', 'cuisine-filter', 'meal-type-filter', 'difficulty-filter', 'source-filter']

@@ -1615,3 +1615,53 @@ body {
     background: white;
   }
 }
+
+/* ==========================================================================
+   24. Grocery Availability UI
+   ========================================================================== */
+
+/* Toggle switch */
+.toggle-label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.toggle-input { position: absolute; opacity: 0; width: 0; height: 0; }
+.toggle-switch {
+  display: inline-flex; align-items: center; width: 36px; height: 20px;
+  background: var(--border); border-radius: 10px; position: relative;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.toggle-switch::after {
+  content: ''; position: absolute; left: 2px; width: 16px; height: 16px;
+  background: white; border-radius: 50%; transition: transform 0.2s;
+}
+.toggle-input:checked + .toggle-switch { background: var(--success); }
+.toggle-input:checked + .toggle-switch::after { transform: translateX(16px); }
+.toggle-text { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
+.toggle-hint { font-size: 11px; color: var(--text-muted); margin-top: 2px; margin-left: 44px; }
+
+/* Badge row */
+.badge-row { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+
+/* Availability badges */
+.avail-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 6px; border-radius: 10px; font-size: 11px; font-weight: 600;
+}
+.avail-yes { background: var(--success); color: white; }
+.avail-no { background: var(--error); color: white; }
+
+/* Drawer missing section */
+.drawer-missing-section {
+  background: color-mix(in srgb, var(--error) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  border-radius: 8px; padding: 12px 16px; margin-top: 12px;
+}
+.missing-title {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--error); font-size: 14px; margin-bottom: 8px;
+}
+.missing-list { list-style: none; padding: 0; margin: 0; }
+.missing-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--text);
+}
+.missing-item:last-child { border-bottom: none; }

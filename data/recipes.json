@@ -8,37 +8,44 @@
         {
           "name": "Black lentils (whole urad dal)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "leća"
         },
         {
           "name": "Kidney beans (rajma)",
           "amount": "1/4",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "crveni grah"
         },
         {
           "name": "Tomatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Ginger-garlic paste",
           "amount": "1.5",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Fresh cream",
           "amount": "1/2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "slatko vrhnje"
         },
         {
           "name": "Butter",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslac"
         },
         {
           "name": "Garam masala",
@@ -48,17 +55,20 @@
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Red chili powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Salt",
           "amount": "to",
-          "unit": "taste"
+          "unit": "taste",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -83,8 +93,8 @@
       "prep_time_min": 15,
       "cook_time_min": 60,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Dal Makhani",
+      "description_croatian": "Bogati i kremasti crni lentils kuhani s crvenim grahom u maslacastom umaku od rajčice, vrhunsko pandžabsko jelo"
     },
     {
       "id": 2,
@@ -99,27 +109,32 @@
         {
           "name": "Yogurt",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Tomatoes",
           "amount": "4",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Ginger-garlic paste",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Kashmiri red chili powder",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Garam masala",
@@ -129,22 +144,26 @@
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Heavy cream",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "slatko vrhnje"
         },
         {
           "name": "Mustard oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Kasuri methi",
@@ -154,7 +173,8 @@
         {
           "name": "Salt",
           "amount": "to",
-          "unit": "taste"
+          "unit": "taste",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -181,8 +201,8 @@
       "prep_time_min": 30,
       "cook_time_min": 35,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Paneer Tikka Masala",
+      "description_croatian": "Grilani kockice sira u začinjenom umaku na bazi rajčice, popularno jelo u pandžabskom restoranskom stilu"
     },
     {
       "id": 3,
@@ -192,7 +212,8 @@
         {
           "name": "Chickpeas (chole)",
           "amount": "1.5",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "grašak"
         },
         {
           "name": "Black tea bag",
@@ -202,17 +223,20 @@
         {
           "name": "Onions",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Tomatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Ginger-garlic paste",
           "amount": "1.5",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Chole masala powder",
@@ -227,27 +251,32 @@
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Green chilies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Mustard oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Salt",
           "amount": "to",
-          "unit": "taste"
+          "unit": "taste",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -275,8 +304,8 @@
       "prep_time_min": 20,
       "cook_time_min": 40,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Chole Masala",
+      "description_croatian": "Začinjeni slanutak kuhan u kiselkastom umaku od rajčice i luka s tradicionalnim pandžapskim začinima"
     },
     {
       "id": 4,
@@ -286,47 +315,56 @@
         {
           "name": "Potatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Cauliflower",
           "amount": "1",
-          "unit": "medium head"
+          "unit": "medium head",
+          "name_croatian": "cvjetača"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Tomatoes",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Ginger-garlic paste",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Garam masala",
@@ -336,17 +374,20 @@
         {
           "name": "Mustard oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Fresh coriander leaves",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Salt",
           "amount": "to",
-          "unit": "taste"
+          "unit": "taste",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -375,8 +416,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Aloo Gobi",
+      "description_croatian": "Suhi curry od krumpira i cvjetače pripremljen s tradicionalnim začinima, klasično domaće pandžapsko jelo"
     },
     {
       "id": 5,
@@ -386,32 +427,38 @@
         {
           "name": "Yogurt",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Chickpea flour (besan)",
           "amount": "1.5",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "brašno"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "small"
+          "unit": "small",
+          "name_croatian": "luk"
         },
         {
           "name": "Potatoes",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Ginger-garlic paste",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Fenugreek seeds",
@@ -421,12 +468,14 @@
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Baking soda",
@@ -436,17 +485,20 @@
         {
           "name": "Mustard oil",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Fresh coriander leaves",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Salt",
           "amount": "to",
-          "unit": "taste"
+          "unit": "taste",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -475,8 +527,8 @@
       "prep_time_min": 20,
       "cook_time_min": 35,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Punjabi Kadhi Pakora",
+      "description_croatian": "Prženi frituli u kiselkastom jogurt umaku začinjenom začinima, tradicionalno pandžapsko comfort jelo"
     },
     {
       "id": 6,
@@ -486,7 +538,8 @@
         {
           "name": "toor dal (pigeon peas)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "grašak"
         },
         {
           "name": "tamarind paste",
@@ -501,22 +554,26 @@
         {
           "name": "turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "asafoetida",
@@ -531,7 +588,8 @@
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -556,8 +614,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Gujarati Dal",
+      "description_croatian": "Slatko i kiselkasto jelo od leća napravljeno od toor dal, jaggery i tamarinda, začinjeno začinima"
     },
     {
       "id": 7,
@@ -572,7 +630,8 @@
         {
           "name": "gram flour (besan)",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "brašno"
         },
         {
           "name": "tamarind paste",
@@ -587,12 +646,14 @@
         {
           "name": "red chili powder",
           "amount": "2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "garam masala",
@@ -602,17 +663,20 @@
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "sesame seeds",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "sezam"
         },
         {
           "name": "grated coconut",
@@ -627,7 +691,8 @@
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -652,8 +717,8 @@
       "prep_time_min": 30,
       "cook_time_min": 40,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Patra",
+      "description_croatian": "Na pari kuhani listovi kolokazije umotani u smjesu od začinjenog slanutkovog brašna, začinjeni kokosom i sezamom"
     },
     {
       "id": 8,
@@ -663,12 +728,14 @@
         {
           "name": "wheat flour",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "brašno"
         },
         {
           "name": "gram flour (besan)",
           "amount": "1/2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "fresh methi leaves",
@@ -678,22 +745,26 @@
         {
           "name": "turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "yogurt",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "jogurt"
         },
         {
           "name": "oil",
@@ -708,7 +779,8 @@
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -734,8 +806,8 @@
       "prep_time_min": 20,
       "cook_time_min": 25,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Methi Thepla",
+      "description_croatian": "Tradicionalni gujaratski ravni kruh napravljen od listova piskavice, slanutkovog brašna i pšeničnog brašna"
     },
     {
       "id": 9,
@@ -745,22 +817,26 @@
         {
           "name": "gram flour (besan)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "yogurt",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "jogurt"
         },
         {
           "name": "turmeric powder",
           "amount": "1/4",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "green chili paste",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "ginger paste",
@@ -770,12 +846,14 @@
         {
           "name": "salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "curry leaves",
@@ -790,7 +868,8 @@
         {
           "name": "coriander leaves",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "oil",
@@ -827,8 +906,8 @@
       "prep_time_min": 10,
       "cook_time_min": 20,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Khandvi",
+      "description_croatian": "Mekani i kiselkasti rolnati od slanutkovog brašna začinjeni sjemenkama gorušice, curry listovima i naribanim kokosom"
     },
     {
       "id": 10,
@@ -838,22 +917,26 @@
         {
           "name": "sweet potatoes",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "brinjal (eggplant)",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "patlidžan"
         },
         {
           "name": "green beans",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "mahune"
         },
         {
           "name": "green peas",
           "amount": "1/2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "grašak"
         },
         {
           "name": "yam",
@@ -863,12 +946,14 @@
         {
           "name": "wheat flour",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "gram flour",
           "amount": "1/4",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "fenugreek leaves",
@@ -878,32 +963,38 @@
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "fennel powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "koromač"
         },
         {
           "name": "coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "sugar",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "oil",
@@ -913,7 +1004,8 @@
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -942,8 +1034,8 @@
       "prep_time_min": 40,
       "cook_time_min": 60,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Undhiyu",
+      "description_croatian": "Tradicionalni gujaratski složenac od miješanog povrća sa slatkim krumpirima, patlidžanom, zelenim grahom i okruglicama od brašna"
     },
     {
       "id": 11,
@@ -953,7 +1045,8 @@
         {
           "name": "Carrot",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Yam",
@@ -963,12 +1056,14 @@
         {
           "name": "Green beans",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "mahune"
         },
         {
           "name": "Raw banana",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "banana"
         },
         {
           "name": "Drumstick",
@@ -978,7 +1073,8 @@
         {
           "name": "Coconut oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kokosovo ulje"
         },
         {
           "name": "Coconut grated",
@@ -988,12 +1084,14 @@
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Green chilies",
           "amount": "3",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Curry leaves",
@@ -1003,17 +1101,20 @@
         {
           "name": "Turmeric powder",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Yogurt",
           "amount": "0.5",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1043,8 +1144,8 @@
       "prep_time_min": 20,
       "cook_time_min": 25,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Avial",
+      "description_croatian": "Tradicionalni curry od miješanog povrća iz Kerale pripremljen u kokosovom ulju i jogurtu, s nizom povrća narezanog na štapiće i završen svježim kokosom i listovima curryja"
     },
     {
       "id": 12,
@@ -1054,7 +1155,8 @@
         {
           "name": "Banana flower",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "banana"
         },
         {
           "name": "Coconut grated",
@@ -1074,12 +1176,14 @@
         {
           "name": "Mustard seeds",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Dried red chilies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Curry leaves",
@@ -1089,22 +1193,26 @@
         {
           "name": "Coconut oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kokosovo ulje"
         },
         {
           "name": "Turmeric powder",
           "amount": "0.25",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "Lemon juice",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "limun"
         }
       ],
       "instructions": [
@@ -1133,8 +1241,8 @@
       "prep_time_min": 25,
       "cook_time_min": 20,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Vazhapoo Thoran",
+      "description_croatian": "Delikatan južnoindijski prilog od cvjetova banane, pripremljen s naribanim kokosom, lećom i aromatičnim začinima, tradicionalno poslužen s rižom"
     },
     {
       "id": 13,
@@ -1144,7 +1252,8 @@
         {
           "name": "Rice",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "riža"
         },
         {
           "name": "Toor dal",
@@ -1169,7 +1278,8 @@
         {
           "name": "Ghee",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Coconut grated",
@@ -1179,7 +1289,8 @@
         {
           "name": "Dried red chilies",
           "amount": "3",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Corriander seeds",
@@ -1189,7 +1300,8 @@
         {
           "name": "Cumin seeds",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Fenugreek seeds",
@@ -1199,17 +1311,20 @@
         {
           "name": "Cinnamon stick",
           "amount": "1",
-          "unit": "inch"
+          "unit": "inch",
+          "name_croatian": "cimet"
         },
         {
           "name": "Cloves",
           "amount": "3",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "klinčići"
         },
         {
           "name": "Byadagi red chilies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Curry leaves",
@@ -1219,12 +1334,14 @@
         {
           "name": "Turmeric powder",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "1.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1255,8 +1372,8 @@
       "prep_time_min": 30,
       "cook_time_min": 25,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Bisibelebath",
+      "description_croatian": "Zasitni jednoposudni specijalitet iz Karnatake koji kombinira rižu, leću i povrće u začinjenoj masali, preliven svježim ghee začinima i poslužen s boondi ili rajtom"
     },
     {
       "id": 14,
@@ -1286,12 +1403,14 @@
         {
           "name": "Dried red chilies",
           "amount": "4",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Garlic cloves",
           "amount": "4",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Tamarind paste",
@@ -1301,22 +1420,26 @@
         {
           "name": "Coconut oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kokosovo ulje"
         },
         {
           "name": "Mustard seeds",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Turmeric powder",
           "amount": "0.25",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1348,8 +1471,8 @@
       "prep_time_min": 15,
       "cook_time_min": 15,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Gongura Pachadi",
+      "description_croatian": "Specijalitet iz Andhre, kiselkasti i ljuti chutney napravljen od listova gongura, poslužen kao prilog uz rižu i dal ili kao prilog jelima od riže"
     },
     {
       "id": 15,
@@ -1359,7 +1482,8 @@
         {
           "name": "Spinach",
           "amount": "4",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "špinat"
         },
         {
           "name": "Toor dal",
@@ -1374,22 +1498,26 @@
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Black peppercorns",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kukuruz"
         },
         {
           "name": "Ghee",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Mustard seeds",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Urad dal",
@@ -1399,7 +1527,8 @@
         {
           "name": "Dried red chilies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Curry leaves",
@@ -1414,12 +1543,14 @@
         {
           "name": "Turmeric powder",
           "amount": "0.25",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1449,8 +1580,8 @@
       "prep_time_min": 15,
       "cook_time_min": 25,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Keerai Kootu",
+      "description_croatian": "Kremasti varivo od leće i špinata iz Tamil Nadua začinjeno kokosom, kuminskim i paprom, preliven ghee začinom i posluženo s rižom ili rotijem"
     },
     {
       "id": 16,
@@ -1475,42 +1606,50 @@
         {
           "name": "Potato",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Beans",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "crveni grah"
         },
         {
           "name": "Ghee",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Mustard oil",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1533,8 +1672,8 @@
       "prep_time_min": 20,
       "cook_time_min": 30,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Shukto",
+      "description_croatian": "Gorko-slatki curry od miješanog povrća, tradicionalno bengalsko predjelo."
     },
     {
       "id": 17,
@@ -1544,7 +1683,8 @@
         {
           "name": "Potatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Poppy seeds (posto)",
@@ -1554,22 +1694,26 @@
         {
           "name": "Mustard oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Green chillies",
           "amount": "2",
-          "unit": "whole"
+          "unit": "whole",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1593,8 +1737,8 @@
       "prep_time_min": 15,
       "cook_time_min": 25,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Aloo Posto",
+      "description_croatian": "Krumpir pripremljen sa sjemenkama maka, klasično bengalsko comfort jelo."
     },
     {
       "id": 18,
@@ -1604,12 +1748,14 @@
         {
           "name": "Potato",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Pumpkin",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "bundeva"
         },
         {
           "name": "Brinjal",
@@ -1619,22 +1765,26 @@
         {
           "name": "Green peas",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "grašak"
         },
         {
           "name": "Ghee",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Ginger",
@@ -1644,7 +1794,8 @@
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1667,8 +1818,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Labra",
+      "description_croatian": "Varivo od miješanog povrća s krumpirom, bundevama i mahunarkama."
     },
     {
       "id": 19,
@@ -1678,32 +1829,38 @@
         {
           "name": "Masoor dal (red lentils)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "leća"
         },
         {
           "name": "Rice",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "riža"
         },
         {
           "name": "Ghee",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Water",
@@ -1730,8 +1887,8 @@
       "prep_time_min": 5,
       "cook_time_min": 20,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Chaler Dal",
+      "description_croatian": "Jednostavna juha od leće s rižom, osnovno bengalsko jelo."
     },
     {
       "id": 20,
@@ -1746,17 +1903,20 @@
         {
           "name": "Mustard oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Turmeric powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -1777,8 +1937,8 @@
       "prep_time_min": 10,
       "cook_time_min": 15,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Begun Bhaja",
+      "description_croatian": "Hrskavo prženi patlidžani, popularni bengalski prilog."
     },
     {
       "id": 21,
@@ -1793,7 +1953,8 @@
         {
           "name": "Besan (gram flour)",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "brašno"
         },
         {
           "name": "Fresh coconut, grated",
@@ -1818,27 +1979,32 @@
         {
           "name": "Green chilies, finely chopped",
           "amount": "2",
-          "unit": "piece"
+          "unit": "piece",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Oil",
@@ -1865,8 +2031,8 @@
       "prep_time_min": 20,
       "cook_time_min": 30,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Bharli Vangi",
+      "description_croatian": "Maharashtrijski punjeni patlidžani u slatko-kiselom umaku s orašastim plodovima."
     },
     {
       "id": 22,
@@ -1886,17 +2052,20 @@
         {
           "name": "Whole wheat flour",
           "amount": "2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "Turmeric powder",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "Water",
@@ -1906,7 +2075,8 @@
         {
           "name": "Ghee",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         }
       ],
       "instructions": [
@@ -1929,8 +2099,8 @@
       "prep_time_min": 30,
       "cook_time_min": 30,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Puran Poli",
+      "description_croatian": "Slatki ravni kruh punjen kuhanom lećom i jaggery šećerom, klasično maharashtrijsko svečano jelo."
     },
     {
       "id": 23,
@@ -1940,7 +2110,8 @@
         {
           "name": "Toor dal (pigeon pea lentils)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "leća"
         },
         {
           "name": "Chana dal (bengal gram)",
@@ -1950,17 +2121,20 @@
         {
           "name": "Wheat flour",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "brašno"
         },
         {
           "name": "Ghee",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Asafoetida (hing)",
@@ -1970,22 +2144,26 @@
         {
           "name": "Turmeric powder",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Jaggery",
@@ -1995,7 +2173,8 @@
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "šećer"
         }
       ],
       "instructions": [
@@ -2018,8 +2197,8 @@
       "prep_time_min": 20,
       "cook_time_min": 45,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Dal Baati Churma",
+      "description_croatian": "Tradicionalni rajasthanski obrok koji se sastoji od začinjenog curryja od leće poslužen s hrskavim pečenim kuglama od pšeničnog brašna i slatkom churma drobilicama."
     },
     {
       "id": 24,
@@ -2029,12 +2208,14 @@
         {
           "name": "Gram flour (besan)",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "brašno"
         },
         {
           "name": "Yogurt",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Water",
@@ -2044,17 +2225,20 @@
         {
           "name": "Ghee",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Asafoetida",
@@ -2064,27 +2248,32 @@
         {
           "name": "Turmeric",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Fresh cilantro",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         }
       ],
       "instructions": [
@@ -2106,8 +2295,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Gatte ki Sabzi",
+      "description_croatian": "Okruglice od slanutkovog brašna kuhane u začinjenom jogurt umaku, klasično rajasthansko jelo."
     },
     {
       "id": 25,
@@ -2117,12 +2306,14 @@
         {
           "name": "Yogurt",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Gram flour (besan)",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "brašno"
         },
         {
           "name": "Water",
@@ -2132,12 +2323,14 @@
         {
           "name": "Ghee",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "ghee"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Fenugreek seeds (methi)",
@@ -2152,22 +2345,26 @@
         {
           "name": "Turmeric",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Fresh curry leaves",
@@ -2194,8 +2391,8 @@
       "prep_time_min": 10,
       "cook_time_min": 25,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Rajasthani Kadhi",
+      "description_croatian": "Lagani, kiselkasti curry na bazi jogurta s prženim okruglicama od slanutkovog brašna, začinjen tradicionalnim začinima."
     },
     {
       "id": 26,
@@ -2210,12 +2407,14 @@
         {
           "name": "Tomatoes, chopped",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Brinjal (eggplant), cubed",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "patlidžan"
         },
         {
           "name": "Okra, sliced",
@@ -2225,17 +2424,20 @@
         {
           "name": "Green peas",
           "amount": "0.5",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "grašak"
         },
         {
           "name": "Onion, sliced",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic cloves, minced",
           "amount": "4",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Ginger, grated",
@@ -2245,12 +2447,14 @@
         {
           "name": "Chettinad spice mix (coriander, cumin, pepper, red chilies, fenugreek)",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Curry leaves",
@@ -2260,12 +2464,14 @@
         {
           "name": "Turmeric powder",
           "amount": "0.5",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "Oil",
@@ -2298,8 +2504,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Chettinad Vegetable Kuzhambu",
+      "description_croatian": "Kiselkasti i začinjeni tamarind i umak od povrća tipičan za Chettinad regiju, karakterističan po snažnim začinima i aromama."
     },
     {
       "id": 27,
@@ -2309,47 +2515,56 @@
         {
           "name": "Dried ker beans",
           "amount": "1/2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "crveni grah"
         },
         {
           "name": "Dried sangri berries",
           "amount": "1/2",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "bobice"
         },
         {
           "name": "Mustard oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Turmeric",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Water",
@@ -2359,7 +2574,8 @@
         {
           "name": "Fresh coriander",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         }
       ],
       "instructions": [
@@ -2382,8 +2598,8 @@
       "prep_time_min": 20,
       "cook_time_min": 40,
       "difficulty": "Medium",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Ker Sangri",
+      "description_croatian": "Tradicionalno rajasthansko prilog jelo napravljeno od sušenih ker grahova i sangrija, pripremljeno s tradicionalnim začinima i aromatičnim biljem."
     },
     {
       "id": 28,
@@ -2393,22 +2609,26 @@
         {
           "name": "Potatoes",
           "amount": "6",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Yogurt",
           "amount": "1",
-          "unit": "cup"
+          "unit": "cup",
+          "name_croatian": "jogurt"
         },
         {
           "name": "Mustard oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "Cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Asafoetida",
@@ -2418,17 +2638,20 @@
         {
           "name": "Turmeric",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "Red chili powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "Garam masala",
@@ -2438,7 +2661,8 @@
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": "pinch"
+          "unit": "pinch",
+          "name_croatian": "sol"
         },
         {
           "name": "Ginger (grated)",
@@ -2448,12 +2672,14 @@
         {
           "name": "Green chili (slit)",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Fresh cilantro (chopped)",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         }
       ],
       "instructions": [
@@ -2476,8 +2702,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Kashmiri Dum Aloo",
+      "description_croatian": "Klasični kašmirski umak od krumpira pripremljen u začinjenom jogurtu, savršen za utješnu večeru."
     },
     {
       "id": 29,
@@ -2492,27 +2718,32 @@
         {
           "name": "mixed vegetables (carrot, beans, pumpkin)",
           "amount": "2",
-          "unit": "cups"
+          "unit": "cups",
+          "name_croatian": "mrkva"
         },
         {
           "name": "coconut oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kokosovo ulje"
         },
         {
           "name": "mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "dried red chillies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "asafoetida",
@@ -2522,17 +2753,20 @@
         {
           "name": "turmeric",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "fresh coriander",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         }
       ],
       "instructions": [
@@ -2553,8 +2787,8 @@
       "prep_time_min": 15,
       "cook_time_min": 30,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Chettinad Vegetable Kootu",
+      "description_croatian": "Bogato začinjeno varivo od leće i povrća tipično za Chettinad regiju, pripremljeno s toor dal, miješanim povrćem i aromatičnim začinima."
     },
     {
       "id": 30,
@@ -2564,67 +2798,80 @@
         {
           "name": "tomatoes",
           "amount": "4",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "rajčica"
         },
         {
           "name": "coconut oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kokosovo ulje"
         },
         {
           "name": "mustard seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "gorčica"
         },
         {
           "name": "cumin seeds",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "dried red chillies",
           "amount": "3",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "green chillies",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "onion",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "luk"
         },
         {
           "name": "garlic",
           "amount": "4",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "turmeric",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kurkuma"
         },
         {
           "name": "coriander powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "korijander"
         },
         {
           "name": "cumin powder",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "fresh coriander",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "korijander"
         }
       ],
       "instructions": [
@@ -2645,8 +2892,8 @@
       "prep_time_min": 10,
       "cook_time_min": 20,
       "difficulty": "Easy",
-      "name_croatian": "",
-      "description_croatian": ""
+      "name_croatian": "Chettinad Tomato Curry",
+      "description_croatian": "Kiselkasti i začinjeni umak od rajčice koji ističe snažne okuse Chettinad kuhinje."
     },
     {
       "id": 31,
@@ -2661,52 +2908,62 @@
         {
           "name": "Potatoes",
           "amount": "4",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Onion",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Tomatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Garlic",
           "amount": "4",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Vegetable broth",
           "amount": "1",
-          "unit": "liter"
+          "unit": "liter",
+          "name_croatian": "povrtni temeljac"
         },
         {
           "name": "Vegetable oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -2744,47 +3001,56 @@
         {
           "name": "Onion",
           "amount": "3",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Paprika",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Tomatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Potatoes",
           "amount": "4",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Vegetable oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -2818,42 +3084,50 @@
         {
           "name": "Bell peppers",
           "amount": "5",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "paprika"
         },
         {
           "name": "Tomatoes",
           "amount": "6",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Onion",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "3",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Vegetable oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -2887,7 +3161,8 @@
         {
           "name": "White beans (dried)",
           "amount": "400",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "bijeli grah"
         },
         {
           "name": "Smoked pork ribs",
@@ -2897,47 +3172,56 @@
         {
           "name": "Onion",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "4",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Celery",
           "amount": "1",
-          "unit": "stalk"
+          "unit": "stalk",
+          "name_croatian": "celer"
         },
         {
           "name": "Tomatoes",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Vegetable oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -2980,42 +3264,50 @@
         {
           "name": "Tomatoes",
           "amount": "4",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "4",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Olive oil",
           "amount": "4",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslinovo ulje"
         },
         {
           "name": "Fresh parsley",
           "amount": "1",
-          "unit": "bunch"
+          "unit": "bunch",
+          "name_croatian": "peršin"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -3058,17 +3350,20 @@
         {
           "name": "Red wine vinegar",
           "amount": "250",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "ocat"
         },
         {
           "name": "Onion",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Prunes",
@@ -3083,27 +3378,32 @@
         {
           "name": "Tomato paste",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Vegetable oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -3137,57 +3437,68 @@
         {
           "name": "Borlotti beans (dried)",
           "amount": "300",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "borlotijev grah"
         },
         {
           "name": "Potatoes",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Celery",
           "amount": "2",
-          "unit": "stalks"
+          "unit": "stalks",
+          "name_croatian": "celer"
         },
         {
           "name": "Zucchini",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "tikvica"
         },
         {
           "name": "Tomatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Small pasta (ditalini)",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "tjestenina"
         },
         {
           "name": "Olive oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslinovo ulje"
         },
         {
           "name": "Garlic",
           "amount": "3",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Fresh parsley",
           "amount": "1",
-          "unit": "bunch"
+          "unit": "bunch",
+          "name_croatian": "peršin"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -3219,7 +3530,8 @@
         {
           "name": "Arborio rice",
           "amount": "400",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "riža"
         },
         {
           "name": "Cuttlefish",
@@ -3239,17 +3551,20 @@
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "2",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Olive oil",
           "amount": "4",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslinovo ulje"
         },
         {
           "name": "Fish broth",
@@ -3259,12 +3574,14 @@
         {
           "name": "Fresh parsley",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "peršin"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -3298,12 +3615,14 @@
         {
           "name": "All-purpose flour",
           "amount": "400",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "brašno"
         },
         {
           "name": "Eggs",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaja"
         },
         {
           "name": "Cottage cheese",
@@ -3313,27 +3632,32 @@
         {
           "name": "Sour cream",
           "amount": "200",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "vrhnje"
         },
         {
           "name": "Butter",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Sugar",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         },
         {
           "name": "Breadcrumbs",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "mrvice od kruha"
         }
       ],
       "instructions": [
@@ -3375,27 +3699,32 @@
         {
           "name": "Eggs",
           "amount": "4",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaja"
         },
         {
           "name": "Sour cream",
           "amount": "200",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "vrhnje"
         },
         {
           "name": "Butter (melted)",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Sugar",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -3428,7 +3757,8 @@
         {
           "name": "Sauerkraut (cabbage leaves)",
           "amount": "1",
-          "unit": "kg"
+          "unit": "kg",
+          "name_croatian": "kupus"
         },
         {
           "name": "Ground pork",
@@ -3443,17 +3773,20 @@
         {
           "name": "Rice",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "riža"
         },
         {
           "name": "Egg",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaje"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "luk"
         },
         {
           "name": "Bacon",
@@ -3463,22 +3796,26 @@
         {
           "name": "Paprika",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "paprika u prahu"
         },
         {
           "name": "Tomato paste",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "rajčica"
         },
         {
           "name": "Vegetable oil",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -3515,17 +3852,20 @@
         {
           "name": "Onion",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Butter",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Eggs (hard boiled)",
           "amount": "3",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaja"
         },
         {
           "name": "Bacon",
@@ -3535,7 +3875,8 @@
         {
           "name": "Garlic",
           "amount": "2",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Marjoram",
@@ -3545,12 +3886,14 @@
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -3583,52 +3926,62 @@
         {
           "name": "Brown lentils",
           "amount": "400",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "leća"
         },
         {
           "name": "Onion",
           "amount": "3",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "3",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Carrots",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Vegetable broth",
           "amount": "1",
-          "unit": "liter"
+          "unit": "liter",
+          "name_croatian": "povrtni temeljac"
         },
         {
           "name": "Vegetable oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Bay leaves",
           "amount": "2",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "lovorovi listovi"
         },
         {
           "name": "Cumin",
           "amount": "1",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "kumin"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -3661,47 +4014,56 @@
         {
           "name": "Frozen peas",
           "amount": "500",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "grašak"
         },
         {
           "name": "Potatoes",
           "amount": "3",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krumpir"
         },
         {
           "name": "Carrots",
           "amount": "2",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "mrkva"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Sour cream",
           "amount": "200",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "vrhnje"
         },
         {
           "name": "Vegetable broth",
           "amount": "750",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "povrtni temeljac"
         },
         {
           "name": "Butter",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslac"
         },
         {
           "name": "Fresh dill",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "kopar"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         }
       ],
       "instructions": [
@@ -3732,22 +4094,26 @@
         {
           "name": "All-purpose flour",
           "amount": "500",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "brašno"
         },
         {
           "name": "Milk (warm)",
           "amount": "250",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "mlijeko"
         },
         {
           "name": "Eggs",
           "amount": "2",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaja"
         },
         {
           "name": "Sugar",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "šećer"
         },
         {
           "name": "Instant yeast",
@@ -3757,22 +4123,26 @@
         {
           "name": "Butter (softened)",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Salt",
           "amount": "1",
-          "unit": "pinch"
+          "unit": "pinch",
+          "name_croatian": "sol"
         },
         {
           "name": "Vegetable oil (for frying)",
           "amount": "500",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "biljno ulje"
         },
         {
           "name": "Powdered sugar (for dusting)",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "šećer"
         }
       ],
       "instructions": [
@@ -3809,42 +4179,50 @@
         {
           "name": "Milk",
           "amount": "1",
-          "unit": "liter"
+          "unit": "liter",
+          "name_croatian": "mlijeko"
         },
         {
           "name": "Egg yolks",
           "amount": "6",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaje"
         },
         {
           "name": "Sugar",
           "amount": "200",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "šećer"
         },
         {
           "name": "Cornstarch",
           "amount": "80",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "kukuruz"
         },
         {
           "name": "Vanilla sugar",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "šećer"
         },
         {
           "name": "Butter",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Heavy cream",
           "amount": "300",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "slatko vrhnje"
         },
         {
           "name": "Powdered sugar",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "šećer"
         }
       ],
       "instructions": [
@@ -3877,7 +4255,8 @@
         {
           "name": "Apples (Granny Smith)",
           "amount": "1",
-          "unit": "kg"
+          "unit": "kg",
+          "name_croatian": "jabuka"
         },
         {
           "name": "Phyllo pastry",
@@ -3887,32 +4266,38 @@
         {
           "name": "Sugar",
           "amount": "150",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "šećer"
         },
         {
           "name": "Breadcrumbs",
           "amount": "50",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "mrvice od kruha"
         },
         {
           "name": "Butter (melted)",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "maslac"
         },
         {
           "name": "Raisins",
           "amount": "100",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "grožđice"
         },
         {
           "name": "Cinnamon",
           "amount": "2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "cimet"
         },
         {
           "name": "Lemon juice",
           "amount": "1",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "limun"
         }
       ],
       "instructions": [
@@ -3946,47 +4331,56 @@
         {
           "name": "Borlotti beans (dried)",
           "amount": "400",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "borlotijev grah"
         },
         {
           "name": "Sour cream",
           "amount": "300",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "vrhnje"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "2",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Butter",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslac"
         },
         {
           "name": "Vegetable broth",
           "amount": "500",
-          "unit": "ml"
+          "unit": "ml",
+          "name_croatian": "povrtni temeljac"
         },
         {
           "name": "Fresh parsley",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "peršin"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -4018,47 +4412,56 @@
         {
           "name": "Brown lentils",
           "amount": "300",
-          "unit": "g"
+          "unit": "g",
+          "name_croatian": "leća"
         },
         {
           "name": "Eggs",
           "amount": "4",
-          "unit": "large"
+          "unit": "large",
+          "name_croatian": "jaja"
         },
         {
           "name": "Onion",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "luk"
         },
         {
           "name": "Garlic",
           "amount": "2",
-          "unit": "cloves"
+          "unit": "cloves",
+          "name_croatian": "češnjak"
         },
         {
           "name": "Fresh parsley",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "peršin"
         },
         {
           "name": "Olive oil",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslinovo ulje"
         },
         {
           "name": "All-purpose flour",
           "amount": "3",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "brašno"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [
@@ -4095,42 +4498,50 @@
         {
           "name": "Romaine lettuce",
           "amount": "1",
-          "unit": "head"
+          "unit": "head",
+          "name_croatian": "salata"
         },
         {
           "name": "Radishes",
           "amount": "6",
-          "unit": "pieces"
+          "unit": "pieces",
+          "name_croatian": "rotkva"
         },
         {
           "name": "Spring onions",
           "amount": "3",
-          "unit": "stalks"
+          "unit": "stalks",
+          "name_croatian": "luk"
         },
         {
           "name": "Cucumber",
           "amount": "1",
-          "unit": "medium"
+          "unit": "medium",
+          "name_croatian": "krastavac"
         },
         {
           "name": "Olive oil",
           "amount": "4",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "maslinovo ulje"
         },
         {
           "name": "Lemon juice",
           "amount": "2",
-          "unit": "tbsp"
+          "unit": "tbsp",
+          "name_croatian": "limun"
         },
         {
           "name": "Salt",
           "amount": "to taste",
-          "unit": ""
+          "unit": "",
+          "name_croatian": "sol"
         },
         {
           "name": "Black pepper",
           "amount": "1/2",
-          "unit": "tsp"
+          "unit": "tsp",
+          "name_croatian": "crni papar"
         }
       ],
       "instructions": [

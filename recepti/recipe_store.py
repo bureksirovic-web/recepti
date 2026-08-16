@@ -20,6 +20,7 @@ class RecipeStore:
         self._path = path
         self._extra_sources = extra_sources or []
         self._recipes: list[Recipe] = []
+        self._cro_cache: dict[int, dict] = {}
         self._lock = threading.RLock()
         self._load()
 
@@ -35,7 +36,11 @@ class RecipeStore:
             for file_path in all_files:
                 with open(file_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                recipes.extend(self._dict_to_recipe(r) for r in data.get("recipes", []))
+                for r in data.get("recipes", []):
+                    rid = r.get("id")
+                    if rid and r.get("name_croatian"):
+                        self._cro_cache[rid] = r
+                    recipes.append(self._dict_to_recipe(r))
             self._recipes = recipes
 
     def _save(self) -> None:
@@ -159,6 +164,10 @@ class RecipeStore:
             if match:
                 results.append(recipe)
         return results
+
+    def get_croatian_data(self, recipe_id: int) -> dict | None:
+        """Return full JSON dict for a recipe if it has Croatian fields."""
+        return self._cro_cache.get(recipe_id)
 
     def get_recipe_by_id(self, recipe_id: int) -> Recipe | None:
         """Return recipe with given id."""

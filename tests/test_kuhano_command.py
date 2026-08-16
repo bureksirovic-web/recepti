@@ -1,11 +1,39 @@
 """Tests for the kuhano_command Telegram handler."""
 
 import asyncio
+import threading
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
 from recepti.bot import kuhano_command
+
+
+def _run_async(coro) -> None:
+    """Run ``coro`` even if a stale event loop is left running on the main
+    thread (e.g. by the pytest-playwright e2e session). ``asyncio.run`` refuses
+    to be called from a running loop, so fall back to a fresh loop on a
+    dedicated thread. Each kuhano handler coroutine is fully independent, so
+    this is safe."""
+    try:
+        asyncio.run(coro)
+    except RuntimeError as exc:
+        if "running event loop" not in str(exc):
+            raise
+        result: dict = {}
+
+        def _target() -> None:
+            result["exc"] = None
+            try:
+                asyncio.run(coro)
+            except BaseException as e:  # pragma: no cover - propagates below
+                result["exc"] = e
+
+        t = threading.Thread(target=_target)
+        t.start()
+        t.join()
+        if result.get("exc") is not None:
+            raise result["exc"]
 
 
 def make_update() -> MagicMock:
@@ -39,7 +67,7 @@ class TestKuhanoCommand:
         update = make_update()
         ctx = make_ctx([])
 
-        asyncio.run(self._run(update, ctx))
+        _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -49,7 +77,7 @@ class TestKuhanoCommand:
         update = make_update()
         ctx = make_ctx(["notanumber"])
 
-        asyncio.run(self._run(update, ctx))
+        _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -59,10 +87,10 @@ class TestKuhanoCommand:
         update = make_update()
         ctx = make_ctx(["99999"])
 
-        with mock_store as ps, mock_cooking_log as pl:
+        with mock_store as ps, mock_cooking_log:
             ps.return_value.get_recipe_by_id.return_value = None
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -82,7 +110,7 @@ class TestKuhanoCommand:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
             pl.return_value.log_session.return_value = MagicMock(id=1)
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
             ps.return_value.get_recipe_by_id.assert_called_once_with(42)
             pl.return_value.log_session.assert_called_once()
@@ -109,7 +137,7 @@ class TestKuhanoCommand:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
             pl.return_value.log_session.return_value = MagicMock(id=1)
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
             pl.return_value.log_session.assert_called_once()
             call_kwargs = pl.return_value.log_session.call_args.kwargs
@@ -131,7 +159,7 @@ class TestKuhanoCommand:
         with mock_store as ps, mock_cooking_log as pl:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -149,7 +177,7 @@ class TestKuhanoCommand:
         with mock_store as ps, mock_cooking_log as pl:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -167,7 +195,7 @@ class TestKuhanoCommand:
         with mock_store as ps, mock_cooking_log as pl:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
         update.message.reply_text.assert_called_once()
         reply = update.message.reply_text.call_args[0][0]
@@ -186,7 +214,7 @@ class TestKuhanoCommand:
             ps.return_value.get_recipe_by_id.return_value = mock_recipe
             pl.return_value.log_session.return_value = MagicMock(id=1)
 
-            asyncio.run(self._run(update, ctx))
+            _run_async(self._run(update, ctx))
 
             pl.return_value.log_session.assert_called_once()
             call_kwargs = pl.return_value.log_session.call_args.kwargs

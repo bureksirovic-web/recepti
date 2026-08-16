@@ -4,14 +4,28 @@ import json
 import logging
 import os
 from datetime import datetime
-from typing import Optional
 
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
+from .grocery_store import GroceryStore
+
 logger = logging.getLogger(__name__)
 
 DATA_DIR = os.getenv("RECEPTI_DATA_DIR", "data")
+
+_ING_LOOKUP: dict[str, str] = {}
+_ing_path = os.path.join(DATA_DIR, "croatia_ingredients_v2.json")
+if os.path.exists(_ing_path):
+    with open(_ing_path) as _f:
+        _ing_data = json.load(_f)
+    for _items in _ing_data.get("categories", {}).values():
+        if isinstance(_items, list):
+            for _item in _items:
+                if isinstance(_item, dict) and _item.get("name"):
+                    _cn = _item.get("croatian_name")
+                    if _cn:
+                        _ING_LOOKUP[_item["name"]] = _cn
 
 _CUISINE_TERMS: dict[str, list[str]] = {
     "croatian": ["hrvatski recepti", "hrvatska kuhinja"],
@@ -118,27 +132,50 @@ def _build_holes(all_recipes, total: int) -> list[dict]:
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
 
 
+_grocery_store: GroceryStore | None = None
+
+
 def create_app(recipe_store) -> Flask:
     """Create and configure Flask app with RecipeStore injected."""
+    global _grocery_store
     app = Flask(__name__, static_folder=STATIC_DIR)
     CORS(app)
+    _grocery_store = GroceryStore()
 
     # ── Helper ───────────────────────────────────────────────────────
-    def recipe_to_dict(recipe) -> dict:
-        return {
+    def recipe_to_dict(recipe, _include_grocery: bool = False) -> dict:
+        cro = recipe_store.get_croatian_data(recipe.id)
+        ingredients = []
+        for i in recipe.ingredients:
+            name = i.name
+            name_cro = None
+            if cro:
+                for ci in cro.get("ingredients", []):
+                    if ci.get("name") == name:
+                        name_cro = ci.get("name_croatian")
+                        break
+            if not name_cro:
+                name_cro = _ING_LOOKUP.get(name)
+            ingredients.append({
+                "name": name,
+                "name_croatian": name_cro,
+                "amount": i.amount,
+                "unit": i.unit,
+            })
+        d = {
             "id": recipe.id,
             "name": recipe.name,
+            "name_croatian": cro.get("name_croatian") if cro else None,
             "description": recipe.description,
-            "ingredients": [
-                {"name": i.name, "amount": i.amount, "unit": i.unit}
-                for i in recipe.ingredients
-            ],
+            "description_croatian": cro.get("description_croatian") if cro else None,
+            "ingredients": ingredients,
             "instructions": recipe.instructions,
             "tags": {
                 "cuisine": recipe.tags.cuisine,
                 "meal_type": recipe.tags.meal_type,
                 "dietary_tags": recipe.tags.dietary_tags,
             },
+            "cuisine": recipe.tags.cuisine,
             "servings": recipe.servings,
             "prep_time_min": recipe.prep_time_min,
             "cook_time_min": recipe.cook_time_min,
@@ -146,6 +183,13 @@ def create_app(recipe_store) -> Flask:
             "difficulty": recipe.difficulty,
             "source_url": recipe.source_url,
         }
+        if _include_grocery and _grocery_store:
+            missing = [
+                i.name for i in recipe.ingredients if not _grocery_store.is_available(i.name)
+            ]
+            d["is_available"] = len(missing) == 0
+            d["missing_ingredients"] = missing
+        return d
 
     # ── Routes ────────────────────────────────────────────────────────
 
@@ -167,6 +211,7 @@ def create_app(recipe_store) -> Flask:
         difficulty = request.args.get("difficulty", "").strip()
         search = request.args.get("search", "").strip().lower()
         source = request.args.get("source", "").strip()
+        include_grocery = request.args.get("grocery_available", "").strip().lower() in ("true", "1", "yes")
         page = max(1, int(request.args.get("page", 1)))
         per_page = min(50, max(1, int(request.args.get("per_page", 20))))
 
@@ -188,6 +233,11 @@ def create_app(recipe_store) -> Flask:
                 all_recipes = [r for r in all_recipes if 31 <= r.id <= 50]
             elif source == "expanded":
                 all_recipes = [r for r in all_recipes if r.id >= 51]
+        if include_grocery and _grocery_store:
+            all_recipes = [
+                r for r in all_recipes
+                if all(_grocery_store.is_available(i.name) for i in r.ingredients)
+            ]
 
         total = len(all_recipes)
         start = (page - 1) * per_page
@@ -195,7 +245,7 @@ def create_app(recipe_store) -> Flask:
         page_recipes = all_recipes[start:end]
 
         return jsonify({
-            "recipes": [recipe_to_dict(r) for r in page_recipes],
+            "recipes": [recipe_to_dict(r, _include_grocery=include_grocery) for r in page_recipes],
             "total": total,
             "page": page,
             "per_page": per_page,
@@ -208,7 +258,8 @@ def create_app(recipe_store) -> Flask:
         recipe = recipe_store.get_recipe_by_id(recipe_id)
         if not recipe:
             return jsonify({"error": "Recipe not found"}), 404
-        return jsonify(recipe_to_dict(recipe))
+        include_grocery = request.args.get("grocery_available", "").strip().lower() in ("true", "1", "yes")
+        return jsonify(recipe_to_dict(recipe, _include_grocery=include_grocery))
 
     @app.route("/api/stats")
     def get_stats():
