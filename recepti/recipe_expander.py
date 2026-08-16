@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Optional
 
 import requests
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from lxml import html
 
 from .models import Recipe

@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Optional
 
 import requests
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from lxml import html
 
 from .llm_service import extract_recipe_from_url
