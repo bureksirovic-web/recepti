@@ -25,6 +25,12 @@ if [ ! -d "$RECEPTI_DIR" ]; then
     exit 1
 fi
 
+# --- Ensure the log directory exists -----------------------------------------
+# The systemd unit appends bot output to ${RECEPTI_DIR}/data/logs/bot.log.
+# systemd will NOT auto-create missing parent directories, so a fresh clone
+# (empty dirs are not tracked by git) would fail to start the unit otherwise.
+mkdir -p "$RECEPTI_DIR/data/logs"
+
 # --- Ensure the secret env file exists --------------------------------------
 if [ ! -f "$ENV_FILE" ]; then
     echo "==> Creating $ENV_FILE (chmod 600) from environment..."

@@ -19,6 +19,8 @@ User=tomi
 WorkingDirectory=/home/tomi/Recepti
 Environment=RECEPTI_DATA_DIR=/home/tomi/Recepti/data
 EnvironmentFile=/home/tomi/Recepti/.env
+# Ensure the log dir exists (git doesn't track empty dirs); "-" tolerates failure
+ExecStartPre=-/bin/mkdir -p /home/tomi/Recepti/data/logs
 ExecStart=/home/tomi/Recepti/.venv/bin/python3 -m recepti.bot
 ExecStop=/bin/kill -TERM $MAINPID
 # run_polling() exits cleanly on SIGINT/SIGTERM; give it time to flush.
