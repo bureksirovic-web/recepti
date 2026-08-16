@@ -376,7 +376,7 @@ async def start_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
         "/addmeal <child_id> <recipe_id> <meal_type> <eaten%> — record a meal\n"
         "/suggest <ingredients> [lunch|dinner|breakfast] — AI recipe suggestion\n"
         "        /expand <ingredient> — find & add recipes online\n"
-        "/balance-family [days] — family nutrition report + grocery suggestions\n"
+        "/balance_family [days] — family nutrition report + grocery suggestions\n"
         "/kuhano <recipe_id> [porcija] — zapisnik da ste skuhali nešto\n"
         "/okusi <recipe_id> [👍|👎|1-5] — ocijeni recept (thumbs ili zvijezdice)\n"
         "/recipes — list all recipes\n"
@@ -1162,7 +1162,7 @@ def main() -> None:
     application.add_handler(CommandHandler("suggest", suggest_command))
     application.add_handler(CommandHandler("balance", balance_command))
     application.add_handler(CommandHandler("expand", expand_command))
-    application.add_handler(CommandHandler("balance-family", balance_family_command))
+    application.add_handler(CommandHandler("balance_family", balance_family_command))
     application.add_handler(CommandHandler("addmember", addmember_command))
     application.add_handler(CommandHandler("kuhano", kuhano_command))
     application.add_handler(CommandHandler("okusi", okusi_command))
